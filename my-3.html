@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>form, input, label, dropbox</title>
+  </head>
+  <body>
+    <form action=""></form>
+    <label for="id">아이디 :</label>
+    <input type="text" id="id" placeholder="아이디를 입력해주세요" /> <br />
+    <label for="password">비밀번호 :</label>
+    <input
+      type="password"
+      id="password"
+      placeholder="비밀번호를 입력해주세요"
+    />
+    <br /><br />
+    <input type="submit" value="전송" /> <br /><br />
+    <input type="button" value="삐약" /><br /><br />
+    <input type="image" src="play.png" /><br /><br />
+    <input type="file" /> <br /><br />
+
+    <h4>1. 가장 좋아하는 과일을 고르시오.(중복선택 가능)</h4>
+    <label for="check1">딸기</label>
+    <input type="checkbox" id="check1" /> <br />
+    <label for="check2">포도</label>
+    <input type="checkbox" id="check2" /> <br />
+    <label for="check3">키위</label>
+    <input type="checkbox" id="check3" /> <br />
+    <label for="check4">레몬</label>
+    <input type="checkbox" id="check4" /> <br />
+    <label for="check5">감귤</label>
+    <input type="checkbox" id="check5" /> <br />
+    <br /><br />
+
+    <label for="hair">긴머리</label>
+    <input type="radio" id="1" name="hair" /><br />
+    <label for="hair">짧은머리</label>
+    <input type="radio" id="2" name="hair" /><br />
+    <label for="hair">곱슬머리</label>
+    <input type="radio" id="3" name="hair" /><br />
+
+    <br /><br />
+
+    <select name="idol">
+      <option value="1">아이브</option>
+      <option value="2" selected>라이즈</option>
+      <option value="3">이즈나</option>
+    </select>
+
+    <input type="submit" onclick="alert('전송 완료!');" />
+  </body>
+</html>
