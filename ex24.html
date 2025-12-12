@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex24.html -->
+    <title>Document</title>
+  </head>
+  <body>
+    <h4>회원가입 폼</h4>
+    <form action="localhost:8080" method="get">
+      <label for="name">이름 :</label>
+      <input type="text" id="name" placeholder="이름을 입력하세요." /><br />
+      <label for="password">비밀번호 :</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="비번을 입력하세요."
+      /><br />
+      <label for="mobilnumber">핸드폰 :</label>
+      <input
+        type="text"
+        id="mobilnumber"
+        placeholder="핸드폰을 입력하세요."
+      /><br />
+      <label for="email">이메일 :</label>
+      <input type="email" id="email" placeholder="이메일을 입력하세요." />
+      <br />
+      <label for="gender">성별</label>
+      <input type="radio" id="male" name="gender" checked />
+      <label for="male">남성</label>
+      <input type="radio" id="female" name="gender" />
+      <label for="female">여성</label><br />
+      <label for="hobby">취미</label>
+      <input type="checkbox" id="walk" name="hobby" /><label for="walk"
+        >걷기</label
+      >
+      <input type="checkbox" id="run" name="hobby" checked />
+      <label for="run">달리기</label>
+      <input type="checkbox" id="cycle" name="hobby" /><label for="cycle"
+        >자전거타기</label
+      >
+      <br />
+      <label for="local">사는 곳 : </label>
+      <select name="local">
+        <option value="1">서울</option>
+        <option value="2">경기</option>
+        <option value="3">인천</option></select
+      ><br />
+      <input type="submit" value="회원가입" />
+    </form>
+  </body>
+</html>
