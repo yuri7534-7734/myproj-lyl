@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>test</title>
+    <style>
+      #practice {
+        color: white;
+        background-color: blue;
+      }
+
+      h1 + h3 {
+        color: red;
+      }
+      ol li:nth-child(1) {
+        color: purple;
+      }
+      ol li:nth-child(5):hover {
+        color: red;
+      }
+      ul li:nth-child(4):active {
+        background-color: aqua;
+      }
+      #when:focus {
+        background-color: yellow;
+      }
+      input:disabled {
+        background-color: red;
+      }
+      input:checked {
+        outline: 2px solid red;
+      }
+      ol li:not(:first-child) {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="practice">연습문제입니다.</h1>
+    <h3>코드 오류 없이 작성할 수 있도록 하십시오.</h3>
+    <ol>
+      <li>색깔1</li>
+      <li>색깔2</li>
+      <li>색깔3</li>
+      <li>색깔4</li>
+      <li>색깔5</li>
+      <li>색깔6</li>
+    </ol>
+    <ul>
+      <li>갯수1</li>
+      <li>갯수2</li>
+      <li>갯수3</li>
+      <li>갯수4</li>
+      <li>갯수5</li>
+    </ul>
+    <br /><br />
+    <form action="http://localhost:8080" method="get">
+      <label>좋아하는 색깔을 고르시오.</label><br />
+      <label for="1">purple</label>
+      <input type="checkbox" id="1" name="color" />
+      <label for="2">red</label>
+      <input type="checkbox" id="2" name="color" checked />
+      <label for="3">blue</label>
+      <input type="checkbox" id="3" name="color" /><br /><br />
+
+      <label>좋아하는 음료수를 한개만 고르시오.</label><br />
+      <label for="11">콜라</label>
+      <input type="radio" id="11" name="음료수" />
+      <label for="22">사이다</label>
+      <input type="radio" id="22" name="음료수" />
+      <label for="33">환타</label>
+      <input type="radio" id="33" name="음료수" />
+      <label for="44">17차</label>
+      <input type="radio" id="44" name="음료수" />
+      <label for="55">맥주</label>
+      <input type="radio" id="55" name="음료수" /><br /><br /><br />
+
+      <label for="when">언제 도착하는지 작성하시오.</label><br />
+      <input type="text" id="when" placeholder="언제 도착하는가?" /><br /><br />
+      <label for="number">전화번호를 기입하시오.</label><br />
+      <input type="tel" id="number" placeholder="전화번호" disabled />
+    </form>
+  </body>
+</html>

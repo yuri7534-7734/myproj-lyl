@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>복습하기</title>
+  </head>
+  <body>
+    <h3>레스토랑 예약하기</h3>
+    <form action="">
+      <fieldset>
+        <legend>예약자 정보</legend>
+        <label for="text1">예약자:</label>
+        <input type="text" id="text1" /><br />
+        <!-- mobile 숫자키패드 -->
+        <label for="text2">연락처:</label>
+        <input type="text" id="text2" placeholder="000-0000-0000" /><br />
+        <label for="people">예약인원:</label>
+        <select name="people">
+          <option value="1" name="peole">2명</option>
+          <option value="2" name="peole">3명</option>
+          <option value="3" name="peole">4명</option>
+          <option value="4" name="peole">5인 이상</option>
+        </select>
+      </fieldset>
+
+      <input type="submit" value="예약" />
+      <input type="button" value="취소" />
+
+      <button>예약</button>
+      <!-- 버튼에도 타입이 있는데 기본 값이 submit이라서 통신 가능 -->
+      <!-- 통신함 -->
+      <button type="submit">예약</button>
+      <!-- 풀어서 쓴 코드 -->
+      <button type="button">예약</button>
+      <!-- 통신안함 -->
+    </form>
+  </body>
+</html>
