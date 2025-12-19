@@ -1,0 +1,72 @@
+<!-- ex41 -->
+    <title>콘텐츠 초과 처리 - overflow속성</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #333;
+        margin: 20px;
+
+        /* Firefox */
+        scrollbar-width: none;
+
+        /* IE, Edge */
+        -ms-overflow-style: none;
+      }
+      /* 스크롤바를 UI적으로 없애기 */
+      .box:-webkit-scrollbar {
+        display: none;   /* Chrome, Safari */
+      }
+      /* 기본값, 초과된 콘텐츠가 그대로 노출된다. */
+      .visible {
+        overflow: visible;
+        background-color: lightblue;
+      }
+      /* 초과된 콘텐츠를 숨긴다(잘린다) */
+      .hidden {
+        overflow: hidden;
+        background-color: lightgreen;
+      }
+      /* 스크롤이 생김 */
+      .scroll {
+        /* x축, y축 모두 스크롤바가 생김 */
+        overflow: scroll;
+        /* y축만 스크롤바 생기게 */
+        overflow-y: scroll;
+         scrollbar-width: none;
+
+        background-color: lightcoral;
+      }
+      /* 콘텐츠가 초과할 때만 스크롤바가 생기게 함. */
+      .auto {
+        overflow: auto;
+        background-color: lightgoldenrodyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box visible">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur
+      cupiditate nam aliquam beatae odio, fugit inventore autem, repudiandae
+      nesciunt hic porro ipsa eligendi sit impedit debitis voluptatem recusandae
+      placeat. Libero?
+    </div>
+    <br /><br />
+    <div class="box hidden">
+      Aperiam laboriosam vel porro expedita voluptas doloribus eveniet
+      molestias, ratione, et magni, dignissimos necessitatibus cupiditate quod
+      similique tempora maxime ullam perspiciatis sed. Quos consequatur, dolorum
+      explicabo quis autem cupiditate beatae?
+    </div>
+    <div class="box scroll">
+      Incidunt porro minima ipsam qui! Maxime, magnam fugit? Culpa soluta vel
+      veniam corrupti eveniet iusto perspiciatis in eum porro minus eos
+      voluptate quibusdam, expedita amet possimus at sapiente omnis earum?
+    </div>
+    <div class="box auto">
+      Hic facere reiciendis suscipit, voluptatem itaque, ipsam maiores autem
+      deleniti officia asperiores totam minus ducimus unde minima atque. Tenetur
+      odit iure nam earum dolor ducimus ipsam qui expedita officiis nihil?
+    </div>
+  </body>
+</html>

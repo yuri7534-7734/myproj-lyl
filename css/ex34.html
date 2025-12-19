@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex34.html -->
+    <title>box-sizing 속성</title>
+    <!-- width, height의 기준을 설정 -->
+    <!-- content-box : 기본값, 콘텐츠의 너비, 높이 값으로 지정 -->
+    <!-- border-box : 콘텐츠+패딩+테두리선까지를 너비, 높이 값으로 지정 -->
+    <!-- content-box는 패딩+테두리선 두께까지 고려해서 W,H를 지정해야 -->
+    <!-- 되므로, 배치 시 계산이 복잡함. -->
+
+    <!-- *------B------*   * -->
+    <!-- |   *-----*   |   | -->
+    <!-- | P |  C  | P | M | -->
+    <!-- |   *-----*   |   | -->
+    <!-- *-------------*   * -->
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        border: 10px solid black;
+        padding: 10px;
+        /* 내용물이 넘치면, 안보이게 한다. */
+        overflow: hidden;
+        margin: 10px;
+      }
+      div:first-child {
+        /* w,h = content의 w,h */
+        box-sizing: content-box;
+        background-color: aqua;
+      }
+
+      div:last-of-type {
+        /* w,h = content + padding + border */
+        box-sizing: border-box;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    content-box
+    <div>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. A eveniet enim
+      provident. Quasi minima, porro suscipit molestiae fugiat dolorem facilis
+      mollitia, expedita quaerat eum perferendis laborum maxime delectus commodi
+      inventore.
+    </div>
+    border-box
+    <div>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut illum esse,
+      officiis ipsum dolor nulla aspernatur similique dolore. Maxime quos veniam
+      iste voluptas fugiat quaerat saepe consequuntur itaque porro facilis!
+    </div>
+  </body>
+</html>
