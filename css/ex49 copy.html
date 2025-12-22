@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex49.html -->
+    <title>flex로 시맨틱 태그 기반 웹 만들기</title>
+  </head>
+  <style>
+    #wrapper {
+      margin: 0 auto;
+      width: 1000px;
+    }
+    .content {
+      border: 1px solid black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    header {
+      height: 50px;
+      background: purple;
+    }
+    nav {
+      height: 50px;
+      background: green;
+    }
+    main {
+      height: 200px;
+      display: flex;
+    }
+    section {
+      width: 70%;
+      background: teal;
+    }
+    aside {
+      width: 30%;
+      background: orange;
+    }
+    footer {
+      height: 50px;
+      background: darkolivegreen;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <header class="content">Header</header>
+      <nav class="content">Nav</nav>
+      <main>
+        <section class="content">Section</section>
+        <aside class="content">Aside</aside>
+      </main>
+      <footer class="content">Footer</footer>
+    </div>
+  </body>
+</html>

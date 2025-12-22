@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>flex-flow(주축방향+줄바꿈)</title>
+    <style>
+      .container {
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        background: yellow;
+        display: flex;
+        width: 300px;
+      }
+      .box {
+        color: white;
+        background: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      .opt1 {
+        flex-flow: row wrap;
+      }
+      .opt2 {
+        flex-flow: column wrap;
+      }
+      .opt3 {
+        flex-flow: column-reverse nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- (div.container.opt$>(div.box>p{$})*3)*3 -->
+
+    <div class="container opt1">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <div class="container opt2">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <div class="container opt3">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+  </body>
+</html>

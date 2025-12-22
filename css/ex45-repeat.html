@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex45.html -->
+    <title>주축방향 정렬 - justify-content</title>
+    <!-- justify : 정렬하다 -->
+    <style>
+      .container {
+        background-color: yellow;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        display: flex;
+      }
+      .box {
+        background: green;
+        margin: 5px;
+        padding: 5px 45px;
+      }
+      p {
+        color: white;
+        text-align: center;
+      }
+
+      .opt1 {
+        justify-content: flex-start;
+      }
+      .opt2 {
+        justify-content: flex-end;
+      }
+      .opt3 {
+        justify-content: center;
+      }
+      .opt4 {
+        justify-content: space-between;
+      }
+      .opt5 {
+        justify-content: space-around;
+      }
+      .opt6 {
+        justify-content: space-evenly;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- (div.container.opt$>(div.box>p{$})3)6 -->
+    <div class="container opt1">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <h4>
+      flex-start : 주축이 앞쪽으로 / start 사용 시 언어별 방향에 따라 오른쪽에서
+      시작할 수 있으니 주의
+    </h4>
+    <div class="container opt2">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <h4>flex-end : 주축이 맨 끝에서부터</h4>
+    <div class="container opt3">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <h4>justify-content : center 주축이 중앙</h4>
+    <div class="container opt4">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <h4>
+      justify-content:space-between 콘텐츠 사이 간격이 양쪽 여백 없이 균등배분
+      시
+    </h4>
+    <div class="container opt5">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <h4>
+      justify-content:space-around : 콘텐츠 양끝에도 공간이 생기며 가운데쪽
+      공간이 더욱 넓을 때 / 가운데쪽 공간을 반으로 자르면 양옆 공간과 동일하다.
+    </h4>
+    <div class="container opt6">
+      <div class="box">
+        <p>1</p>
+      </div>
+      <div class="box">
+        <p>2</p>
+      </div>
+      <div class="box">
+        <p>3</p>
+      </div>
+    </div>
+    <h4>
+      justify-content:space-evenly : 양쪽 여백 공간과 가운데 콘텐츠들 사이
+      공간이 모두 일정할 때
+    </h4>
+  </body>
+</html>
