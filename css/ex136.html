@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>오버레이</title>
+    <style>
+      .content1 {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+      .content2 {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        top: 60px;
+        left: 70px;
+      }
+      p {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="red">
+      <div class="content1"></div>
+    </div>
+    <div class="blue">
+      <div class="content2"><p>문단태그입니다.</p></div>
+    </div>
+  </body>
+</html>

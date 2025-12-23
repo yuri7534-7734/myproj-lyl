@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>HTML5 문서 구조 시맨틱 태그 사용</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+      }
+      #wrapper {
+        width: 700px;
+        height: auto;
+      }
+      header {
+        background-color: yellow;
+        height: 80px;
+      }
+      .content {
+        height: 300px;
+        display: flex;
+      }
+      nav {
+        background-color: orange;
+        flex-grow: 1;
+      }
+      section {
+        background-color: rgb(63, 150, 63);
+        flex-grow: 6;
+      }
+      aside {
+        background-color: rgb(224, 146, 1);
+        flex-grow: 1;
+      }
+      footer {
+        background: plum;
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header>header</header>
+      <div class="content">
+        <nav class="flex">nav</nav>
+        <section class="flex">section</section>
+        <aside class="flex">aside</aside>
+      </div>
+      <footer>footer</footer>
+    </div>
+  </body>
+</html>

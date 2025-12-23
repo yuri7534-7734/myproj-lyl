@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>flex로 웹페이지 만들기</title>
+    <title>강아지 블로그 만들기 - flexbox를 이용하기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="reset.css" />
+
     <style>
+      /* 에릭마이어의 CSS 리셋 코드(가장 있기 있는) */
       * {
-        margin: 0 auto;
+        margin: 0;
         padding: 0;
       }
       body {
@@ -14,90 +23,103 @@
         margin: 0 auto;
         width: 1000px;
       }
-      header,
-      .a {
+      .box {
         display: flex;
-        align-content: center;
         justify-content: center;
-      }
-
-      header {
-        height: 100px;
-        font-weight: 600;
-        font-size: 30px;
         align-items: center;
-        justify-content: center;
       }
-
+      header {
+        font-family: "Do Hyeon", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 40px;
+        height: 150px;
+      }
       nav {
-        background: rgb(6, 173, 173);
+        height: 30px;
+        background: rgb(241, 215, 215);
       }
-      li {
-        list-style: none;
+      nav li {
+        margin-right: 40px;
       }
-      a {
-        text-decoration: none;
-      }
-      nav ul li a {
+      nav li a {
         color: white;
       }
+      .a {
+        list-style: none;
+      }
+      li a {
+        text-decoration: none;
+      }
       main {
-        height: 500px;
+        height: 450px;
         display: flex;
-        justify-content: flex-start;
       }
       aside {
-        height: 70%;
-        width: 20%;
-        border: 1px solid green;
         margin: 10px;
-        padding: 20px 20px 5px 20px;
+        padding: 15px 0px 15px 15px;
+        border: 1px solid green;
+        width: 20%;
       }
       aside p {
-        font-weight: 700;
+        font-weight: 600;
+        padding-top: 10px;
+      }
+      aside a,
+      footer a {
+        color: black;
       }
       aside img {
-        width: 200px;
-        height: 200px;
+        width: 180px;
       }
-      .section {
-        height: 100%;
-        width: 80%;
+      section {
+        width: 75%;
+        padding: 10px;
       }
+      section p {
+        margin: 15px 0;
+      }
+      /* section p {
+        padding: 20px 15px 5px 15px;
+      } */
       section p:first-child {
-        margin-top: 20px;
-        font-weight: 700;
+        font-weight: 600;
+        font-size: 20px;
       }
-      .section p {
-        margin-bottom: 20px;
+      footer {
+        background: rgb(241, 215, 215);
+        height: 50px;
+      }
+      footer li {
+        margin-right: 10px;
       }
     </style>
   </head>
   <body>
     <div id="wrapper">
-      <header class="box header center">
+      <header class="box">
         <p>골든리트리버 - Golden Retriever</p>
       </header>
-      <nav class="box nav center">
-        <ul class="a">
-          <li class="center li"><a href="#">About</a></li>
-          <li class="center li"><a href="#">History</a></li>
-          <li class="center li"><a href="#">Information</a></li>
-          <li class="center li"><a href="#">SNS</a></li>
+      <nav class="box">
+        <ul class="box">
+          <li class="a"><a href="#">About</a></li>
+          <li class="a"><a href="#">History</a></li>
+          <li class="a"><a href="#">Information</a></li>
+          <li class="a"><a href="#">SNS</a></li>
         </ul>
       </nav>
       <main>
-        <aside class="box aside">
+        <aside class="aside">
           <p>Golden Retriever</p>
           <img src="dog.jpg" alt="강아지이미지" />
           <ul>
-            <li class="li"><a href="#">● 기본특성</a></li>
-            <li class="li"><a href="#">● 단점</a></li>
-            <li class="li"><a href="#">● 키울 시 주의점</a></li>
-            <li class="li"><a href="#">● 파생 혼종견</a></li>
+            <li class="a"><a href="#">● 기본특성</a></li>
+            <li class="a"><a href="#">● 단점</a></li>
+            <li class="a"><a href="#">● 키울 시 주의점</a></li>
+            <li class="a"><a href="#">● 파생 혼종견</a></li>
           </ul>
         </aside>
-        <section class="box section">
+        <section>
           <p>Golden Retriever</p>
           <p>
             개의 품종 중 하나로, 원산지는 영국의 스코틀랜드 지역이다. 비슷하게
@@ -125,11 +147,11 @@
           <p>참조:나무위키 - 골든리트리버</p>
         </section>
       </main>
-      <footer class="box footer">
-        <ul class="a">
-          <li class="center li"><a href="#">Subscribe</a></li>
-          <li class="center li"><a href="#">About Author</a></li>
-          <li class="center li"><a href="#">Send us Email</a></li>
+      <footer class="box">
+        <ul class="box">
+          <li class="a"><a href="#">Subscribe</a></li>
+          <li class="a"><a href="#">About Author</a></li>
+          <li class="a"><a href="#">Send us Email</a></li>
         </ul>
       </footer>
     </div>
