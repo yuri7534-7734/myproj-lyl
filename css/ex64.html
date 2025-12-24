@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>가상요소 사용예3</title>
+    <style>
+      * {
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      #wrapper {
+        margin-top: 200px;
+      }
+      .login {
+        width: 600px;
+        height: 40px;
+        border-style: none;
+        border-radius: 5px;
+        background-color: rgb(255, 238, 0);
+
+        margin-bottom: 10px;
+      }
+      .line::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background-color: rgb(218, 217, 217);
+        left: 1%;
+      }
+      .line::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 45%;
+        height: 1px;
+        background-color: rgb(218, 217, 217);
+        right: 1%;
+      }
+      p {
+        position: relative;
+        width: 600px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: rgb(218, 217, 217);
+      }
+      .qrcode {
+        width: 600px;
+        height: 40px;
+        border-style: none;
+        border-radius: 5px;
+        background-color: rgb(235, 235, 235);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="login">
+        <input type="submit" class="login" value="로그인" />
+      </div>
+      <div class="content">
+        <p class="line">또는</p>
+      </div>
+      <div class="qrcode">
+        <a href="#"
+          ><input type="button" class="qrcode" value="QR코드 로그인"
+        /></a>
+      </div>
+    </div>
+  </body>
+</html>
