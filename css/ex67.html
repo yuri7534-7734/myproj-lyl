@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 다음 로그인 화면 구현하기 -->
+    <title>연습문제 - 다음로그인 화면</title>
+    <style>
+      #wrapper {
+        margin: 0 auto;
+        padding: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #logo {
+        background: url(logo_kakao_2.png) no-repeat 0 0;
+        background-size: 100px 80px;
+        background-position: 0 0;
+        margin-top: 150px;
+
+        width: 88px;
+        height: 27px;
+      }
+      .section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        width: 440px;
+        padding: 70px;
+        margin: 40px 0 10px 0;
+      }
+
+      input[type="text"] {
+        font-family: "noto sans";
+        margin-bottom: 10px;
+        display: inline-block;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 40px;
+      }
+      input[type="text"]:focus {
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #2c2c2c;
+      }
+
+      input[type="text"]:focus + .tip {
+        display: inline-block;
+      }
+      span,
+      .tip {
+        font-size: 13px;
+        font-family: "noto sans";
+      }
+      span {
+        color: red;
+      }
+      .tip {
+        font-family: "noto sans";
+        line-height: 16px;
+        display: none;
+      }
+
+      input[type="password"] {
+        font-family: "noto sans";
+        margin-bottom: 10px;
+        display: inline-block;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 40px;
+      }
+
+      input[type="password"]:focus {
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #2c2c2c;
+      }
+
+      .logincheck {
+        display: flex;
+        align-items: center;
+      }
+      .logincheck {
+        font-size: 15px;
+        color: #8d8d8d;
+      }
+      input[type="checkbox"] {
+        display: none;
+      }
+      .icon1 {
+        position: relative;
+        display: inline-block;
+        background: url(ico_comm_2.png) no-repeat 0 0;
+        background-size: 300px auto;
+        background-position: 0 0;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+      input[type="checkbox"]:checked + label {
+        background-position: -25px 0;
+      }
+
+      .button {
+        background: url(ico_comm_2.png) no-repeat 0 0;
+        background-size: 300px auto;
+        background-position: -118px -128px;
+        border: none;
+        margin-left: 5px;
+
+        width: 20px;
+        height: 20px;
+      }
+
+      .button:hover {
+        cursor: pointer;
+      }
+
+      .help {
+        display: none;
+        position: absolute;
+        font-size: 13px;
+        background-color: #1f1f1fe3;
+        border-radius: 4px;
+        color: white;
+        padding: 10px;
+        width: 270px;
+        height: 60px;
+        top: 210px;
+        left: 70px;
+      }
+
+      .help span {
+        color: yellow;
+      }
+
+      .button:focus + .help {
+        display: block;
+      }
+
+      .login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .login p {
+        color: #c2c1c1;
+        font-size: 13px;
+      }
+
+      .login p::before {
+        display: inline-block;
+        content: "";
+        border-bottom: 1px solid #ececec;
+        height: 1px;
+        width: 195px;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        left: 1%;
+      }
+      .login p::after {
+        display: inline-block;
+        content: "";
+        border-bottom: 1px solid #ececec;
+        height: 1px;
+        width: 195px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        right: 1%;
+      }
+
+      input[type="submit"] {
+        font-family: "noto sans";
+        width: 100%;
+        height: 50px;
+        margin-top: 40px;
+        display: inline-block;
+        border: none;
+        font-size: 15px;
+        font-weight: 400;
+        background-color: rgb(255, 230, 0);
+        border-radius: 5px;
+      }
+      .login input[type="button"] {
+        font-family: "noto sans";
+        width: 100%;
+        height: 50px;
+        display: inline-block;
+        border: none;
+        font-size: 15px;
+        font-weight: 400;
+        background-color: #e9e8e8;
+        border-radius: 5px;
+      }
+      .find a {
+        font-family: "noto sans";
+        text-decoration: none;
+        color: rgb(27, 27, 27);
+        font-size: 13px;
+      }
+      .find {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      .find a:nth-child(1) {
+        margin-right: 230px;
+      }
+      .find a:nth-child(2)::after {
+        content: "|";
+        color: rgb(196, 196, 196);
+        margin: 10px;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 13px;
+      }
+      .footer a {
+        font-family: "noto sans";
+        text-decoration: none;
+        color: rgb(82, 82, 82);
+      }
+
+      .footer a::before {
+        content: "|";
+        color: rgb(196, 196, 196);
+        margin: 10px;
+      }
+      select {
+        border: none;
+        outline: none;
+        color: rgb(82, 82, 82);
+      }
+
+      .footer a:last-of-type::before {
+        content: "";
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="logo"></div>
+
+      <div class="section">
+        <input type="text" placeholder="카카오메일 아이디, 이메일, 전화번호" />
+        <p class="tip">
+          <span>TIP</span> 카카오 메일이 있다면 메일 아이디만 입력해 보세요.
+        </p>
+        <input type="password" placeholder="비밀번호" />
+        <div class="logincheck">
+          <input type="checkbox" id="check" />
+          <label for="check" class="icon1"></label>
+          <p>간편로그인 정보 저장</p>
+          <input type="button" class="button" />
+          <p class="help">
+            로그인한 계정의 정보가 저장됩니다. 개인정보 <br />
+            보호를 위해 개인 기기에서만 사용해 주세요.<br />
+            <span>도움말 보기</span>
+          </p>
+        </div>
+        <div class="login">
+          <input type="submit" value="로그인" />
+          <p>또는</p>
+          <input type="button" value="QR코드 로그인" />
+        </div>
+        <div class="find">
+          <a href="#">회원가입</a>
+          <a href="#">계정 찾기</a>
+          <a href="#">비밀번호 찾기</a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <select name="laguage" id="">
+          <option value="laguage">한국어</option>
+          <option value="laguage">English</option>
+          <option value="laguage">中国话</option>
+        </select>
+        <a href="#">이용약관</a>
+        <a href="#"><b>개인정보 처리방침</b></a>
+        <a href="#">고객센터</a>
+        <a href="#">© KaKao Corp.</a>
+      </div>
+    </div>
+  </body>
+</html>
