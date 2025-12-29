@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex73.html -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습문제 - 반응형웹과 Flex연동</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 20px;
+        font-weight: bolder;
+      }
+      #wrapper {
+        display: flex;
+        flex-flow: row wrap;
+      }
+      #wrapper div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #header {
+        background-color: rgb(59, 121, 59);
+        height: 100px;
+        flex: 1 100%;
+      }
+      #section1 {
+        background-color: coral;
+        height: 150px;
+        flex: 1 50%;
+      }
+      #section2 {
+        background-color: lightcoral;
+        height: 150px;
+        flex: 1 50%;
+      }
+      #section3 {
+        background-color: lightblue;
+        height: 150px;
+        flex: 1 50%;
+      }
+      #section4 {
+        background-color: lightskyblue;
+        height: 150px;
+        flex: 1 50%;
+      }
+      #ad {
+        background-color: plum;
+        height: 100px;
+        flex: 1 50%;
+      }
+      #info {
+        background-color: steelblue;
+        height: 100px;
+        flex: 1 50%;
+      }
+      #footer {
+        background-color: lightgreen;
+        height: 100px;
+        flex: 100%;
+      }
+      @media screen and (min-width: 768px) and (max-width: 959px) {
+        #header {
+          height: 100px;
+          flex: 1 80%;
+          order: 0;
+        }
+        #ad {
+          height: 100px;
+          flex: 1 20%;
+          order: 1;
+        }
+        #section1 {
+          height: 100px;
+          flex: 1 100%;
+          order: 2;
+        }
+        #section2 {
+          height: 100px;
+          flex: 1 100%;
+          order: 3;
+        }
+        #section3 {
+          height: 100px;
+          flex: 1 100%;
+          order: 4;
+        }
+        #section4 {
+          height: 100px;
+          flex: 1 100%;
+          order: 5;
+        }
+        #info {
+          height: 100px;
+          flex: 1 30%;
+          order: 6;
+        }
+        #footer {
+          height: 100px;
+          flex: 1 70%;
+          order: 7;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        #header {
+          height: 100px;
+          flex: 1 100%;
+          order: 0;
+        }
+        #section1 {
+          height: 150px;
+          flex: 1 50%;
+          order: 1;
+        }
+        #section2 {
+          height: 150px;
+          flex: 1 50%;
+          order: 2;
+        }
+        #section3 {
+          height: 150px;
+          flex: 1 50%;
+          order: 3;
+        }
+        #section4 {
+          height: 150px;
+          flex: 1 50%;
+          order: 4;
+        }
+        #ad {
+          height: 100px;
+          flex: 1 50%;
+          order: 5;
+        }
+        #info {
+          height: 100px;
+          flex: 1 50%;
+          order: 6;
+        }
+        #footer {
+          height: 100px;
+          flex: 100%;
+          order: 7;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <p>헤더</p>
+      </div>
+      <div id="section1">
+        <p>섹션1</p>
+      </div>
+      <div id="section2">
+        <p>섹션2</p>
+      </div>
+      <div id="section3">
+        <p>섹션3</p>
+      </div>
+      <div id="section4">
+        <p>섹션4</p>
+      </div>
+      <div id="ad">
+        <p>광고</p>
+      </div>
+      <div id="info">
+        <p>정보</p>
+      </div>
+      <div id="footer">
+        <p>푸터</p>
+      </div>
+    </div>
+  </body>
+</html>
