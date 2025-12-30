@@ -9,17 +9,14 @@
       * {
         margin: 0;
         padding: 0;
-
+        letter-spacing: 0;
         box-sizing: border-box;
         text-decoration: none;
         list-style: none;
         line-height: 1.5;
-      }
-
-      body {
-        font-family: "NanumBarunGothic";
         font-size: 15px;
         font-weight: 400;
+        font-family: NanumBarunGothic;
       }
 
       #wrapper {
@@ -27,12 +24,12 @@
         flex-direction: column;
       }
       #header {
-        position: relative;
         width: 100%;
         min-width: 1100px;
         height: 91px;
         border-bottom: 1px solid #352461;
       }
+
       #header h1 {
         position: absolute;
         top: 23px;
@@ -48,10 +45,9 @@
         width: 140px;
         height: 47px;
       }
-      .util-link {
+      .link-area {
         position: relative;
-        display: block;
-        margin: 0 auto;
+        width: 100%;
       }
       .left-link {
         position: absolute;
@@ -76,15 +72,18 @@
         margin-left: 20px;
         font-size: 0.8667em;
       }
-      .link-area {
+      .top-area,
+      .top-gnb,
+      .top-wrap {
         position: relative;
-        font-size: 0;
+        width: 1100px;
         margin: 0 auto;
       }
 
       .left-area .util-link-btn,
       .right-area .util-link-btn {
         position: absolute;
+        font-size: 0;
         top: 42px;
         width: 36px;
         height: 36px;
@@ -114,10 +113,10 @@
         background-repeat: no-repeat;
         background-position: center;
       }
-      nav {
-        position: relative;
+      .gnb-depth1 {
         margin: 90px auto 0 auto;
       }
+
       .gnb-depth1 li a {
         position: absolute;
         font-size: 0;
@@ -163,40 +162,298 @@
       }
 
       .container {
-        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
       }
-      .page-top {
+
+      .page-wrap {
+        top: 91px;
+        width: 100%;
+        height: 42px;
         background-color: #f8f8fa;
+      }
+      .page-top {
+        margin: 0 auto;
         width: 1100px;
       }
-      .page-top span {
+      .bar {
+        color: #666;
+        margin-right: 25px;
+        line-height: 42px;
+      }
+      /* 재작업 필요 */
+      .page-top .home {
+        display: inline-block;
+        margin-right: 25px;
         width: 13px;
+        height: 100%;
         background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png)
           no-repeat center;
+      }
+      .container {
+        position: relative;
+        width: 100%;
+        margin: -92px 0 -200px 0;
+        padding: 92px 0 300px 0;
+      }
+      .inner-wrap {
+        width: 1100px;
+        height: 100%;
+      }
+      .movie-list-top {
+        width: 100%;
+        padding: 35px 0 20px 0;
+      }
+
+      .movie-list-top h2 {
+        font-size: 1.8666em;
+        font-family: NanumBarunGothic;
+      }
+
+      .top-list,
+      .top-ul-list {
+        display: flex;
+      }
+      .top-ul-list {
+        text-align: center;
+        width: 100%;
+        height: 42px;
+      }
+
+      .top-ul-list a {
+        color: black;
+        line-height: 42px;
+      }
+
+      .top-ul-list-1 {
+        width: 218px;
+        height: 42px;
+        border: 1px solid #503396;
+        border-bottom: none;
+      }
+      .top-ul-list-1 a {
+        color: #503396;
+      }
+      .top-ul-list-2,
+      .top-ul-list-3,
+      .top-ul-list-4,
+      .top-ul-list-5,
+      .top-ul-list-6 {
+        width: 218px;
+        height: 42px;
+        border: 1px solid #ebebeb;
+        border-bottom: 1px solid #503396;
+      }
+      .movie-list-search {
+        display: flex;
+        padding: 50px 0 20px 10px;
+      }
+
+      #movie-list {
+        overflow: hidden;
+        display: flex;
+      }
+
+      #movie-list ol {
+        display: flex;
+      }
+      .movie-bottom {
+        margin: 10px 0 20px 0;
+      }
+
+      .movie-title {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+      }
+      .realtitle {
+        color: #444;
+        font-size: 1.3333em;
+        margin-left: 10px;
+      }
+
+      .rate {
+        position: relative;
+        color: #444;
+        margin: 0 7px 0 0;
+        padding: 0 8px 0 0;
+      }
+      .data {
+        color: #444;
+      }
+      .rate::after {
+        position: absolute;
+        right: -4px;
+        color: #ccc;
+        content: "|";
+      }
+
+      .movie-list-1 {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        width: 230px;
+        height: 450px;
+
+        margin-right: 60px;
+      }
+      .screen-type {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        height: 65px;
+        bottom: 123px;
+        left: 5px;
+      }
+
+      #mx4d {
+        background: url(//img.megabox.co.kr/static/pc/images/movie/type_mega_mx4d.png);
+        background-size: 60px 20px;
+        width: 60px;
+        height: 20px;
+      }
+      #dolby {
+        background: url(https://img.megabox.co.kr/static/pc/images/movie/type_dolbycinema.png);
+        background-size: 60px 20px;
+        width: 60px;
+        height: 20px;
+      }
+      #atmos {
+        background: url(https://img.megabox.co.kr/static/pc/images/movie/type_dolbyatmos.png);
+        background-size: 60px 20px;
+        width: 60px;
+        height: 20px;
+      }
+      .movie-bottom-btn {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+
+      .movie-like-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        border: 1px solid #666;
+        background-color: white;
+        flex: 1 30%;
+        border-radius: 4px;
+        margin-right: 5px;
+      }
+      .movie-reserve-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        color: white;
+        background-color: #503396;
+        flex: 1 30%;
+        border-radius: 4px;
+        margin-right: 5px;
+      }
+
+      .movie-dolby-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        border: 1px solid #666;
+        background-color: #503396;
+        flex: 1 30%;
+        border-radius: 4px;
+      }
+
+      .dolbyimg {
+        background: url(https://www.megabox.co.kr/static/pc/images/common/btn/mov_list_db_btn.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 49px;
+        height: 25px;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 230px;
+        height: 330px;
+
+        /* 검정색의 반투명 */
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        /* 완전투명 */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .overlay p {
+        line-height: 1.4;
+      }
+
+      .movie-list-1:hover .overlay {
+        opacity: 1;
+      }
+
+      .movie-like-btn .heart {
+        background: url(//img.megabox.co.kr/static/pc/images/common/ico/ico-heart-toggle-gray.png);
+        width: 17px;
+        height: 15px;
+        margin-right: 5px;
+      }
+      .movie-like-btn .like-number {
+        color: #503396;
+      }
+
+      .preview {
+        display: none;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border-radius: 8px;
+      }
+      .movie-list-1 .grade {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 23px 23px;
+        width: 23px;
+        height: 23px;
+      }
+      footer {
+        display: flex;
+        flex-direction: row;
       }
     </style>
   </head>
   <body>
     <div id="wrapper">
       <header id="header">
-        <h1><a href="#" class="logo">MEAGABOX : Life Theater</a></h1>
-        <div class="util-link">
-          <div class="left-link">
-            <a href="#" class="top1-link">VIP LOUNGE</a>
-            <a href="#" class="top1-link">멤버십</a>
-            <a href="#" class="top1-link">고객센터</a>
-          </div>
-          <div class="right-link">
-            <a href="#" class="top1-link">로그인</a>
-            <a href="#" class="top1-link">회원가입</a>
-            <a href="#" class="top1-link">빠른예매</a>
+        <div class="top-wrap">
+          <h1><a href="#" class="logo">MEAGABOX : Life Theater</a></h1>
+          <div class="util-link">
+            <div class="left-link">
+              <a href="#" class="top1-link">VIP LOUNGE</a>
+              <a href="#" class="top1-link">멤버십</a>
+              <a href="#" class="top1-link">고객센터</a>
+            </div>
+            <div class="right-link">
+              <a href="#" class="top1-link">로그인</a>
+              <a href="#" class="top1-link">회원가입</a>
+              <a href="#" class="top1-link">빠른예매</a>
+            </div>
           </div>
         </div>
-        <div class="link-area">
+        <div class="top-area">
           <div class="left-area">
             <a href="#" class="util-link-btn" id="open_btn_sitemap">사이트맵</a>
             <a href="#" class="util-link-btn" id="open_btn_search">검색</a>
@@ -208,7 +465,7 @@
             >
           </div>
         </div>
-        <nav id="gnb">
+        <nav class="top-gnb">
           <ul class="gnb-depth1">
             <li><a href="#" class="gnb-txt-movie">영화</a></li>
             <li><a href="#" class="gnb-txt-reserve">예매</a></li>
@@ -220,102 +477,82 @@
         </nav>
       </header>
       <div class="container">
-        <div class="page-top">
-          <span>Home</span>
-          <a href="#">영화</a>
-          <a href="#">전체영화</a>
+        <div class="page-wrap">
+          <div class="page-top">
+            <div class="page home"></div>
+            <a href="#" class="page bar">영화</a>
+            <a href="#" class="page bar">전체영화</a>
+          </div>
         </div>
         <div id="content">
           <div class="inner-wrap">
-            <h2>전체영화</h2>
+            <div class="movie-list-top">
+              <h2>전체영화</h2>
+            </div>
             <div class="top-list">
-              <ul>
-                <li><a href="#">박스오피스</a></li>
-                <li><a href="#">상영예정작</a></li>
-                <li><a href="#">MEGA ONLY</a></li>
-                <li><a href="#">필름소사이어티</a></li>
-                <li><a href="#">클래식소사이어티</a></li>
+              <ul class="top-ul-list">
+                <li class="top-ul-list-1"><a href="#">박스오피스</a></li>
+                <li class="top-ul-list-2"><a href="#">상영예정작</a></li>
+                <li class="top-ul-list-3"><a href="#">MEGA ONLY</a></li>
+                <li class="top-ul-list-4"><a href="#">필름소사이어티</a></li>
+                <li class="top-ul-list-5"><a href="#">클래식소사이어티</a></li>
               </ul>
             </div>
             <div class="movie-list-search">
               <button>개봉작만</button>
               <p><span>57</span>개의 영화가 검색되었습니다.</p>
             </div>
-            <div id="move-list">
+            <div id="movie-list">
               <ol>
                 <li>
-                  <div>
+                  <div class="movie-list-1">
                     <img
                       src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
                       alt=""
                     />
-                    <div class="screen-type">
-                      <div class="wrap-moviebtn">
-                        <div class="summary"></div>
-                        <div class="my-score">
-                          <div class="preview">
-                            <p>관람평</p>
-                            <p>9.2</p>
-                          </div>
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="grade"></div>
+                        <div><p class="realtitle">아바타:불과 재</p></div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 39.4%</span>
+                        <span class="data">개봉일 2025.12.17</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">2.3k</div>
+                        </div>
+                        <div class="movie-reserve-btn">예매</div>
+                        <div class="movie-dolby-btn">
+                          <div class="dolbyimg"></div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <img
-                      src="	https://img.megabox.co.kr/SharedImg/2025/12/04/W6p1b8p719ZRz5LvVdBwWEOJqQZGYIyH_420.jpg"
-                      alt=""
-                    />
-                    <div class="movie-title">
-                      <div class="wrap-moviebtn">
-                        <div class="summary"></div>
-                        <div class="my-score">
-                          <div class="preview">
-                            <p>관람평</p>
-                            <p>9.2</p>
-                          </div>
-                        </div>
+                      <div class="overlay">
+                        <p>
+                          월드 와이드 흥행 불멸의 1위 &lt;아바타&gt; 시리즈의 세
+                          번째 이야기! 판도라를 위협하는 재의 부족, 더 이상
+                          인간만이 적이 아니다! 12월, 모두의 운명을 뒤흔들
+                          거대한 전투가 시작된다! 인간들과의 전쟁으로 첫째 아들
+                          ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는 깊은
+                          슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이 이끄는
+                          재의 부족이 등장하면서, 판도라는 더욱 큰 위험에 빠지게
+                          되고, ‘설리’ 가족은 선택의 기로에 서게 되는데… 역대급
+                          스케일과 액션, 오직 &lt;아바타&gt;만이 선사할 압도적
+                          시네마틱 경험을 반드시 극장에서 확인하라!
+                        </p>
                       </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <img
-                      src="	https://img.megabox.co.kr/SharedImg/2025/12/10/KABXf7NuhY8cxBSSjoIYnTFpsBAfErBI_420.jpg"
-                      alt=""
-                    />
-                    <div class="movie-title">
-                      <div class="wrap-moviebtn">
-                        <div class="summary"></div>
-                        <div class="my-score">
-                          <div class="preview">
-                            <p>관람평</p>
-                            <p>9.2</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <img
-                      src="	https://img.megabox.co.kr/SharedImg/2025/11/27/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg"
-                      alt=""
-                    />
-                    <div class="movie-title">
-                      <div class="wrap-moviebtn">
-                        <div class="summary"></div>
-                        <div class="my-score">
-                          <div class="preview">
-                            <p>관람평</p>
-                            <p>9.2</p>
-                          </div>
-                        </div>
-                      </div>
+                      <div class="my-score"></div>
+                      <div class="preview"></div>
+                      <p>관람평</p>
+                      <p>9.2</p>
                     </div>
                   </div>
                 </li>
