@@ -5,28 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>연습문제 - 메가박스 영화웹페이지</title>
     <!-- 2인1조 실습 -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        line-height: 1.5;
+      }
+
+      body {
+        font-family: "NanumBarunGothic";
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+      #header {
+        position: relative;
+        width: 100%;
+        min-width: 1100px;
+        height: 91px;
+        border-bottom: 1px solid #352461;
+      }
+      #header h1 {
+        position: absolute;
+        top: 23px;
+        left: 50%;
+        width: 140px;
+        height: 90px;
+        margin: 0 0 0 -70px;
+      }
+      #header h1 .logo {
+        display: block;
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ci/logo_new2.png);
+        font-size: 0;
+        width: 140px;
+        height: 47px;
+      }
+      .util-link {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+      }
+      .left-link {
+        position: absolute;
+        top: 15px;
+        left: 0;
+      }
+      .left-link .top1-link {
+        color: #666;
+        vertical-align: top;
+        margin-right: 20px;
+        font-size: 0.8667em;
+      }
+      .right-link {
+        position: absolute;
+        top: 15px;
+        right: 0;
+      }
+
+      .right-link .top1-link {
+        color: #666;
+        vertical-align: top;
+        margin-left: 20px;
+        font-size: 0.8667em;
+      }
+      .link-area {
+        position: relative;
+        font-size: 0;
+        margin: 0 auto;
+      }
+
+      .left-area .util-link-btn,
+      .right-area .util-link-btn {
+        position: absolute;
+        top: 42px;
+        width: 36px;
+        height: 36px;
+      }
+
+      #open_btn_sitemap {
+        left: 0;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-sitemap.png);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #open_btn_search {
+        left: 40px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-search.png);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #link_ticket {
+        right: 40px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-schedule.png);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      #open-btn_mymega {
+        right: 0;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-mymega.png);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      nav {
+        position: relative;
+        margin: 90px auto 0 auto;
+      }
+      .gnb-depth1 li a {
+        position: absolute;
+        font-size: 0;
+        top: -38px;
+        height: 38px;
+      }
+      /* 네비게이션 */
+      .gnb-txt-movie {
+        width: 30px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie.png);
+        background-repeat: no-repeat;
+        left: 166px;
+      }
+      .gnb-txt-reserve {
+        width: 30px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png);
+        background-repeat: no-repeat;
+        left: 256px;
+      }
+      .gnb-txt-theater {
+        width: 31px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png);
+        background-repeat: no-repeat;
+        left: 345px;
+      }
+      .gnb-txt-event {
+        width: 45px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-event.png);
+        background-repeat: no-repeat;
+        right: 347px;
+      }
+      .gnb-txt-store {
+        width: 44px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-store.png);
+        background-repeat: no-repeat;
+        right: 241px;
+      }
+      .gnb-txt-benefit {
+        width: 29px;
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-benefit.png);
+        background-repeat: no-repeat;
+        right: 150px;
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .page-top {
+        background-color: #f8f8fa;
+        width: 1100px;
+      }
+      .page-top span {
+        width: 13px;
+        background: url(https://img.megabox.co.kr/static/pc/images/common/bg/bg-location-home.png)
+          no-repeat center;
+      }
+    </style>
   </head>
   <body>
     <div id="wrapper">
-      <header>
-        <h1><a href="#">MEAGABOX : Life Theater</a></h1>
-        <div class="util-area">
+      <header id="header">
+        <h1><a href="#" class="logo">MEAGABOX : Life Theater</a></h1>
+        <div class="util-link">
           <div class="left-link">
-            <a href="#">VIP LOUNGE</a>
-            <a href="#">멤버십</a>
-            <a href="#">고객센터</a>
+            <a href="#" class="top1-link">VIP LOUNGE</a>
+            <a href="#" class="top1-link">멤버십</a>
+            <a href="#" class="top1-link">고객센터</a>
           </div>
           <div class="right-link">
-            <a href="#">로그인</a>
-            <a href="#">회원가입</a>
-            <a href="#">빠른예매</a>
+            <a href="#" class="top1-link">로그인</a>
+            <a href="#" class="top1-link">회원가입</a>
+            <a href="#" class="top1-link">빠른예매</a>
           </div>
         </div>
         <div class="link-area">
-          <a href="#" id="open_btn_search">사이트맵</a>
-          <a href="#" id="open_btn_sitemap">검색</a>
-          <a href="#" id="link_ticket">상영시간표</a>
-          <a href="#" id="open-btn_mymega">나의 메가박스</a>
+          <div class="left-area">
+            <a href="#" class="util-link-btn" id="open_btn_sitemap">사이트맵</a>
+            <a href="#" class="util-link-btn" id="open_btn_search">검색</a>
+          </div>
+          <div class="right-area">
+            <a href="#" class="util-link-btn" id="link_ticket">상영시간표</a>
+            <a href="#" class="util-link-btn" id="open-btn_mymega"
+              >나의 메가박스</a
+            >
+          </div>
         </div>
         <nav id="gnb">
           <ul class="gnb-depth1">
@@ -103,7 +283,10 @@
                 </li>
                 <li>
                   <div>
-                    <img src="" alt="" />
+                    <img
+                      src="	https://img.megabox.co.kr/SharedImg/2025/12/10/KABXf7NuhY8cxBSSjoIYnTFpsBAfErBI_420.jpg"
+                      alt=""
+                    />
                     <div class="movie-title">
                       <div class="wrap-moviebtn">
                         <div class="summary"></div>
@@ -119,7 +302,10 @@
                 </li>
                 <li>
                   <div>
-                    <img src="" alt="" />
+                    <img
+                      src="	https://img.megabox.co.kr/SharedImg/2025/11/27/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg"
+                      alt=""
+                    />
                     <div class="movie-title">
                       <div class="wrap-moviebtn">
                         <div class="summary"></div>
