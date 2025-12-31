@@ -121,40 +121,80 @@
         position: absolute;
         font-size: 0;
         top: -38px;
+        display: block;
         height: 38px;
       }
+      .movie:hover .gnb-depth2 {
+        visibility: visible;
+      }
+
+      .gnb-depth2 {
+        visibility: hidden;
+        display: flex;
+        align-items: center;
+        z-index: 9999;
+        top: 0px;
+        background-color: #339eb2;
+        color: white;
+        height: 42px;
+        position: absolute;
+        width: 100%;
+      }
+      .depth2-1 {
+        padding-left: 175px;
+      }
+
       /* 네비게이션 */
       .gnb-txt-movie {
+        z-index: 9998;
         width: 30px;
         background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-movie.png);
         background-repeat: no-repeat;
         left: 166px;
       }
+      .gnb-txt-movie:hover,
+      .gnb-txt-reserve:hover,
+      .gnb-txt-theater :hover,
+      .gnb-txt-store:hover,
+      .gnb-txt-benefit:hover,
+      .gnb-txt-event:hover {
+        cursor: pointer;
+        border-bottom: 3px solid #339eb2;
+      }
+
+      .gnb-depth1 li a {
+        display: block;
+      }
       .gnb-txt-reserve {
+        z-index: 9998;
         width: 30px;
         background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-reserve.png);
         background-repeat: no-repeat;
         left: 256px;
       }
       .gnb-txt-theater {
+        z-index: 9998;
         width: 31px;
         background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-theater.png);
         background-repeat: no-repeat;
         left: 345px;
       }
       .gnb-txt-event {
+        z-index: 9998;
         width: 45px;
         background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-event.png);
         background-repeat: no-repeat;
         right: 347px;
       }
       .gnb-txt-store {
+        z-index: 9998;
         width: 44px;
         background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-store.png);
         background-repeat: no-repeat;
         right: 241px;
       }
       .gnb-txt-benefit {
+        z-index: 9998;
         width: 29px;
         background-image: url(https://img.megabox.co.kr/static/pc/images/common/gnb/gnb-txt-benefit.png);
         background-repeat: no-repeat;
@@ -163,8 +203,8 @@
 
       .page-wrap {
         position: sticky;
-        top: 0;
-        z-index: 9999;
+        top: 0px;
+        z-index: 9996;
         width: 100%;
         height: 42px;
         background-color: #f8f8fa;
@@ -593,7 +633,15 @@
         </div>
         <nav class="top-gnb">
           <ul class="gnb-depth1">
-            <li><a href="#" class="gnb-txt-movie">영화</a></li>
+            <li>
+              <a href="#" class="gnb-txt-movie">영화</a>
+              <div class="gnb-depth2">
+                <ul>
+                  <li class="depth2-1">전체영화</li>
+                </ul>
+              </div>
+            </li>
+
             <li><a href="#" class="gnb-txt-reserve">예매</a></li>
             <li><a href="#" class="gnb-txt-theater">극장</a></li>
             <li><a href="#" class="gnb-txt-event">이벤트</a></li>
