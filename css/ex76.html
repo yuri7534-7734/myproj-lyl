@@ -124,11 +124,8 @@
         display: block;
         height: 38px;
       }
-      .movie:hover .gnb-depth2 {
-        visibility: visible;
-      }
 
-      .gnb-depth2 {
+      .movie .gnb-depth2 {
         visibility: hidden;
         display: flex;
         align-items: center;
@@ -142,6 +139,10 @@
       }
       .depth2-1 {
         padding-left: 175px;
+      }
+
+      .movie:hover .gnb-depth2 {
+        visibility: visible;
       }
 
       /* 네비게이션 */
@@ -597,7 +598,99 @@
 
       footer {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        background-color: #f8f8fa;
+        padding: 30px 0 40px 0;
+        width: 100%;
+        height: 200px;
+      }
+      .footer-top {
+        display: flex;
+        width: 1100px;
+        margin: 0 auto;
+
+        justify-content: space-between;
+      }
+      .line {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .line li a {
+        font-size: 0.8666em;
+        color: #666;
+      }
+      .line .bold {
+        color: #131313;
+        font-weight: 600;
+      }
+      .find-cinema {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        color: #666;
+        font-size: 0.8667em;
+        border: 1px solid#d8d9db;
+        border-radius: 30px;
+        width: 106px;
+        height: 30px;
+      }
+      .find-button {
+        background-image: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-footer-search.png);
+        width: 15px;
+        height: 15px;
+        margin-bottom: 2px;
+      }
+
+      .footer-bottom {
+        display: flex;
+        width: 1100px;
+        margin: 30px auto;
+        justify-content: space-between;
+      }
+      .footer-logo {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ci/logo-opacity_new2.png);
+        width: 150px;
+        height: 50px;
+
+        margin: 0 20px 0 0;
+      }
+
+      .footer-info address,
+      .footer-info p {
+        font-size: 0.8666em;
+        color: #444;
+        margin-right: 30px;
+      }
+
+      .front {
+        display: flex;
+      }
+      .footer-sns {
+        display: flex;
+        gap: 7px;
+      }
+      .icon-youtube {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-youtubeN.png);
+        width: 30px;
+        height: 30px;
+      }
+      .icon-instagram {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-instagramN.png);
+        width: 30px;
+        height: 30px;
+      }
+      .icon-facebook {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-facebookN.png);
+        width: 30px;
+        height: 30px;
+      }
+      .icon-twitter {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-twitterN.png);
+        width: 30px;
+        height: 30px;
       }
     </style>
   </head>
@@ -633,7 +726,7 @@
         </div>
         <nav class="top-gnb">
           <ul class="gnb-depth1">
-            <li>
+            <li class="movie">
               <a href="#" class="gnb-txt-movie">영화</a>
               <div class="gnb-depth2">
                 <ul>
@@ -1127,32 +1220,36 @@
       </div>
       <footer id="footer">
         <div class="footer-top">
-          <div>
-            <ul>
-              <li><a href="#">회사소개</a></li>
-              <li><a href="#">인재채용</a></li>
-              <li><a href="#">사회공헌</a></li>
-              <li><a href="#">제휴/광고/부대사업문의</a></li>
-              <li><a href="#">이용약관</a></li>
-              <li><a href="#">위치기반서비스 이용약관</a></li>
-              <li><a href="#">개인정보처리방침</a></li>
-              <li><a href="#">윤리경영</a></li>
-              <li><a href="#">극장찾기</a></li>
-            </ul>
+          <ul class="line">
+            <li><a href="#">회사소개</a></li>
+            <li><a href="#">인재채용</a></li>
+            <li><a href="#">사회공헌</a></li>
+            <li><a href="#">제휴/광고/부대사업문의</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#" class="bold">위치기반서비스 이용약관</a></li>
+            <li><a href="#" class="bold">개인정보처리방침</a></li>
+            <li><a href="#">윤리경영</a></li>
+          </ul>
+
+          <div class="find-cinema">
+            <div class="find-button"></div>
+            극장찾기
           </div>
         </div>
         <div class="footer-bottom">
-          <h1><a href="#">MEAGABOX : Life Theater</a></h1>
-          <div class="footer-info">
-            <address>
-              서울특별시 강남구 테헤란로 87길 22 도심공항터미널 건물 408호
-            </address>
-            <p>ARS 1544-0070 대표이메일 m.dreamcenter@partner.megabox.co.kr</p>
-            <p>대표자명 홍정인, 남용석</p>
-            <p>· 개인정보보호책임자 김수현</p>
-            <p>· 사업자등록번호 211-86-59478</p>
-            <p>· 통신판매업신고번호 2025-서울강남-00722</p>
-            <p>COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved</p>
+          <div class="front">
+            <div class="footer-logo"></div>
+            <div class="footer-info">
+              <p>
+                서울특별시 강남구 테헤란로 87길 22 도심공항터미널 건물 408호 ARS
+                1544-0070 대표이메일 m.dreamcenter@partner.megabox.co.kr
+                <br />대표자명 홍정인, 남용석 · 개인정보보호책임자 김수현 ·
+                사업자등록번호 211-86-59478 · 통신판매업신고번호
+                2025-서울강남-00722
+                <br />
+                COPYRIGHT © MegaboxJoongAng, Inc. All rights reserved
+              </p>
+            </div>
           </div>
           <div class="footer-sns">
             <a href="#" class="icon-youtube"></a>
