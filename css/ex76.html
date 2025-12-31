@@ -51,26 +51,38 @@
       }
       .left-link {
         position: absolute;
+        z-index: 9999;
         top: 15px;
         left: 0;
       }
       .left-link .top1-link {
-        color: #666;
+        color: #3a3a3a;
         vertical-align: top;
-        margin-right: 20px;
+        margin-right: 16px;
         font-size: 0.8667em;
       }
       .right-link {
         position: absolute;
+        z-index: 9999;
         top: 15px;
         right: 0;
       }
 
       .right-link .top1-link {
-        color: #666;
+        color: #3a3a3a;
         vertical-align: top;
-        margin-left: 20px;
+        margin-left: 16px;
         font-size: 0.8667em;
+      }
+      .right-link .top1-link:hover {
+        color: #666;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      .left-link .top1-link:hover {
+        color: #666;
+        text-decoration: underline;
+        cursor: pointer;
       }
       .top-area,
       .top-gnb,
@@ -82,11 +94,16 @@
 
       .left-area .util-link-btn,
       .right-area .util-link-btn {
+        z-index: 9999;
         position: absolute;
         font-size: 0;
         top: 42px;
         width: 36px;
         height: 36px;
+      }
+      .left-area .util-link-btn:hover,
+      .right-area .util-link-btn:hover {
+        cursor: pointer;
       }
 
       #open_btn_sitemap {
@@ -114,6 +131,7 @@
         background-position: center;
       }
       .gnb-depth1 {
+        position: relative;
         margin: 90px auto 0 auto;
       }
 
@@ -125,23 +143,66 @@
         height: 38px;
       }
 
-      .movie .gnb-depth2 {
+      .movie .gnb-depth2,
+      .reserve .gnb-depth2-a,
+      .theater .gnb-depth2-b,
+      .event .gnb-depth2-c,
+      .benefit .gnb-depth2-d {
+        position: fixed;
+        left: 0;
+        margin: 0 auto;
         visibility: hidden;
         display: flex;
         align-items: center;
         z-index: 9999;
-        top: 0px;
+        top: 90px;
         background-color: #339eb2;
         color: white;
         height: 42px;
-        position: absolute;
+
         width: 100%;
       }
+      .flex {
+        display: flex;
+        gap: 20px;
+        color: white;
+        padding-left: 570px;
+      }
+      .flex li:hover,
+      .depth2-1:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: white;
+      }
+
+      .depth2-5 {
+        padding-left: 140px;
+      }
+
       .depth2-1 {
-        padding-left: 175px;
+        padding-left: 450px;
+      }
+      .depth2-7 {
+        padding-left: 450px;
+      }
+      .depth2-10 {
+        padding-left: 670px;
       }
 
       .movie:hover .gnb-depth2 {
+        visibility: visible;
+      }
+      .reserve:hover .gnb-depth2-a {
+        visibility: visible;
+      }
+
+      .theater:hover .gnb-depth2-b {
+        visibility: visible;
+      }
+      .event:hover .gnb-depth2-c {
+        visibility: visible;
+      }
+      .benefit:hover .gnb-depth2-d {
         visibility: visible;
       }
 
@@ -155,7 +216,7 @@
       }
       .gnb-txt-movie:hover,
       .gnb-txt-reserve:hover,
-      .gnb-txt-theater :hover,
+      .gnb-txt-theater:hover,
       .gnb-txt-store:hover,
       .gnb-txt-benefit:hover,
       .gnb-txt-event:hover {
@@ -327,6 +388,7 @@
       }
 
       input[type="text"] {
+        outline: none;
         border: none;
         padding: 0 10px;
       }
@@ -341,7 +403,7 @@
         padding: 0 30px 0 0;
       }
 
-      .movie-list-search button {
+      label {
         cursor: pointer;
         border: none;
         background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-on-air.png);
@@ -351,12 +413,16 @@
         padding: 0 0 0 30px;
         margin-right: 20px;
       }
-      .movie-list-search button:active {
+      input[type="checkbox"] {
+        display: none;
+      }
+      input#chk:checked + label {
+        display: block;
         background-position: 0 -15px;
       }
-
       #movie-list {
         display: flex;
+        flex-wrap: wrap;
       }
 
       #movie-list ol {
@@ -558,6 +624,9 @@
         height: 15px;
         margin-right: 5px;
       }
+      .movie-like-btn:hover {
+        background-color: rgb(230, 230, 230);
+      }
       .movie-like-btn .like-number {
         color: #503396;
       }
@@ -595,6 +664,38 @@
         height: 23px;
         margin-right: 10px;
       }
+      .more {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        color: #666;
+        gap: 5px;
+        border: 1px solid #eaeaea;
+        margin-top: 30px;
+      }
+      .under {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-btn-more-arr.png);
+        width: 12px;
+        height: 7px;
+      }
+
+      .more:hover {
+        border: 1px solid #666;
+      }
+
+      .quick-area {
+        position: fixed;
+        background: url(https://img.megabox.co.kr/static/pc/images/common/btn/btn-go-top.png);
+        border-radius: 48px;
+        margin: 0 0 0 550px;
+        left: 50%;
+        bottom: 220px;
+        width: 48px;
+        height: 48px;
+        box-shadow: 1px 1px 7px 0 rgba(0, 0, 0, 0.5);
+      }
 
       footer {
         display: flex;
@@ -612,6 +713,7 @@
         justify-content: space-between;
       }
       .line {
+        z-index: 9999;
         display: flex;
         align-items: center;
         gap: 14px;
@@ -621,11 +723,18 @@
         font-size: 0.8666em;
         color: #666;
       }
+      .line li a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: #666;
+      }
+
       .line .bold {
         color: #131313;
         font-weight: 600;
       }
       .find-cinema {
+        z-index: 9999;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -642,6 +751,12 @@
         width: 15px;
         height: 15px;
         margin-bottom: 2px;
+      }
+
+      .find-cinema:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        text-decoration-color: white;
       }
 
       .footer-bottom {
@@ -669,8 +784,12 @@
         display: flex;
       }
       .footer-sns {
+        z-index: 9999;
         display: flex;
         gap: 7px;
+      }
+      .footer-sns:hover {
+        cursor: pointer;
       }
       .icon-youtube {
         background: url(https://img.megabox.co.kr/static/pc/images/common/ico/ico-youtubeN.png);
@@ -735,11 +854,47 @@
               </div>
             </li>
 
-            <li><a href="#" class="gnb-txt-reserve">예매</a></li>
-            <li><a href="#" class="gnb-txt-theater">극장</a></li>
-            <li><a href="#" class="gnb-txt-event">이벤트</a></li>
-            <li><a href="#" class="gnb-txt-store">스토어</a></li>
-            <li><a href="#" class="gnb-txt-benefit">혜택</a></li>
+            <li class="reserve">
+              <a href="#" class="gnb-txt-reserve">예매</a>
+              <div class="gnb-depth2-a">
+                <ul class="flex">
+                  <li class="depth2-2">빠른예매</li>
+                  <li class="depth2-3">상영시간표</li>
+                  <li class="depth2-4">더 부티크 프라이빗 예매</li>
+                </ul>
+              </div>
+            </li>
+            <li class="theater">
+              <a href="#" class="gnb-txt-theater">극장</a>
+              <div class="gnb-depth2-b">
+                <ul class="flex">
+                  <li class="depth2-5">전체극장</li>
+                  <li class="depth2-6">특별관</li>
+                </ul>
+              </div>
+            </li>
+            <li class="event">
+              <a href="#" class="gnb-txt-event">이벤트</a>
+              <div class="gnb-depth2-c">
+                <ul class="flex">
+                  <li class="depth2-7">진행중 이벤트</li>
+                  <li class="depth2-8">지난 이벤트</li>
+                  <li class="depth2-9">당첨자발표</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="gnb-txt-store">스토어</a>
+            </li>
+            <li class="benefit">
+              <a href="#" class="gnb-txt-benefit">혜택</a>
+              <div class="gnb-depth2-d">
+                <ul class="flex">
+                  <li class="depth2-10">메가박스 멤버쉽</li>
+                  <li class="depth2-11">제휴/할인</li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </nav>
       </header>
@@ -767,7 +922,8 @@
             </div>
             <div class="movie-list-search-top">
               <div class="movie-list-search">
-                <button type="button">개봉작만</button>
+                <input type="checkbox" id="chk" />
+                <label for="chk">개봉작만</label>
                 <p><span>57</span>개의 영화가 검색되었습니다.</p>
               </div>
               <div class="movie-list-search-2">
@@ -855,11 +1011,6 @@
                         <span class="rate">예매율 13.8%</span>
                         <span class="data">개봉일 2025.12.31</span>
                       </div>
-                      <div class="screen-type">
-                        <div id="mx4d"></div>
-                        <div id="dolby"></div>
-                        <div id="atmos"></div>
-                      </div>
                       <div class="movie-bottom-btn">
                         <div class="movie-like-btn">
                           <div class="heart"></div>
@@ -960,11 +1111,6 @@
                         <span class="rate">예매율 8.5%</span>
                         <span class="data">개봉일 2025.12.24</span>
                       </div>
-                      <div class="screen-type">
-                        <div id="mx4d"></div>
-                        <div id="dolby"></div>
-                        <div id="atmos"></div>
-                      </div>
                       <div class="movie-bottom-btn">
                         <div class="movie-like-btn">
                           <div class="heart"></div>
@@ -999,56 +1145,43 @@
                 </li>
                 <li>
                   <div class="movie-list-1">
-                    <p class="rank">1 <span class="ir">위</span></p>
+                    <p class="rank">5 <span class="ir">위</span></p>
                     <img
-                      src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
+                      src="	https://img.megabox.co.kr/SharedImg/2025/12/23/zJqlVMrN3C4d5PfCwPJGTiX1JLCxf1o4_420.jpg"
                       alt=""
                     />
 
                     <div class="movie-bottom">
                       <div class="movie-title">
                         <div class="grade12"></div>
-                        <div><p class="realtitle">아바타:불과 재</p></div>
+                        <div><p class="realtitle">누벨바그</p></div>
                       </div>
                       <div class="rate-date">
-                        <span class="rate">예매율 39.4%</span>
-                        <span class="data">개봉일 2025.12.17</span>
+                        <span class="rate">예매율 5.6%</span>
+                        <span class="data">개봉일 2025.12.31</span>
                       </div>
-                      <div class="screen-type">
-                        <div id="mx4d"></div>
-                        <div id="dolby"></div>
-                        <div id="atmos"></div>
-                      </div>
+
                       <div class="movie-bottom-btn">
                         <div class="movie-like-btn">
                           <div class="heart"></div>
-                          <div class="like-number">2.3k</div>
+                          <div class="like-number">529</div>
                         </div>
-                        <div class="movie-reserve-btn">예매</div>
-                        <div class="movie-dolby-btn">
-                          <div class="dolbyimg"></div>
-                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
                       </div>
                       <div class="overlay">
                         <div class="summary">
                           <p>
-                            월드 와이드 흥행 불멸의 1위 &lt;아바타&gt; 시리즈의
-                            세 번째 이야기! 판도라를 위협하는 재의 부족, 더 이상
-                            인간만이 적이 아니다! 12월, 모두의 운명을 뒤흔들
-                            거대한 전투가 시작된다! 인간들과의 전쟁으로 첫째
-                            아들 ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는
-                            깊은 슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이
-                            이끄는 재의 부족이 등장하면서, 판도라는 더욱 큰
-                            위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게
-                            되는데… 역대급 스케일과 액션, 오직
-                            &lt;아바타&gt;만이 선사할 압도적 시네마틱 경험을
-                            반드시 극장에서 확인하라!
+                            계속 찍어요 우리만 할 수 있으니까 1959년 파리, 젊은
+                            비평가 ‘고다르’가 올해 최악의 영화이자 세기의
+                            데뷔작이 될 &lt;네 멋대로 해라&gt;를 찍는 미친
+                            모험의 시간으로 점프하는 리처드 링클레이터의 시네마
+                            매직
                           </p>
                         </div>
 
                         <div class="preview">
                           <p id="preview1">관람평</p>
-                          <p id="preview2">9.2</p>
+                          <p id="preview2">8.4</p>
                         </div>
                       </div>
                     </div>
@@ -1056,9 +1189,9 @@
                 </li>
                 <li>
                   <div class="movie-list-1">
-                    <p class="rank">2 <span class="ir">위</span></p>
+                    <p class="rank">6 <span class="ir">위</span></p>
                     <img
-                      src="https://img.megabox.co.kr/SharedImg/2025/12/04/W6p1b8p719ZRz5LvVdBwWEOJqQZGYIyH_420.jpg"
+                      src="https://img.megabox.co.kr/SharedImg/2025/11/25/v344HrDrKIU3iFAbZWMwLssegzKFKdZ7_420.jpg"
                       alt=""
                     />
 
@@ -1068,40 +1201,29 @@
                         <div><p class="realtitle">만약에 우리</p></div>
                       </div>
                       <div class="rate-date">
-                        <span class="rate">예매율 13.8%</span>
+                        <span class="rate">예매율 3.2%</span>
                         <span class="data">개봉일 2025.12.31</span>
-                      </div>
-                      <div class="screen-type">
-                        <div id="mx4d"></div>
-                        <div id="dolby"></div>
-                        <div id="atmos"></div>
                       </div>
                       <div class="movie-bottom-btn">
                         <div class="movie-like-btn">
                           <div class="heart"></div>
-                          <div class="like-number">744</div>
+                          <div class="like-number">139</div>
                         </div>
                         <div class="movie-reserve-btn2">예매</div>
                       </div>
                       <div class="overlay">
                         <div class="summary">
                           <p>
-                            가장 초라했던 그때, 가장 눈부시던 우리 고향 가는
-                            고속버스에 올라탄 은호(구교환)와 휴학 후 어디론가
-                            떠날 결심을 한 정원(문가영), 나란히 앉게 된 두
-                            사람은 뜻밖의 인연을 맺는다. 서로의 꿈을 응원하며
-                            의지하던 두 사람은 어느새 일상 깊숙이 스며들어
-                            연인으로 발전한다. 웃고, 싸우고, 화해하며 세상을 다
-                            가진 듯 뜨겁게 사랑하지만, 현실의 벽 앞에 두 사람은
-                            결국 다른 길을 선택하게 된다. 그렇게 10년이 지난 후,
-                            다시 마주한 순간 은호는 정원에게 오랫동안 묻어두었던
-                            한마디를 꺼낸다. “만약에 우리...”
+                            대북제재로 돈줄이 막힌 북한. 국제사회의 2억 달러
+                            지원을 얻기 위한 마지막 방법은 단 하나! 보위부는
+                            당의 명령을 받고, 북한 최초의 가짜 찬양단을 만드는
+                            임무를 맡는다.
                           </p>
                         </div>
 
                         <div class="preview">
                           <p id="preview1">관람평</p>
-                          <p id="preview2">8.9</p>
+                          <p id="preview2">7.7</p>
                         </div>
                       </div>
                     </div>
@@ -1109,49 +1231,45 @@
                 </li>
                 <li>
                   <div class="movie-list-1">
-                    <p class="rank">3 <span class="ir">위</span></p>
+                    <p class="rank">7 <span class="ir">위</span></p>
                     <img
-                      src="	https://img.megabox.co.kr/SharedImg/2025/11/27/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg"
+                      src="	https://img.megabox.co.kr/SharedImg/2025/11/20/QrLgK75zTzO9bZehTlQLDRViW115sr1i_420.jpg"
                       alt=""
                     />
 
                     <div class="movie-bottom">
                       <div class="movie-title">
                         <div class="gradeall"></div>
-                        <div><p class="realtitle">주토피아 2</p></div>
+                        <div>
+                          <p class="realtitle">톰과 제리: 황금나침반</p>
+                        </div>
                       </div>
                       <div class="rate-date">
-                        <span class="rate">예매율 9.1%</span>
-                        <span class="data">개봉일 2025.11.26</span>
+                        <span class="rate">예매율 2.3%</span>
+                        <span class="data">개봉일 2026.01.01</span>
                       </div>
-                      <div class="screen-type">
-                        <div id="mx4d"></div>
-                        <div id="dolby"></div>
-                        <div id="atmos"></div>
-                      </div>
+
                       <div class="movie-bottom-btn">
                         <div class="movie-like-btn">
                           <div class="heart"></div>
-                          <div class="like-number">2.7k</div>
+                          <div class="like-number">161</div>
                         </div>
                         <div class="movie-reserve-btn2">예매</div>
                       </div>
                       <div class="overlay">
                         <div class="summary">
                           <p>
-                            더 화려해진 세계, 더 넓어진 주토피아! 디즈니의
-                            가~~장 사랑스러운 콤비 '주디'와 '닉'이 돌아온다!
-                            미스터리한 뱀 ‘게리’가 나타난 순간, 주토피아가 다시
-                            흔들리기 시작했다! 혼란에 빠진 도시를 구하기 위해
-                            환상의 콤비 ‘주디’ &amp; ‘닉’이 잠입 수사에 나서고
-                            상상 그 이상의 진실과 위협을 마주하게 되는데...!
-                            11월, 초특급 추적 어드벤처가 펼쳐진다!
+                            세기의 콤비 톰과 제리, 최초 3D 탄생! 마법의 나침반을
+                            깨운 톰과 제리의 차원이동이 시작된다! 박물관
+                            경비원으로 일하는 톰은 몰래 들어온 제리를 쫓다
+                            우연히 마법의 황금나침반을 깨우게 되고, 신비로운
+                            빛에 휩싸여 동양의 한 고대도시에 불시착한다 뜻밖의
+                            차원이동을 하게 된 톰과 제리는 300년 동안 고대도시를
+                            지켜온 봉황사부와 그의 친구들을 만나 기상천외한
+                            모험을 시작하는데…! 황금나침반을 이용해 천계로
+                            돌아가야 하는 봉황사부와 톰과 제리의 시공을 초월한
+                            모험이 펼쳐진다!
                           </p>
-                        </div>
-
-                        <div class="preview">
-                          <p id="preview1">관람평</p>
-                          <p id="preview2">9.4</p>
                         </div>
                       </div>
                     </div>
@@ -1159,65 +1277,64 @@
                 </li>
                 <li>
                   <div class="movie-list-1">
-                    <p class="rank">4 <span class="ir">위</span></p>
+                    <p class="rank">8 <span class="ir">위</span></p>
                     <img
-                      src="	https://img.megabox.co.kr/SharedImg/2025/12/10/KABXf7NuhY8cxBSSjoIYnTFpsBAfErBI_420.jpg"
+                      src="https://img.megabox.co.kr/SharedImg/2025/12/08/fsYTTO4DW1O1r6xvVhx3E2tmDf5sagCH_420.jpg"
                       alt=""
                     />
 
                     <div class="movie-bottom">
                       <div class="movie-title">
-                        <div class="grade12"></div>
+                        <div class="grade15"></div>
                         <div>
-                          <p class="realtitle">오늘 밤, 세계에서 이</p>
+                          <p class="realtitle">후지모토 타츠키 17-2</p>
                         </div>
                       </div>
                       <div class="rate-date">
-                        <span class="rate">예매율 8.5%</span>
-                        <span class="data">개봉일 2025.12.24</span>
+                        <span class="rate">예매율 1.4%</span>
+                        <span class="data">개봉일 2025.12.26</span>
                       </div>
-                      <div class="screen-type">
-                        <div id="mx4d"></div>
-                        <div id="dolby"></div>
-                        <div id="atmos"></div>
-                      </div>
+
                       <div class="movie-bottom-btn">
                         <div class="movie-like-btn">
                           <div class="heart"></div>
-                          <div class="like-number">840</div>
+                          <div class="like-number">992</div>
                         </div>
                         <div class="movie-reserve-btn2">예매</div>
                       </div>
                       <div class="overlay">
                         <div class="summary">
                           <p>
-                            매일 너의 기억을 채워주고 싶은 남자, 김재원(추영우)
-                            학교를 가도 아무 의욕이 없던 나에게 어느 순간, 웃을
-                            때마다 빛나는 긴 머리의 한 아이가 나의 심장 속에
-                            들어오기 시작했다. “시간이 지날수록 다른 건 다
-                            모르겠고, 그냥 보고 싶기만 해.” 매일 나의 기억을
-                            잃어버리는 여자, 한서윤(신시아) 매일 기억이 리셋되어
-                            모든 것을 기록해야 하는 하루가 고단했던 나에게 키
-                            크고 눈빛이 잊히지 않는 한 아이가 나의 기억 속에
-                            들어오기 시작했다. “안 하던 짓 좀 해보려고. 안 그럼
-                            너무 지루하잖아.” 오늘 밤, 세계에서 이 사랑이
-                            사라진다 해도 내일의 너를 다시 사랑할 거야
+                            &lt;룩백&gt;, &lt;극장판 체인소 맨: 레제편&gt; 을
+                            탄생시킨 후지모토 타츠키가 17 세부터 26 세까지 그린
+                            8개의 단편 바다에서 피아노를 연주하는 소년과 인어의
+                            로맨스 &lt;인어 랩소디&gt; 젠더의 경계를 넘어
+                            나다움을 발견하는 &lt;자고 일어나면 여자애가
+                            되어있는 병&gt; 가혹한 운명을 짊어진 남매의 이야기
+                            &lt;예언의 나유타&gt; 자매의 질투와 갈등, 성장을
+                            그리는 &lt;여동생의 언니&gt; 6개 스튜디오, 7명의
+                            감독에 의해 각자의 컬러로 새롭게 태어난 애니메이션
                           </p>
                         </div>
 
                         <div class="preview">
                           <p id="preview1">관람평</p>
-                          <p id="preview2">9.4</p>
+                          <p id="preview2">8.7</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
               </ol>
+              <div class="more">
+                더보기
+                <div class="under"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <a href="#"> <div class="quick-area"></div></a>
       <footer id="footer">
         <div class="footer-top">
           <ul class="line">
@@ -1230,7 +1347,6 @@
             <li><a href="#" class="bold">개인정보처리방침</a></li>
             <li><a href="#">윤리경영</a></li>
           </ul>
-
           <div class="find-cinema">
             <div class="find-button"></div>
             극장찾기
