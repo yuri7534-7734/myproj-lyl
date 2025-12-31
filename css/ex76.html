@@ -161,13 +161,6 @@
         right: 150px;
       }
 
-      .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
       .page-wrap {
         top: 91px;
         width: 100%;
@@ -194,12 +187,20 @@
       }
       .container {
         position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
         width: 100%;
         margin: -92px 0 -200px 0;
         padding: 92px 0 300px 0;
       }
       .inner-wrap {
+        display: flex;
+        flex-wrap: wrap;
         width: 1100px;
+
         height: 100%;
       }
       .movie-list-top {
@@ -252,12 +253,14 @@
       }
 
       #movie-list {
-        overflow: hidden;
+        width: 1100px;
         display: flex;
       }
 
       #movie-list ol {
+        width: 100%;
         display: flex;
+        flex-wrap: row wrap;
       }
       .movie-bottom {
         margin: 10px 0 20px 0;
@@ -271,7 +274,8 @@
       .realtitle {
         color: #444;
         font-size: 1.3333em;
-        margin-left: 10px;
+        overflow: hidden;
+        height: 27px;
       }
 
       .rate {
@@ -297,8 +301,21 @@
 
         width: 230px;
         height: 450px;
-
         margin-right: 60px;
+      }
+      .rank {
+        position: absolute;
+        line-height: 1.1;
+        font-size: 2em;
+        font-style: italic;
+        font-family: Roboto, Dotum, "돋움", sans-serif;
+        font-weight: 300;
+        color: #fff;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+        padding: 5px;
+      }
+      .ir {
+        opacity: 0;
       }
       .screen-type {
         position: absolute;
@@ -356,6 +373,17 @@
         border-radius: 4px;
         margin-right: 5px;
       }
+      .movie-reserve-btn2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        color: white;
+        background-color: #503396;
+        flex: 1 70%;
+        border-radius: 4px;
+        margin-right: 5px;
+      }
 
       .movie-dolby-btn {
         display: flex;
@@ -373,11 +401,16 @@
         background-repeat: no-repeat;
         background-position: center;
         width: 49px;
-        height: 25px;
+        height: 330%;
       }
 
       .overlay {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* ← 이게 핵심 */
+        align-items: center;
+
         top: 0;
         left: 0;
         width: 230px;
@@ -386,16 +419,30 @@
         /* 검정색의 반투명 */
         background-color: rgba(0, 0, 0, 0.5);
         color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 5px;
+
+        border-radius: 10px;
         /* 완전투명 */
         opacity: 0;
         transition: opacity 0.3s ease;
       }
-      .overlay p {
-        line-height: 1.4;
+      .overlay .summary {
+        padding: 20px;
+        height: 172px;
+        overflow: hidden;
+      }
+      .preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 190px;
+        height: 50px;
+
+        border-top: 1px solid#cccccc4b;
+      }
+      #preview2 {
+        font-size: 1.6em;
+        color: rgb(40, 145, 145);
+        margin-left: 10px;
       }
 
       .movie-list-1:hover .overlay {
@@ -412,23 +459,40 @@
         color: #503396;
       }
 
-      .preview {
-        display: none;
-      }
       img {
         width: 100%;
         height: 100%;
         display: block;
         border-radius: 8px;
       }
-      .movie-list-1 .grade {
+      .movie-list-1 .grade12 {
         background: url(https://img.megabox.co.kr/static/pc/images/common/txt/12_46x46.png);
         background-repeat: no-repeat;
         background-position: 0 0;
         background-size: 23px 23px;
         width: 23px;
         height: 23px;
+        margin-right: 10px;
       }
+      .movie-list-1 .grade15 {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/txt/15_46x46.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 23px 23px;
+        width: 23px;
+        height: 23px;
+        margin-right: 10px;
+      }
+      .movie-list-1 .gradeall {
+        background: url(https://img.megabox.co.kr/static/pc/images/common/txt/ALL_46x46.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 23px 23px;
+        width: 23px;
+        height: 23px;
+        margin-right: 10px;
+      }
+
       footer {
         display: flex;
         flex-direction: row;
@@ -506,6 +570,7 @@
               <ol>
                 <li>
                   <div class="movie-list-1">
+                    <p class="rank">1 <span class="ir">위</span></p>
                     <img
                       src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
                       alt=""
@@ -513,7 +578,7 @@
 
                     <div class="movie-bottom">
                       <div class="movie-title">
-                        <div class="grade"></div>
+                        <div class="grade12"></div>
                         <div><p class="realtitle">아바타:불과 재</p></div>
                       </div>
                       <div class="rate-date">
@@ -536,23 +601,402 @@
                         </div>
                       </div>
                       <div class="overlay">
-                        <p>
-                          월드 와이드 흥행 불멸의 1위 &lt;아바타&gt; 시리즈의 세
-                          번째 이야기! 판도라를 위협하는 재의 부족, 더 이상
-                          인간만이 적이 아니다! 12월, 모두의 운명을 뒤흔들
-                          거대한 전투가 시작된다! 인간들과의 전쟁으로 첫째 아들
-                          ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는 깊은
-                          슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이 이끄는
-                          재의 부족이 등장하면서, 판도라는 더욱 큰 위험에 빠지게
-                          되고, ‘설리’ 가족은 선택의 기로에 서게 되는데… 역대급
-                          스케일과 액션, 오직 &lt;아바타&gt;만이 선사할 압도적
-                          시네마틱 경험을 반드시 극장에서 확인하라!
-                        </p>
+                        <div class="summary">
+                          <p>
+                            월드 와이드 흥행 불멸의 1위 &lt;아바타&gt; 시리즈의
+                            세 번째 이야기! 판도라를 위협하는 재의 부족, 더 이상
+                            인간만이 적이 아니다! 12월, 모두의 운명을 뒤흔들
+                            거대한 전투가 시작된다! 인간들과의 전쟁으로 첫째
+                            아들 ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는
+                            깊은 슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이
+                            이끄는 재의 부족이 등장하면서, 판도라는 더욱 큰
+                            위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게
+                            되는데… 역대급 스케일과 액션, 오직
+                            &lt;아바타&gt;만이 선사할 압도적 시네마틱 경험을
+                            반드시 극장에서 확인하라!
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">9.2</p>
+                        </div>
                       </div>
-                      <div class="my-score"></div>
-                      <div class="preview"></div>
-                      <p>관람평</p>
-                      <p>9.2</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">2 <span class="ir">위</span></p>
+                    <img
+                      src="https://img.megabox.co.kr/SharedImg/2025/12/04/W6p1b8p719ZRz5LvVdBwWEOJqQZGYIyH_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="grade15"></div>
+                        <div><p class="realtitle">만약에 우리</p></div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 13.8%</span>
+                        <span class="data">개봉일 2025.12.31</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">744</div>
+                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            가장 초라했던 그때, 가장 눈부시던 우리 고향 가는
+                            고속버스에 올라탄 은호(구교환)와 휴학 후 어디론가
+                            떠날 결심을 한 정원(문가영), 나란히 앉게 된 두
+                            사람은 뜻밖의 인연을 맺는다. 서로의 꿈을 응원하며
+                            의지하던 두 사람은 어느새 일상 깊숙이 스며들어
+                            연인으로 발전한다. 웃고, 싸우고, 화해하며 세상을 다
+                            가진 듯 뜨겁게 사랑하지만, 현실의 벽 앞에 두 사람은
+                            결국 다른 길을 선택하게 된다. 그렇게 10년이 지난 후,
+                            다시 마주한 순간 은호는 정원에게 오랫동안 묻어두었던
+                            한마디를 꺼낸다. “만약에 우리...”
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">8.9</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">3 <span class="ir">위</span></p>
+                    <img
+                      src="	https://img.megabox.co.kr/SharedImg/2025/11/27/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="gradeall"></div>
+                        <div><p class="realtitle">주토피아 2</p></div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 9.1%</span>
+                        <span class="data">개봉일 2025.11.26</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">2.7k</div>
+                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            더 화려해진 세계, 더 넓어진 주토피아! 디즈니의
+                            가~~장 사랑스러운 콤비 '주디'와 '닉'이 돌아온다!
+                            미스터리한 뱀 ‘게리’가 나타난 순간, 주토피아가 다시
+                            흔들리기 시작했다! 혼란에 빠진 도시를 구하기 위해
+                            환상의 콤비 ‘주디’ &amp; ‘닉’이 잠입 수사에 나서고
+                            상상 그 이상의 진실과 위협을 마주하게 되는데...!
+                            11월, 초특급 추적 어드벤처가 펼쳐진다!
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">9.4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">4 <span class="ir">위</span></p>
+                    <img
+                      src="	https://img.megabox.co.kr/SharedImg/2025/12/10/KABXf7NuhY8cxBSSjoIYnTFpsBAfErBI_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="grade12"></div>
+                        <div>
+                          <p class="realtitle">오늘 밤, 세계에서 이</p>
+                        </div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 8.5%</span>
+                        <span class="data">개봉일 2025.12.24</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">840</div>
+                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            매일 너의 기억을 채워주고 싶은 남자, 김재원(추영우)
+                            학교를 가도 아무 의욕이 없던 나에게 어느 순간, 웃을
+                            때마다 빛나는 긴 머리의 한 아이가 나의 심장 속에
+                            들어오기 시작했다. “시간이 지날수록 다른 건 다
+                            모르겠고, 그냥 보고 싶기만 해.” 매일 나의 기억을
+                            잃어버리는 여자, 한서윤(신시아) 매일 기억이 리셋되어
+                            모든 것을 기록해야 하는 하루가 고단했던 나에게 키
+                            크고 눈빛이 잊히지 않는 한 아이가 나의 기억 속에
+                            들어오기 시작했다. “안 하던 짓 좀 해보려고. 안 그럼
+                            너무 지루하잖아.” 오늘 밤, 세계에서 이 사랑이
+                            사라진다 해도 내일의 너를 다시 사랑할 거야
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">9.4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">1 <span class="ir">위</span></p>
+                    <img
+                      src="https://img.megabox.co.kr/SharedImg/2025/12/23/n7JTlaC0CJoIxETuycsg8WxhnejZqfGS_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="grade12"></div>
+                        <div><p class="realtitle">아바타:불과 재</p></div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 39.4%</span>
+                        <span class="data">개봉일 2025.12.17</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">2.3k</div>
+                        </div>
+                        <div class="movie-reserve-btn">예매</div>
+                        <div class="movie-dolby-btn">
+                          <div class="dolbyimg"></div>
+                        </div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            월드 와이드 흥행 불멸의 1위 &lt;아바타&gt; 시리즈의
+                            세 번째 이야기! 판도라를 위협하는 재의 부족, 더 이상
+                            인간만이 적이 아니다! 12월, 모두의 운명을 뒤흔들
+                            거대한 전투가 시작된다! 인간들과의 전쟁으로 첫째
+                            아들 ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는
+                            깊은 슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이
+                            이끄는 재의 부족이 등장하면서, 판도라는 더욱 큰
+                            위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게
+                            되는데… 역대급 스케일과 액션, 오직
+                            &lt;아바타&gt;만이 선사할 압도적 시네마틱 경험을
+                            반드시 극장에서 확인하라!
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">9.2</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">2 <span class="ir">위</span></p>
+                    <img
+                      src="https://img.megabox.co.kr/SharedImg/2025/12/04/W6p1b8p719ZRz5LvVdBwWEOJqQZGYIyH_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="grade15"></div>
+                        <div><p class="realtitle">만약에 우리</p></div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 13.8%</span>
+                        <span class="data">개봉일 2025.12.31</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">744</div>
+                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            가장 초라했던 그때, 가장 눈부시던 우리 고향 가는
+                            고속버스에 올라탄 은호(구교환)와 휴학 후 어디론가
+                            떠날 결심을 한 정원(문가영), 나란히 앉게 된 두
+                            사람은 뜻밖의 인연을 맺는다. 서로의 꿈을 응원하며
+                            의지하던 두 사람은 어느새 일상 깊숙이 스며들어
+                            연인으로 발전한다. 웃고, 싸우고, 화해하며 세상을 다
+                            가진 듯 뜨겁게 사랑하지만, 현실의 벽 앞에 두 사람은
+                            결국 다른 길을 선택하게 된다. 그렇게 10년이 지난 후,
+                            다시 마주한 순간 은호는 정원에게 오랫동안 묻어두었던
+                            한마디를 꺼낸다. “만약에 우리...”
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">8.9</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">3 <span class="ir">위</span></p>
+                    <img
+                      src="	https://img.megabox.co.kr/SharedImg/2025/11/27/YiSbqEf6OvFcDoLoQCipDojOHqMCwKG4_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="gradeall"></div>
+                        <div><p class="realtitle">주토피아 2</p></div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 9.1%</span>
+                        <span class="data">개봉일 2025.11.26</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">2.7k</div>
+                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            더 화려해진 세계, 더 넓어진 주토피아! 디즈니의
+                            가~~장 사랑스러운 콤비 '주디'와 '닉'이 돌아온다!
+                            미스터리한 뱀 ‘게리’가 나타난 순간, 주토피아가 다시
+                            흔들리기 시작했다! 혼란에 빠진 도시를 구하기 위해
+                            환상의 콤비 ‘주디’ &amp; ‘닉’이 잠입 수사에 나서고
+                            상상 그 이상의 진실과 위협을 마주하게 되는데...!
+                            11월, 초특급 추적 어드벤처가 펼쳐진다!
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">9.4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="movie-list-1">
+                    <p class="rank">4 <span class="ir">위</span></p>
+                    <img
+                      src="	https://img.megabox.co.kr/SharedImg/2025/12/10/KABXf7NuhY8cxBSSjoIYnTFpsBAfErBI_420.jpg"
+                      alt=""
+                    />
+
+                    <div class="movie-bottom">
+                      <div class="movie-title">
+                        <div class="grade12"></div>
+                        <div>
+                          <p class="realtitle">오늘 밤, 세계에서 이</p>
+                        </div>
+                      </div>
+                      <div class="rate-date">
+                        <span class="rate">예매율 8.5%</span>
+                        <span class="data">개봉일 2025.12.24</span>
+                      </div>
+                      <div class="screen-type">
+                        <div id="mx4d"></div>
+                        <div id="dolby"></div>
+                        <div id="atmos"></div>
+                      </div>
+                      <div class="movie-bottom-btn">
+                        <div class="movie-like-btn">
+                          <div class="heart"></div>
+                          <div class="like-number">840</div>
+                        </div>
+                        <div class="movie-reserve-btn2">예매</div>
+                      </div>
+                      <div class="overlay">
+                        <div class="summary">
+                          <p>
+                            매일 너의 기억을 채워주고 싶은 남자, 김재원(추영우)
+                            학교를 가도 아무 의욕이 없던 나에게 어느 순간, 웃을
+                            때마다 빛나는 긴 머리의 한 아이가 나의 심장 속에
+                            들어오기 시작했다. “시간이 지날수록 다른 건 다
+                            모르겠고, 그냥 보고 싶기만 해.” 매일 나의 기억을
+                            잃어버리는 여자, 한서윤(신시아) 매일 기억이 리셋되어
+                            모든 것을 기록해야 하는 하루가 고단했던 나에게 키
+                            크고 눈빛이 잊히지 않는 한 아이가 나의 기억 속에
+                            들어오기 시작했다. “안 하던 짓 좀 해보려고. 안 그럼
+                            너무 지루하잖아.” 오늘 밤, 세계에서 이 사랑이
+                            사라진다 해도 내일의 너를 다시 사랑할 거야
+                          </p>
+                        </div>
+
+                        <div class="preview">
+                          <p id="preview1">관람평</p>
+                          <p id="preview2">9.4</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </li>
