@@ -24,8 +24,9 @@
         flex-direction: column;
       }
       #header {
+        position: relative;
         width: 100%;
-        min-width: 1100px;
+
         height: 91px;
         border-bottom: 1px solid #352461;
       }
@@ -90,6 +91,7 @@
         position: relative;
         width: 1100px;
         margin: 0 auto;
+        max-width: 1100px;
       }
 
       .left-area .util-link-btn,
@@ -150,43 +152,30 @@
       .benefit .gnb-depth2-d {
         position: fixed;
         left: 0;
-        margin: 0 auto;
-        visibility: hidden;
+        top: 90px;
+        width: 100%;
+        height: 42px;
         display: flex;
         align-items: center;
-        z-index: 9999;
-        top: 90px;
+        justify-content: center;
+        margin: 0 auto;
+        visibility: hidden;
+        z-index: 10000;
         background-color: #339eb2;
         color: white;
-        height: 42px;
-
-        width: 100%;
       }
       .flex {
         display: flex;
         gap: 20px;
         color: white;
-        padding-left: 570px;
+        padding-left: 0;
+        align-items: center;
       }
       .flex li:hover,
       .depth2-1:hover {
         cursor: pointer;
         text-decoration: underline;
         text-decoration-color: white;
-      }
-
-      .depth2-5 {
-        padding-left: 140px;
-      }
-
-      .depth2-1 {
-        padding-left: 450px;
-      }
-      .depth2-7 {
-        padding-left: 450px;
-      }
-      .depth2-10 {
-        padding-left: 670px;
       }
 
       .movie:hover .gnb-depth2 {
@@ -264,9 +253,10 @@
       }
 
       .page-wrap {
+        display: block;
         position: sticky;
-        top: 0px;
-        z-index: 9996;
+        top: 0;
+        z-index: 9999;
         width: 100%;
         height: 42px;
         background-color: #f8f8fa;
@@ -275,9 +265,11 @@
       .page-top {
         display: flex;
         align-items: center;
+        max-width: 1100px;
         margin: 0 auto;
-        width: 1100px;
+        width: 100%;
         height: 42px;
+        padding: 0 15px;
       }
       .bar {
         position: relative;
@@ -306,20 +298,21 @@
       .container {
         position: relative;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        /* align-items: center; */
         flex-wrap: wrap;
         width: 100%;
-        margin: -92px 0 -200px 0;
-        padding: 92px 0 300px 0;
+        padding: 0 0 40px 0;
       }
+
       .inner-wrap {
         display: flex;
         flex-wrap: wrap;
-        width: 1100px;
-        height: 100%;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
       }
+
       .movie-list-top {
         width: 100%;
         padding: 35px 0 20px 0;
@@ -368,11 +361,13 @@
         width: 100%;
         padding: 40px 0 20px 10px;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
       }
       .movie-list-search {
         display: flex;
+        min-width: 0;
       }
       .movie-list-search span {
         font-weight: bold;
@@ -707,7 +702,8 @@
       }
       .footer-top {
         display: flex;
-        width: 1100px;
+        width: 100%;
+        max-width: 1100px;
         margin: 0 auto;
 
         justify-content: space-between;
@@ -761,7 +757,8 @@
 
       .footer-bottom {
         display: flex;
-        width: 1100px;
+        max-width: 1100px;
+        width: 100%;
         margin: 30px auto;
         justify-content: space-between;
       }
@@ -843,6 +840,7 @@
             >
           </div>
         </div>
+
         <nav class="top-gnb">
           <ul class="gnb-depth1">
             <li class="movie">
@@ -898,6 +896,7 @@
           </ul>
         </nav>
       </header>
+
       <div class="container">
         <div class="page-wrap">
           <div class="page-top">
