@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script>
+      // 문제 1
+      let random1 = Math.floor(Math.random() * 9);
+      let result = random1 * 10 + random1;
+      console.log("1번 문제 " + result);
+
+      // 문제 2
+      let random2 = Math.floor(Math.random() * 101);
+      console.log("2번 문제 " + random2);
+      if (random2 >= 90) {
+        console.log("A");
+      }
+      if (random2 >= 80) {
+        console.log("B");
+      }
+      if (random2 >= 70) {
+        console.log("C");
+      }
+      if (random2 >= 60) {
+        console.log("D");
+      } else {
+        console.log("F");
+      }
+
+      // 문제 3
+
+      let random3 = Math.floor(Math.random() * 6) + 1;
+      console.log("3번 문제 " + random3);
+      if (random3 <= 2) {
+        console.log("낮은 수");
+      }
+      if (random3 > 2 && random3 <= 4) {
+        console.log("중간 수");
+      }
+      if (random3 > 4 && random3 <= 6) {
+        console.log("높은 수");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
