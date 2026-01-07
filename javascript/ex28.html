@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex28 -->
+    <title>switch문의 변칙적 사용</title>
+    <script>
+      // switch문의 변칙적 사용
+      // break문을 생략하면, 아래 case문과 함께 적용된다.
+      // fall-through(break생략)
+      let day = "토";
+      switch (day) {
+        case "토":
+        case "일":
+          console.log("주말");
+          break;
+        //   break문을 만나기 전까지는 멈추지 않는다. 그래서 상단 break를 없앨 시
+        //   주말
+        //   평일 로 나옴
+        default:
+          console.log("평일");
+          break;
+      }
+
+      // 연습문제
+      // 랜덤으로 달(month, 1월 ~ 12월)을 생성하고,
+      // 12, 1, 2이면 "겨울"
+      // 3, 4, 5이면 "봄"
+      // 6, 7, 8이면 "여름"
+      // 9, 10, 11이면 "가을"이라고 출력하시오.
+      let month = Math.floor(Math.random() * 12) + 1;
+      switch (month) {
+        case 12:
+        case 1:
+        case 2:
+          console.log(month + "월 겨울");
+          break;
+        case 3:
+        case 4:
+        case 5:
+          console.log(month + "월 봄");
+          break;
+        case 6:
+        case 7:
+        case 8:
+          console.log(month + "월 여름");
+          break;
+        case 9:
+        case 10:
+        case 11:
+          console.log(month + "월 가을");
+          break;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
