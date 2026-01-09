@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>연습문제</title>
+    <script>
+      //별찍기
+      //문제1 - 아래와 같이 콘솔에 출력하시오.
+      //*****
+      //*****
+      //*****
+      //*****
+      //*****
+      // let str = "";
+      // for (let i = 0; i < 5; i++) {
+      //   for (let j = 0; j < 5; j++) {
+      //     document.write("*");
+      //   }
+      //   document.write("<br>");
+      // }
+
+      //문제2
+      //*
+      //**
+      //***
+      //****
+      //*****
+
+      // let str1 = "";
+      // for (let i = 1; i < 6; i++) {
+      //   for (let j = 0; j < i; j++) {
+      //     document.write("*");
+      //   }
+      //   document.write("<br>");
+      // }
+
+      //문제2
+      //*
+      //**
+      //***
+      //****
+      //*****
+
+      //i가 증가할 수록 j도 증가한다.
+      // let str2 = "";
+      // for (let i = 0; i < 5; i++) {
+      //   for (let j = 0; j < i + 1; j++) {
+      //     document.write("*");
+      //   }
+      //   document.write("<br>");
+      // }
+
+      //문제3 i:0 공백:4
+      //    *   1      3
+      //   **   2      2
+      //  ***   3      4
+      // ****   4      0
+      //*****
+
+      // let str3 = "";
+      // for (let i = 0; i < 5; i++) {
+      //   for (let j = 0; j < 4 - i; j++) {
+      //     document.write("&nbsp;");
+      //   }
+      //   for (let j = 0; j < i + 1; j++) {
+      //     document.write("*");
+      //   }
+      //   document.write("<br>");
+      // }
+
+      //문제4
+      //let N = 5; N에 따라서 정사각형의 너비/높이가 정해진다.
+      // 5x5짜리 정사각형을 그린다.
+      //***** i:0
+      //*   *   2 별공백:3별
+      //*   *
+      //*   *
+      //*****
+
+      // 패턴찾기 매우 중요!
+      // 1.NxN의 정사각형을 다 찍는다.
+      // 2.패턴(일정한 흐름) : i가 증가할수록 감소, j증가할수록 증가
+      // 3.코드로 논리화한다. 반복문, 조건문, 변수
+
+      let N = 8;
+      str = "";
+
+      for (let i = 0; i < N; i++) {
+        if (i == 0 || i == N - 1) {
+          for (j = 0; j < 5; j++) {
+            str += "*";
+          }
+        } else {
+          for (let j = 0; j < N; j++) {}
+        }
+        console.log(str);
+        str = "";
+      }
+
+      // str = "";
+      // let N = 5;
+      // for (let i = 0; i < N; i++) {
+      //   if (i == 0 || i == N - 1) {
+      //   }
+      //   for (let j = 0; j < N; j++) {
+      //     str += "*";
+      //   }
+      //   console.log(str);
+      //   str = "";
+      // }
+
+      //문제5
+      //let N = 5; N에 따라서 Z자의 너비/높이가
+      //*****
+      //   *
+      //  *
+      //*
+      //*****
+
+      let = 7;
+      for (let i = 0; i < N; i++) {
+        if (i == 0 || i == N - 1) {
+          for (j = 0; j < N; j++) {
+            document.write("*");
+          }
+        } else {
+          for (let j = 0; j < N - 1 - i; j++) {
+            document.write("&nbsp;&nbsp;");
+          }
+          document.write("*");
+        }
+
+        document.write("<br>");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

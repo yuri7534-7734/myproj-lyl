@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex34 -->
+    <title>연습문제</title>
+    <script>
+      // 문제1
+      // 철수와 영희가 주사위 게임을 하고 있다.
+      // 철수가 주사위(랜덤수 1~6)를 5번 던져서, 가장 큰 수를 얻고,
+      // 영희가 주사위를 5번 던져서, 가장 큰 수를 얻는다.
+      // 철수와 영희의 가장 큰 수를 출력하고, 승자를 출력하시오.
+      // " 철수 승 : 6"
+
+      let maxC = 0;
+      for (let i = 0; i < 5; i++) {
+        let num1 = Math.floor(Math.random() * 6) + 1;
+        console.log(num1);
+        if (num1 > maxC) {
+          maxC = num1;
+        }
+      }
+      console.log("철수 최대값", maxC);
+      let maxY = 0;
+      for (let i = 0; i < 5; i++) {
+        let num1 = Math.floor(Math.random() * 6) + 1;
+        console.log(num1);
+        if (num1 > maxY) {
+          maxY = num1;
+        }
+      }
+      console.log("철수 최대값", maxC);
+      console.log("영희 최대값", maxY);
+      if (maxC > maxY) {
+        console.log(`점수 : ${maxC} 점 철수 승!`);
+      } else if (maxY > maxC) {
+        console.log(`점수 : ${maxY} 점 영희 승!`);
+      } else {
+        console.log("무승부!");
+      }
+
+      //문제2
+      //철수가 주사위를 5번 던져서, 가장 큰 수를 십의 자릿수로,
+      //가장 작은 수를 일의 자릿수로 만들어서 비교!
+
+      //재사용 해도됨!
+      let maxC2 = 0;
+      let minC = Number.MAX_SAFE_INTEGER;
+      for (let i = 0; i < 5; i++) {
+        let num1 = Math.floor(Math.random() * 6) + 1;
+        let num10 = num1 * 10;
+        console.log(num1);
+        if (num10 > maxC2) {
+          maxC2 = num10;
+        }
+        if (num1 < minC) {
+          minC = num1;
+        }
+      }
+      let totalC = maxC2 + minC;
+      console.log("철수점수", totalC);
+
+      let maxY2 = 0;
+      let minY = Number.MAX_SAFE_INTEGER;
+      for (let i = 0; i < 5; i++) {
+        let num1 = Math.floor(Math.random() * 6) + 1;
+        let num10 = num1 * 10;
+        console.log(num1);
+        if (num10 > maxY2) {
+          maxY2 = num10;
+        }
+        if (num1 < minY) {
+          minY = num1;
+        }
+      }
+      let totalY = maxY2 + minY;
+      console.log("영희점수", totalY);
+      console.log("철수점수", totalC);
+      if (totalC > totalY) {
+        console.log(`점수 : ${totalC} 점 철수 승!`);
+      } else if (totalY > totalC) {
+        console.log(`점수 : ${totalY} 점 영희 승!`);
+      } else {
+        console.log("무승부!");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

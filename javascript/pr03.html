@@ -19,7 +19,6 @@
       console.log(name1);
 
       //24번
-
       let spaceName = prompt("태양계를 입력해주세요");
       switch (spaceName) {
         case "수성":
@@ -47,6 +46,20 @@
           console.log("Neptuney");
           break;
       }
+
+      // 25번
+      let numberA = Number(prompt("1~100 사이의 정수"));
+      let numberB = Number(prompt("1~100 사이의 정수"));
+      let total = Math.abs(numberA - numberB);
+      console.log(total);
+
+      // 26번
+      let sum = 0;
+      let numberC = Number(prompt("정수 N(1~100사이)"));
+      for (let i = 0; i <= numberC; i++) {
+        sum = sum + i;
+      }
+      console.log(` 1부터 ${numberC}까지의 총합은 ${sum} `);
     </script>
   </head>
   <body></body>

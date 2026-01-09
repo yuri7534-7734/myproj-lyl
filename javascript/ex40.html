@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex40 -->
+    <title>연습문제</title>
+    <script>
+      //while문으로 풀어주세요
+      //문제1
+      //1부터 100까지의 정수 중에서
+      //2의 배수이면서, 3의 배수인 수를 모두 출력하시오.
+
+      //   let i = 1;
+      //   while (i <= 100) {
+      //     i++;
+      //     if (i % 2 == 0 && i % 3 == 0) {
+      //     } else {
+      //       continue;
+      //     }
+      //     console.log(i);
+      //   }
+
+      // 문제2 - 소수판별
+      //   1부터 100사이의 정수 중에서
+      //   소수인 숫자만 출력하시오.
+      //   소수란? 1과 자신으로만 나누어 떨어지는 수
+      //   예)2,3,5,7,11,13...
+
+      //   소수 판별 로직
+      //   1부터 그 수(N)까지 나눠서, 나누어 떨어지는 수의 합계가 2이면
+      //   소수이다.
+
+      //   let 약수갯수 = 0;
+      //   for(let j=1; j<=3; j++){
+      //     if( 3 % j == 0 ){
+      //       약수갯수++;
+      //     }
+      //   }
+      //   if(약수갯수 == 2){
+      //     소수입니다.
+      //   }
+
+      //   let num = 1;
+
+      //   while (num <= 100) {
+      //     let 약수갯수 = 0;
+      //     for (let j = 1; j <= num; j++) {
+      //       if (num % j == 0) {
+      //         약수갯수++;
+      //       }
+      //     }
+      //     if (약수갯수 == 2) {
+      //       console.log(num, "소수입니다.");
+      //     } else {
+      //     }
+      //     num++;
+      //   }
+
+      // 문제3 - 행운의 로또번호
+      //   1~45까지의 랜덤한 정수 6개를 뽑아서, 로또번호로 만드시오.
+      //   단 이미 추첨된 번호가 나오면, 다시 추첨하시오.
+      //   continue문을 이용한 재추첨 로직이 필요함.
+
+      let n = 0;
+
+      let lotto_nums = [0, 0, 0, 0, 0, 0];
+      while (n < 6) {
+        let lotto = Math.floor(Math.random() * 45) + 1;
+
+        for (let j = 0; j < n; j++) {
+          if (lotto_nums[j] == lotto) {
+            console.log(lotto, "중복된 수입니다.");
+            continue;
+          }
+        }
+        console.log(lotto);
+        n++;
+      }
+
+      console.log(lotto_nums);
+      console.log(lotto);
+    </script>
+  </head>
+  <body></body>
+</html>

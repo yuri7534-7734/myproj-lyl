@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex40 -->
+    <title>약수와 소수 판별</title>
+    <script>
+      // 약수(divisor,facto; : 정수를 나누었을 때 나머지가 0이 되는 수.
+      // ex) 4의 약수는? 1,2,4
+      // 소수(prime number) :
+
+      //   소수 판별 로직
+      //   1부터 그 수(N)까지 나눠서, 나누어 떨어지는 수의 합계가 2이면
+      //   소수이다.
+
+      //문제1
+      //숫자 12의 약수를 모두 구하시오.
+      // let num12 = 12;
+      // for (let i = 1; i <= num12; i++) {
+      //   if (num12 % i == 0) {
+      //     console.log(i);
+      //   }
+      // }
+
+      // let num = 18;
+      // for (let j = 1; j <= num; j++) {
+      //   if (num % j == 0) {
+      //     console.log(j);
+      //   }
+      // }
+
+      //문제2
+      //숫자 7인 소수인지 판별하시오.
+      //약수의 갯수를 구해서 2개이면 "소수입니다."
+      //3개 이상이면 "소수가 아닙니다."
+
+      // let count = 0;
+      // let num = 8;
+      // for (let n = 1; n <= num; n++) {
+      //   if (num % n == 0) {
+      //     count++;
+      //     console.log(n, "약수");
+      //   }
+      // }
+      // if (count == 2) {
+      //   console.log("소수입니다.");
+      // } else if (count > 2) {
+      //   console.log("소수가 아닙니다.");
+      // }
+
+      //문제4 - 숫자야구게임
+      //투수가 무한히 공을 던진다.
+      //스트라이크를 던질 확률은 70%이다.
+      //볼을 던질확률은 30%이다.
+      //스트라이크 3개가 될 때, 게임을 중단하시오.
+      //총 투수 수를 출력하고, 볼의 갯수도 출력하시오.
+      let stcount = 0;
+      let bcount = 0;
+      let tcount = 0;
+      while (true) {
+        let ball = Math.floor(Math.random() * 100);
+        tcount++;
+        if (ball < 70) {
+          console.log("스트라이크");
+          stcount++;
+        } else if (ball > 70) {
+          console.log("볼");
+          bcount++;
+        }
+        if (stcount == 3) {
+          console.log(bcount, "볼의 갯수");
+          console.log(tcount, "투구 수");
+          break;
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
