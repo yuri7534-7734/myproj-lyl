@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>자바스크립트 100제 풀이-4</title>
+    <script>
+      //27번
+      let arr1 = prompt("영어 단어를 입력해주세요(예 : javascript)");
+      console.log(arr1.length);
+      for (let i = 0; i < arr1.length - 1; i++) {
+        console.log(arr1[i], arr1[i + 1]);
+      }
+
+      //28번
+
+      //28 - 방식1
+      let arr2 = prompt("알파벳을 입력해주세요").charCodeAt(0);
+      if (arr2 >= "A".charCodeAt(0) && arr2 <= "Z".charCodeAt(0)) {
+        console.log(String.fromCharCode(arr2), "대문자 YES");
+      } else {
+        console.log(String.fromCharCode(arr2), "대문자 NO");
+      }
+
+      //28 - 방식2
+      let arr3 = prompt("알파벳을 입력해주세요");
+      if (arr3 == arr3.toUpperCase) {
+        console.log(arr3, "YES, 대문자입니다.");
+      } else {
+        console.log(arr3, "NO, 대문자 아닙니다.");
+      }
+
+      //29번
+      let str1 = prompt("from rainbow pineapple is yummy");
+      let str2 = prompt("apple");
+
+      console.log(str1.indexOf(str2));
+
+      //30번
+      let num = prompt("1~9까지의 숫자를 입력해주세요");
+
+      for (j = 1; j <= 9; j++) {
+        console.log(num + "*" + j + "=" + num * j);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
