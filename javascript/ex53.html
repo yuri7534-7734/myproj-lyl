@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex53 -->
+    <title>함수 연습문제</title>
+    <script>
+      //연습문제
+      //1. 함수의 이름은 double이고,
+      //   매개변수로 number타입 1개를 받고,
+      //   그 값을 결과값으로 *2를 해서 반환하시오.
+      //   함수의 선언부와 호출부를 코딩하시오.
+
+      function double(num) {
+        let result = num * 2;
+        return result;
+      }
+      console.log(double(2));
+
+      //2. 함수의 이름은 max이고,
+      //   매개변수로 number타입 3개를 입력받고,
+      //   그 3개 값 중에 가장 큰 수를 반환하는 함수를 만드시오.
+
+      function max(num1, num2, num3) {
+        return Math.max(num1, Math.max(num2, num3));
+      }
+
+      console.log(max(12, 14, 13));
+
+      //3. 복불복 게임을 함수로 설계해 보자.
+      //   입력 값으로 number타입(정수 1~10사이) 1개를 입력받고,
+      //   그중 정수 3과 7일 때는 "게임에 졌습니다." 문자열을 반환하고,
+      //   그외의 수(1,2,4,5,6,8,9,10)일때는 "게임에 이겼습니다"
+      //   문자열을 반환하는 함수를 설계하시오.
+      // 호출부에서 몇번 실행하여 테스트하시오.
+
+      function gameResult(game) {
+        if (game === 3 || game === 7) {
+          return "게임에 졌습니다.";
+        } else {
+          return "게임에 이겼습니다.";
+        }
+      }
+      let n = Math.floor(Math.random() * 10) + 1;
+      console.log(n, gameResult(n));
+
+      //함수적 사고 : 코드를 기능단위로 분리(중복제거)한다.
+    </script>
+  </head>
+</html>

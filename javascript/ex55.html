@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ex55 -->
+    <title>타이머 함수 , 인터벌 함수</title>
+    <script>
+      //타이머 함수, 인터벌 함수
+      //setTimeout함수 : 일정시간 후에 코드 호출
+      //setIntervale함수 : 일정시간마다(주기적) 코드 호출
+      setTimeout(() => {
+        console.log("타이머 3초 지남");
+      }, 3000); //함수, 지연시간
+
+      setInterval(() => {
+        // console.log("1초마다 수행됨.");
+
+        //시간
+        // console.log(new Date());
+        //2025-01-13 16:45:20
+        let time = new Date().toTimeString().split(" ")[0];
+        let date = new Date().toISOString().split("T")[0];
+        console.log(date + " " + time);
+      }, 1000);
+    </script>
+  </head>
+  <body></body>
+</html>

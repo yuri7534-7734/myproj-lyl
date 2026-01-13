@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>자바스크립트 100제 풀이-4</title>
+    <title>자바스크립트 100제 풀이-5</title>
     <script>
       //31번
-      let str = prompt("아무 문장을 입력해주세요");
-      let str2 = str.split(" ");
+      // let str = prompt("아무 문장을 입력해주세요");
+      // let str2 = str.split(" ");
 
-      console.log(str2.length);
+      // console.log(str2.length);
       //안녕하세요. 저는 이유리 입니다.
 
       //32번
@@ -15,39 +15,122 @@
       //1. 문자열 정렬 - sort()
       //2. 숫자 정렬 - sort((a,b)=>a-b) 비교함수 사용해야 됨.
 
+      // let heightA = prompt("100단위 숫자 6개를 입력해주세요");
+      // let heightB = heightA.spllit(" ");
+      // let heightC = Array.from(heightB);
+
+      // heightC.sort(function (a, b) {
+      //   return Number(a) - Number(b);
+      // });
+
+      // let isSame = ture;
+
       //110 120 130 140 150 160
       //176 156 155 165 166 169
-      let height = prompt("100단위 숫자 6개를 입력해주세요");
-      //3. join(" ") : 배열을 (구분자있는) 문자열로 만든다.
-      let height2 = height.split(" ").sort().join(" ");
 
-      console.log(height2);
-      //문자열 비교를 한다.
-      if (height === height2) {
-        console.log("yes");
-      } else {
-        console.log("no");
-      }
-      //155 156 165 166 169 176
-      let heightA = prompt("155 156 165 166 169 176");
-      let heightB = heightA.split(" ");
-      let heightC = heightA.split(" ").sort();
+      // let height = prompt("100단위 숫자 6개를 입력해주세요");
+      // //3. join(" ") : 배열을 (구분자있는) 문자열로 만든다.
+      // let height2 = height.split(" ").sort().join(" ");
+      // //메소드 체이닝(Method Chaining) : 메소드 뒤에 메소드 호출이 가능.
 
+      // console.log(height2);
+      // //문자열 비교를 한다.
+      // if (height === height2) {
+      //   console.log("yes");
+      // } else {
+      //   console.log("no");
+      // }
+
+      //판별로직(flag로직) - boolean
+      //판별에 들어가기 전에 미리 boolean설정
+      //판별로직]
+      //if(boolean체크)
+
+      // let input2 = prompt("숫자 100이상 입력");
+
+      // //split으로 새로운 배열 생성
+      // let arr_input2 = input2.split(" ");
+      // //배열로만 바꿔놓은 상태
+      // let arr_sort2 = input2.split(" ").sort();
+      // //배열+숫자 순서까지 맞춰놓은 상태
+
+      // let check = true;
+      // for (let i = 0; i < arr_input2.length; i++) {
+      //   // console.log(arr_input2[i]);
+      //   if (arr_input2[i] != arr_sort2[i]) {
+      //     console.log("순서정렬, no");
+      //     check = false;
+      //     break;
+      //   }
+      // }
+      // console.log(check ? "yes" : "no");
       //배열의 값과 배열의 값을 비교한다면,
+      //모든 배열의 값과 값을 깊은 참조로 비교해야 됨.
 
       //값 참조 vs 주소 참조
       //값(value) 참조 : 특정메모리에 실제 값이 들어있다.
       //주소(address) 참조 : 특정메모리 주소에 참조해서 실제 값을 찾는다.
       //값 참조 : number, string ( 변수에 실제 값을 소유 )
       //주소 참조 : object(배열, 키밸류 객체, 클래스객체)(변수에 주소값을 소유)
+      //            == === 주소값을 비교하므로 값을 비교 불가!
       //데이터 타입
 
       //33번
-      let num1 = prompt("여러개의 숫자를 입력해주세요");
-      num2 = num1.split(" ");
-      num3 = num2.reverse();
-      num4 = num3.join(" ");
-      console.log(num4);
+      //방법1
+      // let num1 = prompt("여러개의 숫자를 입력해주세요");
+      // num2 = num1.split(" ");
+      // num3 = num2.reverse();
+      // num4 = num3.join(" ");
+      // console.log(num4);
+
+      //방법2
+      let input = "1 2 3 4 5";
+      let arr = input.split(" ");
+
+      let arr_reverse = arr.reverse();
+      console.log(arr_reverse);
+      let str = "";
+      for (let i = 0; i < arr_reverse.length; i++) {
+        str += arr_reverse[i] + " ";
+      }
+      console.log(str);
+
+      //2. 역순정렬
+      let input2 = "1 2 3 4 5";
+      let arr2 = input.split(" ");
+      let str2 = "";
+      for (let i = arr2.length - 1; i >= 0; i--) {
+        str2 += arr2[i] + " ";
+      }
+      console.log("역순정렬", str2);
+
+      //join()함수
+      // let arr_str = ["떡볶이", "오뎅", "튀김"];
+      // let arr_nums = [10, 20, 30];
+      // console.log(arr_str.join(","));
+      // console.log(typeof arr_str.join(","));
+      // console.log(typeof arr_nums.join(","));
+
+      //34번
+      let s = 0;
+      for (let i = 1; i <= 100; i++) {
+        s += i;
+      }
+      console.log(s);
+
+      //35번
+      let num = prompt("숫자");
+      let count = 0;
+      for (let i = 1; i <= num; i++) {
+        if (num % i == 0) {
+          count++;
+        }
+      }
+      if (count == 2) {
+        console.log("소수, YES");
+      } else {
+        console.log("소수, NO");
+      }
     </script>
   </head>
   <body></body>

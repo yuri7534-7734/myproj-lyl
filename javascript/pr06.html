@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>자바스크립트 100제 풀이-6</title>
+    <script>
+      //36번
+      var names = ["장미", "수선화", "코스모스"];
+
+      let max = 0;
+      let max_index = 0;
+      names.forEach(function (value, index) {
+        // console.log(value.length);
+
+        if (max < value.length) {
+          max = value.length;
+          max_index = index;
+        }
+      });
+      console.log(max);
+      console.log(names[max_index]);
+
+      //   let names = ["장미", "수선화", "코스모스"];
+
+      // names.forEach((value) => {
+      //   console.log(value);
+      // });
+
+      // let index = 0;
+      // let max = 0;
+      // let max_index = 0;
+
+      // names.forEach((value) => {
+      //   if (max < value.length) {
+      //     max = value.length;
+      //     max_index = index;
+      //   }
+      //   index++;
+      // });
+      // console.log(max);
+      // console.log(names[max_index]);
+    </script>
+  </head>
+  <body></body>
+</html>
