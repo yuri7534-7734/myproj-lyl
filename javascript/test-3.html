@@ -3,10 +3,27 @@
   <head>
     <title>Document</title>
     <script>
-      let arr = [10, 40, 30, 20];
-      let newarr = Array.from(arr);
-      newarr.sort((a, b) => a - b);
-      console.log(newarr);
+      //문제A
+      let point = [5, 10];
+
+      let [, y, z = 0] = point;
+      console.log(y);
+      console.log(z);
+
+      //문제B
+      function printUser([name, age = 20]) {
+        console.log(name, age);
+      }
+
+      printUser(["유리", 25]);
+      printUser(["유리"]);
+
+      //문제C
+      let arr = [1, 2, 3, 4];
+      let [head, ...rest] = arr;
+      let tail = rest[rest.length - 1];
+
+      console.log(head);
     </script>
   </head>
   <body></body>

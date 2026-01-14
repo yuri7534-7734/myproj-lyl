@@ -3,23 +3,48 @@
   <head>
     <title>Document</title>
     <script>
-      let i = 1;
-      while (i <= 10) {
-        console.log(i);
-        i++;
-      }
+      //문제1
+      let colors = ["red", "green", "blue"];
 
-      let j = 10;
-      while (j >= 0) {
-        console.log(j);
-        j--;
-      }
+      let [first, second] = colors;
+      console.log(first);
+      console.log(second);
 
-      let j = 0;
-      sum = 0;
-      while (j <= 100) {
-        console.log;
-      }
+      //문제2
+      let nums = [10, 20, 30];
+      let [, middle] = nums;
+      console.log(middle);
+
+      //문제3
+      let point = [10];
+
+      let [x, y = 50] = point;
+      console.log(x);
+      console.log(y);
+
+      //문제4
+      let numbers = [1, 2, 3, 4, 5];
+
+      let [first1, ...rest] = numbers;
+      console.log(first1);
+      console.log(rest);
+
+      //문제5
+      let a = [1, 2];
+      let b = [3, 4];
+      let resultab = [...a, ...b];
+      console.log(resultab, "문제5");
+
+      //문제6
+      let origin = [10, 20, 30];
+      let result = [...origin];
+
+      result.push(40);
+      console.log(result);
+
+      //문제7
+      let data = [100, 200, 300, 400];
+      let [, second2, ...rest2] = data;
     </script>
   </head>
   <body></body>
