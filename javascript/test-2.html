@@ -4,47 +4,80 @@
     <title>Document</title>
     <script>
       //문제1
-      let colors = ["red", "green", "blue"];
+      // let nums = [3, 7, 10, 15, 20];
+      // let foundVal = nums.find((item, value, arr) => {
+      //   return item > 10;
+      // });
+      // console.log(foundVal);
 
-      let [first, second] = colors;
-      console.log(first);
-      console.log(second);
+      // //문제2
+      // let nums = [3, 7, 10, 15, 20];
+      // let filterd = nums.filter((item, value, arr) => {
+      //   return item > 10;
+      // });
+      // console.log(filterd);
 
-      //문제2
-      let nums = [10, 20, 30];
-      let [, middle] = nums;
-      console.log(middle);
+      //문제3 - 1
+      let names = ["철수", "영희", "민수", "지영", "영수"];
+      // let foundVal = names.find((item) => item[0] === "철");
+      // console.log(foundVal);
 
-      //문제3
-      let point = [10];
+      //문제3 - 2
+      // let result = names.find((name) => {
+      //   for (let i = 0; i < name.length; i++) {
+      //     if (name[i] === "영") {
+      //       return true;
+      //     }
+      //   }
+      // });
+      // console.log(result);
 
-      let [x, y = 50] = point;
-      console.log(x);
-      console.log(y);
+      //문제3 - 3
+      // let result = names.find((name) => {
+      //   return name.includes("영");
+      // });
+      // console.log(result);
 
       //문제4
-      let numbers = [1, 2, 3, 4, 5];
+      // let filterd = names.filter((item) => {
+      //   for (let i = 0; i < names.length; i++) {
+      //     if (item[i] == "영") {
+      //       return item;
+      //     }
+      //   }
+      // });
+      // console.log(filterd);
 
-      let [first1, ...rest] = numbers;
-      console.log(first1);
-      console.log(rest);
+      // 문제5
+      // let users = [
+      //   { name: "유리", age: 25 },
+      //   { name: "민지", age: 17 },
+      //   { name: "지수", age: 30 },
+      //   { name: "영희", age: 20 },
+      // ];
 
-      //문제5
-      let a = [1, 2];
-      let b = [3, 4];
-      let resultab = [...a, ...b];
-      console.log(resultab, "문제5");
+      // let foundVar = users.find((item) => {
+      //   return item.age >= 20;
+      // });
+      // console.log(foundVar);
 
-      //문제6
-      let origin = [10, 20, 30];
-      let result = [...origin];
-
-      result.push(40);
-      console.log(result);
+      // let filterd = users.filter((item) => {
+      //   return item.age > 20;
+      // });
+      // console.log(filterd);
 
       //문제7
-      let data = [100, 200, 300, 400];
-      let [, second2, ...rest2] = data;
+      let nums = [5, 12, 8, 130, 44];
+
+      let foundVar = nums.find((item) => {
+        return item > 10;
+      });
+      console.log(foundVar);
+
+      let result = nums.filter((item2) => {
+        return item2 > 10;
+      });
+      console.log(result);
     </script>
   </head>
   <body></body>

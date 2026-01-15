@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>find, filter 함수</title>
+    <script>
+      //find : 특정 값을 찾아낸다. 반환값은 특정값이나 undefined(못찾으면)
+      //filter : 필터, 특정요소를 걸러낸다. 반환값은 배열(or 빈배열)
+      //find함수
+      let nums = [10, 20, 30, 40, 50];
+      //                         3가지 사용 가능
+      const foundVal = nums.find((item, index, arr) => {
+        // return item < 10; //false * 5 : 못 찾으면 undefined값을 반환.
+        return item > 30; //   F, F, F, T : 찾으면 그 값을 반환한다 => 40
+        //                     T를 찾게되면 끝난다. (찾으면 중단함)
+      });
+      console.log(foundVal);
+
+      //filter함수 : 여러개일 때
+      let arrFilterd = nums.filter((item, index, arr) => {
+        // return item < 35; // 리턴이 T일 때만 추가된다. [10, 20, 30]
+        return item < 10; //모두 F일 때는 빈 배열[]
+      });
+      console.log(arrFilterd);
+    </script>
+  </head>
+  <body></body>
+</html>

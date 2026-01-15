@@ -4,20 +4,97 @@
     <title>자바스크립트 100제 풀이-7</title>
     <script>
       // 41번
-      let input = prompt("알파벳 입력해주세요");
-      let inputa = Array.from(input);
-      inputa.forEach((value) => {
-        let inputNum = value.charCodeAt(0);
-        if ( inputNum )
-      });
+      //해결책
+      //1. charCodeAt 아스키코드값 이용
+      // let str1 = prompt("알파벳 입력해주세요");
+      // let str = str1.split("");
+      // //str = ["a", "a", "A", "A"]
 
-      //42번
+      // strresult = str.map((item) => {
+      //   for (let i = 0; i < str.length - 1; i++) {
+      //     if (
+      //       item.charCodeAt(0) >= "A".charCodeAt(0) &&
+      //       item.charCodeAt(0) <= "Z".charCodeAt(0)
+      //     ) {
+      //       return String.fromCharCode(item.charCodeAt(0) + 32);
+      //     } else {
+      //       return String.fromCharCode(item.charCodeAt(0) - 32);
+      //     }
+      //   }
+      // // });
+      // console.log(strresult);
+
+      // //2. toLowCase, toUpperCase 이용
+      // let result1 = "";
+      // for (let char of str) {
+      //   if (char === char.toLowerCase()) {
+      //     result1 += char.toUpperCase();
+      //   } else {
+      //     result1 += char.toLowerCase();
+      //   }
+      // }
+
+      // 42번
       let input1 = "1234567891011121314151617181920".split("").map(Number);
       let sum = 0;
       input1.forEach((value) => {
         sum += value;
       });
       console.log(sum);
+
+      //43번
+      numbers = [9, 8, 1, 3, 2];
+      let t = 0;
+      for (let i = 0; i < numbers.length - 1; i++) {
+        for (let j = 0; j < numbers.length - 1 - i; j++) {
+          //console.log("비교 쌍:",j,j+1);
+          if (numbers[j] > numbers[j + 1]) {
+            //치환
+            t = numbers[j];
+            numbers[j] = numbers[j + 1];
+            numbers[j + 1] = t;
+          }
+        }
+      }
+      console.log(numbers);
+
+      //44번
+      let input = "97 86 75 66 55 97 85 97 97 95 96";
+      let inputNum = input.split(" ");
+      let count = 0;
+      let filterd = inputNum.filter((item) => {
+        let inputNum2 = inputNum.map((item) => {
+          return Number(item);
+        });
+        let inputNum3 = inputNum2.sort();
+        let inputNum4 = new Set(inputNum3);
+        let result = [...inputNum4];
+        let N = result.length;
+        if (
+          item == result[N - 1] ||
+          item == result[N - 2] ||
+          item == result[N - 3]
+        ) {
+          count++;
+        }
+
+        return count;
+      });
+
+      console.log(count);
+      // let m = 0;
+      // let totalCandy = inputNum2.map((item) => {
+      //   for (let i = 0; i < inputNum2.legnth - 1; i++) {
+      //     for (let j = 0; j < inputNum2.length - 1 - i; j++) {
+      //       if (item[j] > item[j + 1]) {
+      //         m = item[j];
+      //         item[j] = item[j + 1];
+      //         item[j + 1] = m;
+      //       }
+      //     }
+      //   }
+      // });
+      // console.log(totalCandy);
     </script>
   </head>
   <body></body>
