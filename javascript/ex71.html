@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>연습문제 - 계산기 프로그램</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #wrapper {
+        box-sizing: border-box;
+
+        width: 0 auto;
+        display: flex;
+        justify-content: center;
+        font-size: 25px;
+        font-family: "nanumbarungothic";
+      }
+      #wrap {
+        border: 1px solid black;
+        width: 500px;
+        height: 800px;
+        margin: 20px;
+        padding: 35px;
+      }
+      .top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .top > p {
+        padding-bottom: 30px;
+      }
+      .input {
+        display: flex;
+        padding: 5px;
+        flex-direction: column;
+        overflow: hidden;
+        width: 0 auto;
+        align-items: center;
+      }
+      .input div {
+        padding-bottom: 25px;
+      }
+      .numL {
+        padding-right: 20px;
+      }
+      .numL1,
+      .numL2 {
+        padding-right: 50px;
+      }
+      input[type="text"] {
+        height: 40px;
+        width: 300px;
+        background-color: rgb(218, 218, 218);
+        border: 2px solid rgb(180, 180, 180);
+        text-align: center;
+        font-size: 23px;
+      }
+
+      #result {
+        background-color: rgb(124, 124, 124);
+        color: white;
+      }
+      .inputMath {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        line-height: 50px;
+        width: 420px;
+        height: 50px;
+        padding-bottom: 20px;
+        margin-bottom: 10px;
+      }
+      .butBlue {
+        background-color: rgb(57, 121, 216);
+        border: 0;
+      }
+      .butRed {
+        background-color: rgb(245, 39, 39);
+        border: 0;
+      }
+      button p {
+        color: white;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <div id="wrap">
+        <div class="top">
+          <p>JavaScript</p>
+          <p>계산기 프로그램을 작성해보자</p>
+        </div>
+        <div class="input">
+          <div class="number1 numwrap">
+            <label for="num1" class="numL numL1">숫자 1</label
+            ><input type="text" id="num1" value="" />
+          </div>
+          <div class="number2 numwrap">
+            <label for="num2" class="numL numL1">숫자 2</label
+            ><input type="text" id="num2" value="" />
+          </div>
+          <div class="number3 numwrap">
+            <label for="result" class="numL">연산 결과</label
+            ><input type="text" disabled="disbled" id="result" value="" />
+          </div>
+        </div>
+        <!--               입력불가                               -->
+        <div class="inputMath">
+          <button class="butBlue" onclick="plus()"><p>덧셈</p></button>
+          <button class="butBlue" onclick="minus() "><p>뺄셈</p></button>
+          <button class="butBlue" onclick="mult() "><p>곱셈</p></button>
+          <button class="butBlue" onclick="division()"><p>나눗셈</p></button>
+          <button class="butRed" onclick="clears()"><p>지우기</p></button>
+        </div>
+        <script>
+          function plus() {
+            // input태그의 value가져오기
+            let num1_value = document.getElementById("num1").value;
+            console.log(num1_value);
+
+            let num2_value = document.getElementById("num2").value;
+            console.log(num2_value);
+            // input태그의 value설정하기
+            let result = document.getElementById("result");
+            result.value = Number(num1_value) + Number(num2_value);
+          }
+          function minus() {
+            let num1_value = document.getElementById("num1").value;
+            console.log(num1_value);
+
+            let num2_value = document.getElementById("num2").value;
+            console.log(num2_value);
+
+            let result = document.getElementById("result");
+            result.value = Number(num1_value) - Number(num2_value);
+          }
+          function mult() {
+            let num1_value = document.getElementById("num1").value;
+            console.log(num1_value);
+
+            let num2_value = document.getElementById("num2").value;
+            console.log(num2_value);
+
+            let result = document.getElementById("result");
+            result.value = Number(num1_value) * Number(num2_value);
+          }
+          function division() {
+            let num1_value = document.getElementById("num1").value;
+            console.log(num1_value);
+
+            let num2_value = document.getElementById("num2").value;
+            console.log(num2_value);
+
+            let result = document.getElementById("result");
+            result.value = Number(num1_value) / Number(num2_value);
+          }
+          function clears() {
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("result").value = "";
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>

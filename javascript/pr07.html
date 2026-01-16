@@ -35,66 +35,97 @@
       // }
 
       // 42번
-      let input1 = "1234567891011121314151617181920".split("").map(Number);
-      let sum = 0;
-      input1.forEach((value) => {
-        sum += value;
-      });
-      console.log(sum);
+      // let input1 = "1234567891011121314151617181920".split("").map(Number);
+      // let sum = 0;
+      // input1.forEach((value) => {
+      //   sum += value;
+      // });
+      // console.log(sum);
 
-      //43번
-      numbers = [9, 8, 1, 3, 2];
-      let t = 0;
-      for (let i = 0; i < numbers.length - 1; i++) {
-        for (let j = 0; j < numbers.length - 1 - i; j++) {
-          //console.log("비교 쌍:",j,j+1);
-          if (numbers[j] > numbers[j + 1]) {
-            //치환
-            t = numbers[j];
-            numbers[j] = numbers[j + 1];
-            numbers[j + 1] = t;
-          }
-        }
-      }
-      console.log(numbers);
-
-      //44번
-      let input = "97 86 75 66 55 97 85 97 97 95 96";
-      let inputNum = input.split(" ");
-      let count = 0;
-      let filterd = inputNum.filter((item) => {
-        let inputNum2 = inputNum.map((item) => {
-          return Number(item);
-        });
-        let inputNum3 = inputNum2.sort();
-        let inputNum4 = new Set(inputNum3);
-        let result = [...inputNum4];
-        let N = result.length;
-        if (
-          item == result[N - 1] ||
-          item == result[N - 2] ||
-          item == result[N - 3]
-        ) {
-          count++;
-        }
-
-        return count;
-      });
-
-      console.log(count);
-      // let m = 0;
-      // let totalCandy = inputNum2.map((item) => {
-      //   for (let i = 0; i < inputNum2.legnth - 1; i++) {
-      //     for (let j = 0; j < inputNum2.length - 1 - i; j++) {
-      //       if (item[j] > item[j + 1]) {
-      //         m = item[j];
-      //         item[j] = item[j + 1];
-      //         item[j + 1] = m;
-      //       }
+      // //43번
+      // numbers = [9, 8, 1, 3, 2];
+      // let t = 0;
+      // for (let i = 0; i < numbers.length - 1; i++) {
+      //   for (let j = 0; j < numbers.length - 1 - i; j++) {
+      //     //console.log("비교 쌍:",j,j+1);
+      //     if (numbers[j] > numbers[j + 1]) {
+      //       //치환
+      //       t = numbers[j];
+      //       numbers[j] = numbers[j + 1];
+      //       numbers[j + 1] = t;
       //     }
       //   }
+      // }
+      // console.log(numbers);
+
+      //44번 //제주코딩캠프
+
+      //*  첫 풀이
+      // let input = "97 86 75 66 55 97 85 97 97 95 96";
+      // let inputNum = input.split(" ");
+      // let count = 0;
+      // let filterd = inputNum.filter((item) => {
+      //   let inputNum2 = inputNum.map((item) => {
+      //     return Number(item);
+      //   });
+      //   let inputNum3 = inputNum2.sort();
+      //   let inputNum4 = new Set(inputNum3);
+      //   let result = [...inputNum4];
+      //   let N = result.length;
+      //   if (
+      //     item == result[N - 1] ||
+      //     item == result[N - 2] ||
+      //     item == result[N - 3]
+      //   ) {
+      //     count++;
+      //   }
+
+      //   return count;
       // });
-      // console.log(totalCandy);
+
+      // console.log(count);
+      //*
+
+      //* 선생님 풀이
+      // let score = "97 86 75 66 55 97 85 97 97 95";
+      // let arr = new Array(101);
+      // for (let i = 0; i < arr.length; i++) {
+      //   arr[i] = 0;
+      // }
+      // console.log(arr);
+      // score
+      //   .split(" ")
+      //   .map(Number)
+      //   .forEach((item) => {
+      //     arr[item] += 1;
+      //   });
+      // console.log(arr);
+      // let count_candy = 0;
+      // let countdown = 3;
+      // for (let i = arr.length - 1; i >= 0; i--) {
+      //   if (arr[i] > 0) {
+      //     count_candy += arr[i];
+      //     countdown--;
+      //   }
+      //   if (countdown == 0) {
+      //     break;
+      //   }
+      // }
+      // console.log("사탕줘야하는 사람의 수", count_candy);
+
+      //45번 q = 113 e = 101
+      let input = "query";
+      let input2 = input.split("");
+      let result = input2.map((item) => {
+        if (item === "q") {
+          return String.fromCharCode(item.charCodeAt(0) - 12);
+        }
+
+        return item;
+      });
+
+      let Result = result.join("");
+      console.log(Result);
     </script>
   </head>
   <body></body>
