@@ -3,81 +3,13 @@
   <head>
     <title>Document</title>
     <script>
-      //문제1
-      // let nums = [3, 7, 10, 15, 20];
-      // let foundVal = nums.find((item, value, arr) => {
-      //   return item > 10;
-      // });
-      // console.log(foundVal);
-
-      // //문제2
-      // let nums = [3, 7, 10, 15, 20];
-      // let filterd = nums.filter((item, value, arr) => {
-      //   return item > 10;
-      // });
-      // console.log(filterd);
-
-      //문제3 - 1
-      let names = ["철수", "영희", "민수", "지영", "영수"];
-      // let foundVal = names.find((item) => item[0] === "철");
-      // console.log(foundVal);
-
-      //문제3 - 2
-      // let result = names.find((name) => {
-      //   for (let i = 0; i < name.length; i++) {
-      //     if (name[i] === "영") {
-      //       return true;
-      //     }
-      //   }
-      // });
-      // console.log(result);
-
-      //문제3 - 3
-      // let result = names.find((name) => {
-      //   return name.includes("영");
-      // });
-      // console.log(result);
-
-      //문제4
-      // let filterd = names.filter((item) => {
-      //   for (let i = 0; i < names.length; i++) {
-      //     if (item[i] == "영") {
-      //       return item;
-      //     }
-      //   }
-      // });
-      // console.log(filterd);
-
-      // 문제5
-      // let users = [
-      //   { name: "유리", age: 25 },
-      //   { name: "민지", age: 17 },
-      //   { name: "지수", age: 30 },
-      //   { name: "영희", age: 20 },
-      // ];
-
-      // let foundVar = users.find((item) => {
-      //   return item.age >= 20;
-      // });
-      // console.log(foundVar);
-
-      // let filterd = users.filter((item) => {
-      //   return item.age > 20;
-      // });
-      // console.log(filterd);
-
-      //문제7
-      let nums = [5, 12, 8, 130, 44];
-
-      let foundVar = nums.find((item) => {
-        return item > 10;
-      });
-      console.log(foundVar);
-
-      let result = nums.filter((item2) => {
-        return item2 > 10;
-      });
-      console.log(result);
+      function test(n) {
+        if (n === 0) return;
+        console.log(n);
+        test(n - 1);
+        console.log(n);
+      }
+      test(2);
     </script>
   </head>
   <body></body>

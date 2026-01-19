@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>자바스크립트 100제 풀이-9</title>
+    <script>
+      //51번
+      // let input = prompt("문장 입력");
+      // input2 = input.split(" ").map(String);
+      // console.log(input2);
+      // let longer = "";
+      // for (let i = 0; i < input2.length; i++) {
+      //   if (input2[i].length > longer.length) {
+      //     longer = input2[i];
+      //   }
+      // }
+      // console.log(longer);
+
+      //52번
+
+      function repeat(str) {
+        let clearVer = "";
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] !== " ") {
+            clearVer += str[i].toLowerCase();
+          }
+        }
+      }
+      console.log(repeat("A man a plan a canal Panama"));
+    </script>
+  </head>
+  <body></body>
+</html>
