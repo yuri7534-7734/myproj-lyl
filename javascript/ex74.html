@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>재귀함수 예제</title>
@@ -53,14 +53,14 @@
       //        0, 1, 2, 3, ... 9, a(10),b(11),...f(15),10(16)
 
       //4. 문자열 역순 변환(revese())
-      //   function getReverse(str) {
-      //     if (str.length === 0) {
-      //       return "";
-      //     } else {
-      //       return getReverse(str.substring(1) + str.charAt(0));
-      //     }
-      //   }
-      //   console.log(getReverse("abcde"));
+      function getReverse(str) {
+        if (str.length === 0) {
+          return "";
+        } else {
+          return getReverse(str.substring(1) + str.charAt(0));
+        }
+      }
+      console.log(getReverse("abcde"));
 
       //5. 피보나치 수열을 10개를 출력하시오.
       //   피보나치수열은 앞의 두 수를 더해서 다음 수를 만드는 수열

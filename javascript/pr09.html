@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>자바스크립트 100제 풀이-9</title>
@@ -16,16 +16,40 @@
       // console.log(longer);
 
       //52번
-
       function repeat(str) {
-        let clearVer = "";
+        let countAlpha = "";
         for (let i = 0; i < str.length; i++) {
           if (str[i] !== " ") {
-            clearVer += str[i].toLowerCase();
+            countAlpha += str[i].toLowerCase();
           }
         }
+        return countAlpha;
       }
-      console.log(repeat("A man a plan a canal Panama"));
+
+      repeat2 = repeat("A man a plan a canal Panama");
+      console.log(repeat2);
+
+      function vers(n) {
+        if (n.length === 0) {
+          return "";
+        } else {
+          return vers(n.substring(1)) + n.charAt(0);
+        }
+      }
+
+      vers("A man a plan a canal Panama");
+      repeatResult1 = vers("A man a plan a canal Panama");
+      console.log(repeatResult1);
+
+      let repeatResult2 = "";
+      for (i = 0; i < repeatResult1.legnth; i++) {
+        if (repeatResult1[i] !== " ") {
+          repeatResult2 += repeatResult1[i].toLowerCase();
+        }
+      }
+
+      console.log(repeatResult2);
+      
     </script>
   </head>
   <body></body>
