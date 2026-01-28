@@ -312,10 +312,86 @@ WHERE 영화번호 = '00002';
  ALTER TABLE 평점관리
  
  
-
-
--- SELECT *
--- FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc
--- WHERE CONSTRAINT_SCHEMA.CHECK_CONSTRAINTS cc
--- ON tc.TC.CONSTRAINT_NAME = cc.constraint_name
--- WHERE tc.TABLE_NAME ='제품';
+-- 트랜잭션(Transaction)
+-- 직역하면 거래, IT에서는 더 이상 분할이 불가능한 업무처리의 단위
+-- 데이터베이스에서는 한 번에 묶어서 처리하는 데이터 조작 업무 
+--  예) 은행 송금 철수(계좌 - 1000) + 영희(계좌 + 1000)
+ 
+ USE 세계학사;
+ DROP TABLE IF EXISTS 계좌;
+ CREATE TABLE 계좌 (
+    이름 VARCHAR(10),
+    잔액 INT
+ );
+ DESC 계좌;
+ 
+ INSERT INTO 계좌 VALUES ('철수', 50000),('영희',0);
+ SELECT * FROM 계좌;
+ 
+ -- 계좌 이체 작업을 트랜잭션으로 처리해 보자.
+ 
+ -- 트랜잭션 시작
+ START TRANSACTION;
+ -- 철수 계좌 -1000원
+ UPDATE 계좌 SET 잔액 = 잔액 - 1000 WHERE 이름 = '철수';
+ -- 영희 계좌 +1000원
+ UPDATE 계좌 SET 잔액 = 잔액 + 1000 WHERE 이름 = '영희';
+ -- 트랜잭션 종료(COMMIT, ROLLBACK)
+-- COMMIT; 
+ ROLLBACK;
+ 
+ -- MySQL에서 함수역할 - 프로시저를 만들어 보자.
+ DROP PROCEDURE IF EXISTS 자동이체_프로시저;
+ 
+ -- 프로시저 생성
+ CREATE PROCEDURE 자동이체_프로시저()
+ BEGIN  --                       오류
+ 	DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+ 	BEGIN
+ 		ROLLBACK;
+        SELECT '오류가 발생하여 모든 작업이 취소(롤백)되었습니다.' AS 결과; 
+ 	END;
+ 	START TRANSACTION;
+ 	 UPDATE 계좌 SET 잔액 = 잔액 - 1000 WHERE 이름 = '철수';
+--      UPDATE 계좌 SET 잔액 = 잔액 + 1000 WHERE 이름 = '영희';
+--      COMMIT 할 때
+--  UPDATE 존재하지않는계좌 SET 잔액 = 잔액 + 1000 WHERE 이름 = '영희';
+--  ROLLBACK 할 때
+ 	COMMIT;
+ 	SELECT '이체가 성공적으로 완료되었습니다.' AS 결과;
+ END
+ 
+ -- 프로시저가 목록에 있는지 확인
+ SHOW PROCEDURE STATUS WHERE name = '자동이체_프로시저';
+ 
+ -- 테스트하기
+ -- 이전 상태 보기
+ SELECT * FROM 계좌;
+ 
+ -- 트랜잭션 프로시저 호출
+ CALL 자동이체_프로시저();
+ 
+ -- 이후 상태 보기
+ SELECT * FROM 계좌;
+ 
+ -- 백엔드 서버 프레임워크에서 트랜잭션 처리를 하는 기능을 가지고 있다.
+ -- 자바/스프링(부트) F/w(프레임워크 즉, 엄청 큼) : @Transaction
+ -- JS/Prisma 라이브러리 : prisma.$transaction()
+ -- Python/sqlalchemy 라이브러리 : Session 객체
+ 
+ 
+ 
+ -- COMMIT : 정상적인 종료, DB에 물리적으로 저장완료.
+ -- ROLLBACK : 비정상적인 종료(트랜잭션 이전 상태로 복구), 원상복구.
+ 
+ 
+ -- MySQL은 auto commit이다. insert/update/delete 동작 후에
+ --    commit 명령을 안해도 자동저장된다.
+ -- 트랜잭션 자동 시에는 commit + rollback 만나기 전에 자동저장 안됨.
+ -- Oracle은 insert/update/delete 동작후에 commit을 꼭 해야 됨.
+ 
+ 
+ 
+ 
+ 
+ 
