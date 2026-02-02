@@ -61,10 +61,10 @@ public class ex15 {
         //int(원시형)이 아닌 클래스로 만들면,
         //다형성(엄청 중요)을 이용한 데이터 이동이 편리
 
-        int num1 = 10;
-        num1.
-        Integer num = 10;
-        num2.
+//        int num1 = 10;
+//        num1.
+//        Integer num = 10;
+//        num2.
 
     }
 }
