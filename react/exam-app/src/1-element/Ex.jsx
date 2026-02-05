@@ -37,37 +37,47 @@ export function Greeting(props) {
 //연습문제3: 다음의 객체배열의 데이터를 출력하시오.
 //목표: props로 전달받은 객체 배열의 데이터를 조작할 수 있다.
 //요구사항
-// 1. 상품이름 - 가격(원)으로 출력한다.
+// 1. ProductListProps라는 함수형 컴퍼넌트를 설계한다.
+// 2. 상품이름 - 가격(원)으로 출력한다.
 // 출력 예) 1. 노트북 - 8000원
 //          2. 스마트폰 - 4000원
+//          3. 맥미니 - 10000원
 
-//함수형 컴퍼넌트(화살표함수형태의 함수형 변수)
-export const ProductList = () => {
-  return (
-    <>
-      <ul>
-        {products.map((item, index) => {
-          return (
-            <li key={index}>
-              {index + 1}.{item.name} - {item.price}원
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
-};
+//구조분해할당
+//const {products} = { products: [], 등등등 }
+//const [arr1, arr2] = [ ]
 
-export const ProductListProps = (props) => {
+//props를 안 쓴 형태
+export const ProductListProps = ({ products }) => {
+  // return <>{products[0].name}</>;
   return (
     <ul>
-      {props.products.map((item) => {
+      {products.map((item, index) => {
         return (
-          <li key={item.id}>
-            {item.id}.{item.name} - {item.price}원
+          <li key={index}>
+            {item.id}. {item.name} - {item.price}원
           </li>
         );
       })}
     </ul>
+    // <ul>
+    //   <li>1. 노트북 - 8000원</li>
+    //   <li>2. 스마트폰 - 9000원</li>
+    //   <li>3. 맥미니 - 10000원</li>
+    // </ul>
   );
 };
+
+// export const ProductListProps = (props) => {
+//   return (
+//     <ul>
+//       {props.products.map((item) => {
+//         return (
+//           <li key={item.id}>
+//             {item.id}.{item.name} - {item.price}원
+//           </li>
+//         );
+//       })}
+//     </ul>
+//   );
+// };

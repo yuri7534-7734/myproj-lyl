@@ -8,25 +8,26 @@ import * as R from "./1-element/Ex";
 //export default인 경우
 // import HelloH1 from "./1-element/Element";
 
+//리액트 엘리먼트
+//return element2;
+// 리액트 엘리먼트는 => { element1 } 중괄호로 렌더링하고,
+// 리액트 컴퍼넌트(함수형,클래스형) => <Element1 /> 태그형식으로 렌더링
+// const frontData = ["HTML5", "CSS3", "jAVASCRIPT", "jQuery"];
+// const backData = ["Java", "Oracle", "JSP", "Spring Boot"];
+
+// const props = [
+//   { id : 1, name: "노트북", price : 8000},
+//   { id : 2, name: "스마트폰", price : 4000}
+// ]
+
+const products = [
+  //객체
+  { id: 1, name: "노트북", price: 8000 },
+  { id: 2, name: "스마트폰", price: 4000 },
+  { id: 3, name: "맥미니", price: 10000 },
+];
+
 function App() {
-  //리액트 엘리먼트
-  //return element2;
-  // 리액트 엘리먼트는 => { element1 } 중괄호로 렌더링하고,
-  // 리액트 컴퍼넌트(함수형,클래스형) => <Element1 /> 태그형식으로 렌더링
-  // const frontData = ["HTML5", "CSS3", "jAVASCRIPT", "jQuery"];
-  // const backData = ["Java", "Oracle", "JSP", "Spring Boot"];
-
-  // const props = [
-  //   { id : 1, name: "노트북", price : 8000},
-  //   { id : 2, name: "스마트폰", price : 4000}
-  // ]
-
-  const products = [
-    { id: 1, name: "노트북", price: 8000 },
-    { id: 2, name: "스마트폰", price: 4000 },
-    { id: 3, name: "맥미니", price: 10000 },
-  ];
-
   return (
     <>
       {/* {E.element1}

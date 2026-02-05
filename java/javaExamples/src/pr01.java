@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class pr01 {
 
     public static void main(String[] args) {
@@ -85,10 +83,10 @@ public class pr01 {
 //        float i6 = scan8.nextFloat();
 //        System.out.printf("%.2f", i6);
 //        //또는 0.005f를 더하여, 100을 곱한 후 (int)로 타입변경후, 100으로 나누어도 된다.
-         Scanner scan = new Scanner(System.in);
-         float num = scan.nextFloat();
-         num = (num+0.005f)*100;
-         System.out.println(num);
+//         Scanner scan = new Scanner(System.in);
+//         float num = scan.nextFloat();
+//         num = (num+0.005f)*100;
+//         System.out.println(num);
 
 
 
@@ -113,6 +111,58 @@ public class pr01 {
 //        int m = month.nextInt();
 //        int d = day.nextInt();
 //        System.out.println(y+"."+m+"."+d);
+
+        //문제16
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("10진수 입력");
+//        int sixteen = scanner.nextInt();
+//        //System.out.printf("%o",sixteen); //방법1
+//        String str = Integer.toOctalString(sixteen); //방법2
+//        System.out.println(str);
+
+        //문제17
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("10진수 입력");
+//        int seventeen = scanner.nextInt();
+//        //System.out.printf("%x",seventeen); //방법1
+//        String str = Integer.toHexString(seventeen); //방법2
+//        System.out.println(str);
+
+        //문제18
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("영문자 한개 입력");
+//        String str = scanner.nextLine();
+//        char c = str.charAt(0);
+//        int i = (int) c;
+//        System.out.println(i);
+
+        //문제19
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("10진 정수 한개 입력");
+//        int i = scanner.nextInt();
+//        char c = (char)i;
+//        System.out.println(c);
+
+        //문제20
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("정수입력");
+//        int i1 = scanner.nextInt();
+//        int i2 = scanner.nextInt();
+//        int i3 = scanner.nextInt();
+//        int sum = i1+i2+i3;
+//        double evg = sum/3;
+//        System.out.println(sum);
+//        System.out.println(Math.floor(evg));
+
+        //문제21
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("정수입력");
+//        int a = scanner.nextInt();
+//        int b = scanner.nextInt();
+//        System.out.println(Math.pow(a,b));
+
+
+
     }
 }
 
