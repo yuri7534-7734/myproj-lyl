@@ -159,7 +159,60 @@ public class pr01 {
 //        System.out.println("정수입력");
 //        int a = scanner.nextInt();
 //        int b = scanner.nextInt();
-//        System.out.println(Math.pow(a,b));
+//        System.out.println(a*Math.pow(2,b));
+
+        //문제22
+//        Scanner scanner = new Scanner(System.in);
+//        int a = scanner.nextInt();
+//        int b = scanner.nextInt();
+//        System.out.println("a는"+a+"이고,"+"b는"+b+"이다.");
+//        if(a>b){
+//            System.out.println("1");
+//        } else if (a<=b) {
+//            System.out.println("0");
+//        }
+
+        //문제23
+//        Scanner scanner = new Scanner(System.in);
+//        int a = scanner.nextInt();
+//        int b = scanner.nextInt();
+//        System.out.println("a는"+a+"이고,"+"b는"+b+"이다.");
+//        if (a == b){
+//            System.out.println("1");
+//        } else if (a != b) {
+//            System.out.println("0");
+//        }
+
+        //문제24
+//        Scanner scanner = new Scanner(System.in);
+//        int a = scanner.nextInt();
+//        int b = scanner.nextInt();
+//        if (b >= a){
+//            System.out.println("1");
+//        } else {
+//            System.out.println("0");
+//        }
+
+        //문제25
+//        Scanner scanner = new Scanner(System.in);
+//        int a = scanner.nextInt();
+//        int b = scanner.nextInt();
+//        if (a != b) {
+//            System.out.println("1");
+//        } else {
+//            System.out.println("0");
+//        }
+
+        //문제26
+//        Scanner scanner = new Scanner(System.in);
+//        boolean b = scanner.nextBoolean();
+//        if (b==true){
+//            System.out.println("false");
+//        } else {
+//            System.out.println("true");
+//        }
+
+        //문제27
 
 
 
