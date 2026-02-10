@@ -89,3 +89,97 @@ export function Props3() {
     </>
   );
 }
+
+// 4. 문제 4: 이벤트 Props 전달하기
+// 목표: 버튼을 클릭했을 때 이벤트를 처리하는 컴포넌트를 작성하세요.
+// 요구사항:
+// - `ClickButton`이라는 자식 컴포넌트를 작성하세요.
+// - 부모 컴포넌트에서 클릭 시 경고창이 뜨도록 이벤트 핸들러를 전달하세요.
+function ClickButton(props) {
+  return <button onClick={props.onClick}>버튼을 클릭하세요.</button>;
+}
+
+export function Props4() {
+  function handleClick() {
+    //상태변경 함수로 치환할 수 있다.
+    alert("버튼이 클릭되었습니다.");
+  }
+  return (
+    <div>
+      <h2>이벤트 핸들링</h2>
+      {/* 화살표 함수로 감싼 경우 */}
+      <ClickButton
+        onClick={() => {
+          handleClick();
+        }}
+      />
+
+      {/* 함수 참조를 그대로 전달한 경우 */}
+      <ClickButton onClick={handleClick} />
+    </div>
+  );
+}
+
+// 5. 문제 5: children을 이용한 컴포넌트 구성
+// 목표: `children`을 활용하여 컴포넌트 내부에서 콘텐츠를 자유롭게 구성하는 연습을 합니다.
+// 요구사항:
+// - `InfoCard`라는 자식 컴포넌트를 작성하세요.
+// - `title`이라는 `props`와 `children`을 사용하여
+//     제목과 본문 콘텐츠를 렌더링합니다.
+// - 부모 컴포넌트에서 두 개의 카드를 렌더링하세요.
+function InfoCard(props) {
+  return (
+    <>
+      <h2>{props.title}</h2>
+      <p>{props.children}</p>
+    </>
+  );
+}
+export function Props5() {
+  return (
+    <div>
+      <InfoCard title="첫번째 카드">
+        <p>이곳은 첫번째 카드입니다.</p>
+      </InfoCard>
+      <InfoCard title="두번째 카드">
+        <p>이곳은 두번째 카드입니다.</p>
+      </InfoCard>
+    </div>
+  );
+}
+// export const List = () => {
+//   const [text, setText] = useState("");
+//   const [list, setList] = useState([]);
+
+//   function addList() {
+//     setList([...list, text]);
+//     setText("");
+//   }
+
+//   return (
+//     <div
+//       style={{
+//         width: "300px",
+//         height: "230px",
+//         padding: "20px",
+//         border: "1px solid #d8d8d8",
+//         boxSizing: "border-box",
+//       }}
+//     >
+//       <input
+//         type="text"
+//         value={text}
+//         placeholder="항목을 입력하세요"
+//         onChange={(e) => {
+//           setText(e.target.value);
+//         }}
+//       />
+//       <button onClick={addList}>항목 추가</button>
+//       <ul>
+//         {list.map((item, index) => {
+//           return <li key={index}>{item}</li>;
+//         })}
+//       </ul>
+//     </div>
+//   );
+// };

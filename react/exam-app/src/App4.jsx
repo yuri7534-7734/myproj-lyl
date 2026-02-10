@@ -12,9 +12,10 @@ function App() {
       <F.Props3 />
       <F.Props4 /> */}
       {/* <F.Props5 /> */}
-      <E.Props1 />
-      <E.Props2 />
-      <E.Props3 />
+      {/* <E.Props1 />
+      <E.Props2 />  */}
+      <E.Props4 />
+      <E.Props5 />
     </>
   );
 }
