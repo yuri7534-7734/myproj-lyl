@@ -2,13 +2,6 @@ import { useState } from "react";
 // 연습문제 1: 버튼을 클릭할 때마다 색상 변경하기
 // 설명: 버튼을 클릭할 때마다 배경 색상이 빨강, 초록, 파랑으로
 //    순차적으로 변경되도록 만드세요.
-const divstyle = {
-  width: "300px",
-  height: "150px",
-  padding: "20px",
-  border: "1px solid #d8d8d8",
-  boxSizing: "border-box",
-};
 
 export const Button = () => {
   const [color, setColor] = useState("red");
@@ -35,6 +28,31 @@ export const Button = () => {
     <div style={style}>
       <h2>현재 색상 : {color}</h2>
       <button onClick={handleButton}>색상변경</button>
+    </div>
+  );
+};
+
+export const ColorChanger = () => {
+  const [colorIndex, setColorIndex] = useState(0);
+  const colors = ["red", "green", "blue"];
+
+  const style = {
+    width: "100px",
+    padding: "20px",
+    backgroundColor: colors[colorIndex],
+  };
+
+  function handleColor() {
+    let nextColorIndex = colorIndex + 1;
+    if (nextColorIndex > 2) {
+      nextColorIndex = 0;
+    }
+    setColorIndex(nextColorIndex);
+  }
+  return (
+    <div style={style}>
+      <p>현재 색상: {colors[colorIndex]}</p>
+      <button onClick={handleColor}>색상 변경</button>
     </div>
   );
 };
@@ -76,75 +94,127 @@ export const Check = () => {
 // 연습문제 3: 숫자 제한 걸기
 // 설명: 숫자를 증가시키되, 숫자가 10 이상이면
 //   더 이상 증가하지 않도록 제한하세요.
-export const Count = () => {
+
+//선생님 방식
+export const LimitCounter = () => {
   const [count, setCount] = useState(0);
-  const [title, setTitle] = useState("");
+
   function handleCount() {
-    if (count >= 10) return setTitle("더이상 증가 금지");
+    if (count >= 10) {
+      return;
+    }
     setCount(count + 1);
   }
   return (
-    <div
-      style={{
-        width: "300px",
-        height: "200px",
-        padding: "20px",
-        border: "1px solid #d8d8d8",
-        boxSizing: "border-box",
-      }}
-    >
-      <h4>현재 숫자 : {count}</h4>
+    <div>
+      <p>현재 숫자: {count}</p>
       <button onClick={handleCount}>증가</button>
-      <h2
-        style={{
-          backgroundColor: "red",
-          color: "white",
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        {title}
-      </h2>
+      {count >= 10 ? "최대숫자에 도달함." : ""}
+      {count >= 10 ? <p>최대숫자에 도달함.</p> : null}
+      {/* && 연산자를 이용한 조건적 렌더링 */}
+      {count >= 10 && "최대숫자에 도달함."}
     </div>
   );
 };
+
+// export const Count = () => {
+//   const [count, setCount] = useState(0);
+//   const [title, setTitle] = useState("");
+//   function handleCount() {
+//     if (count >= 10) return setTitle("더이상 증가 금지");
+//     setCount(count + 1);
+//   }
+//   return (
+//     <div
+//       style={{
+//         width: "300px",
+//         height: "200px",
+//         padding: "20px",
+//         border: "1px solid #d8d8d8",
+//         boxSizing: "border-box",
+//       }}
+//     >
+//       <h4>현재 숫자 : {count}</h4>
+//       <button onClick={handleCount}>증가</button>
+//       <h2
+//         style={{
+//           backgroundColor: "red",
+//           color: "white",
+//           display: "flex",
+//           justifyContent: "center",
+//         }}
+//       >
+//         {title}
+//       </h2>
+//     </div>
+//   );
+// };
 
 // 연습문제 4: 버튼을 클릭할 때마다 리스트에 항목 추가하기
 // 설명: 버튼을 클릭하면 입력 필드의 값을 리스트에 추가하고,
 //   추가된 항목들을 화면에 표시하세요.
 // 힌트: [], ["aaa", "bbb", "ccc"]
-export const List = () => {
-  const [text, setText] = useState("");
-  const [list, setList] = useState([]);
 
-  function addList() {
-    setList([...list, text]);
-    setText("");
+//선생님 방식
+export const ItemList = () => {
+  const [items, setItems] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+
+  function handleInput() {
+    setItems([...items, inputValue]);
   }
+
   return (
-    <div
-      style={{
-        width: "300px",
-        height: "200px",
-        padding: "20px",
-        border: "1px solid #d8d8d8",
-        boxSizing: "border-box",
-      }}
-    >
+    <>
       <input
         type="text"
-        value={text}
-        placeholder="항목을 입력하세요"
+        value={inputValue}
         onChange={(e) => {
-          setText(e.target.value);
+          setInputValue(e.target.value);
         }}
       />
-      <button onClick={addList}>항목 추가</button>
+      <button onClick={handleInput}>항목 추가</button>
       <ul>
-        {list.map((item, index) => {
+        {items.map((item, index) => {
           return <li key={index}>{item}</li>;
         })}
       </ul>
-    </div>
+    </>
   );
 };
+
+// export const List = () => {
+//   const [text, setText] = useState("");
+//   const [list, setList] = useState([]);
+
+//   function addList() {
+//     setList([...list, text]);
+//     setText("");
+//   }
+//   return (
+//     <div
+//       style={{
+//         width: "300px",
+//         height: "200px",
+//         padding: "20px",
+//         border: "1px solid #d8d8d8",
+//         boxSizing: "border-box",
+//       }}
+//     >
+//       <input
+//         type="text"
+//         value={text}
+//         placeholder="항목을 입력하세요"
+//         onChange={(e) => {
+//           setText(e.target.value);
+//         }}
+//       />
+//       <button onClick={addList}>항목 추가</button>
+//       <ul>
+//         {list.map((item, index) => {
+//           return <li key={index}>{item}</li>;
+//         })}
+//       </ul>
+//     </div>
+//   );
+// };

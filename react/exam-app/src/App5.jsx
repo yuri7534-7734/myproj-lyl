@@ -7,8 +7,11 @@ function App() {
     <>
       <E.Button />
       <E.Check />
-      <E.Count />
-      <E.List />
+      {/* <E.Count /> */}
+      {/* <E.List /> */}
+      <E.ColorChanger />
+      <E.LimitCounter />
+      <E.ItemList />
     </>
   );
 }
