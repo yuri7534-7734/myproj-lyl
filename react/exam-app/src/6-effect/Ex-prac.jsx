@@ -12,29 +12,36 @@ import React, { useState, useEffect } from "react";
 // 힌트: fetch 또는 axios 모듈 사용 가능합니다.
 
 export const DateFetchJS = () => {
-  const [data, setData] = useState(0);
-
-  const fatchdata = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const result = await response.json();
-    if (!response.ok) {
-      console.log("오류가 있습니다!");
-    }
-    console.log(result);
-    setData(result.slice(0, 10));
-  };
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     console.log("마운트 되었습니다!");
-    fatchdata();
-  }, []);
+
+    const fatchdata = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts",
+        );
+        const result = await response.json();
+
+        if (!response.ok) {
+          console.log("오류가 있습니다!");
+        }
+        console.log(result.slice(0, 10));
+        setData(result.slice(0, 10));
+      } catch (error) {
+        console.error("데이타 가져오기 실패", error);
+      }
+    };
+    fatchdata(); //렌더마다 바뀐다
+  }, []); 
 
   return (
     <>
       <h2>fetch 함수를 통한 데이터 가져오기</h2>
       <ul>
-        {data.map(()=>{
-          return <li></li>
+        {data.map((post) => {
+          return <li key={post.id}>{post.title}</li>;
         })}
       </ul>
     </>

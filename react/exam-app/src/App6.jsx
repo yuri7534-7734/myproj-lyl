@@ -1,7 +1,8 @@
 import "./App.css";
 // import * as E from "./6-effect/Effect";
-// import * as E from "./6-effect/Ex";
-import * as E from "./6-effect/Ex-prac";
+import * as E from "./6-effect/Ex";
+// import * as E from "./6-effect/Ex-prac";
+
 
 function App() {
   return (
@@ -9,8 +10,10 @@ function App() {
       {/* <E.LifeCycleClass /> */}
       {/* <E.LifeCycleFunc />
       <E.LifeCycle /> */}
-      {/* <E.DateFetchJS /> */}
-      <E.DateFetchJS />
+      {/* <E.DateFetchJS />
+      <E.DataFetchAxios /> */}
+      {/* <E.WindowSizeTracker /> */}
+      <E.Timer />
     </>
   );
 }
