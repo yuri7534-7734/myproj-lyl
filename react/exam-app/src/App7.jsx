@@ -5,7 +5,11 @@ function App() {
   return (
     <>
       {/* <H.CounterMemo /> */}
-      <H.CounterCallback2 />
+      {/* <H.CounterCallback2 /> */}
+      {/* <H.CounterRef /> */}
+      <H.CounterRefInput />
+      <H.Timer />
+      <H.App2 />
     </>
   );
 }
