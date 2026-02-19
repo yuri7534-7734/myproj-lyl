@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bcb0c848-0dbb-4dcf-a0bd-ced3d88f2687" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/OperationEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OperationEx2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OperationEx3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/VarEx2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/VarEx3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hm01.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repeat01.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../javascript/ex13.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../javascript/ex13.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../javascript/ex24.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../javascript/ex24.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../javascript/ex32.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../javascript/ex32.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../javascript/ex33.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../javascript/ex33.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../javascript/ex36.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../javascript/ex36.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../javascript/ex38.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../javascript/ex38.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../react/react01-basic/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../react/react01-basic/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../react/react01-basic/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../react/react01-basic/src/main.jsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="3946UpW0DQ3SeXNDT6L0zAuAbln" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "D:/GitHub/myproj-lyl/java/javaHome/src/Main.java",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.OperationEx1.executor": "Run",
+    "애플리케이션.OperationEx3.executor": "Run",
+    "애플리케이션.VarEx2.executor": "Run",
+    "애플리케이션.VarEx3.executor": "Run",
+    "애플리케이션.hm01.executor": "Run",
+    "애플리케이션.repeat01.executor": "Run"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="bcb0c848-0dbb-4dcf-a0bd-ced3d88f2687" name="변경" comment="" />
+      <created>1769943015126</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769943015126</updated>
+      <workItem from="1769943016400" duration="3210000" />
+      <workItem from="1771466022802" duration="557000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
