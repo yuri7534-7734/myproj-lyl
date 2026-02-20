@@ -8,6 +8,8 @@ package com.study.Ex05Lombok;
 //@RequiredArgsConstructor : final이거나 @NonNull붙은 필드만
 //                           매개변수로 받는 생성자를 자동생성
 //   : 생성자 주입에 사용
+//용도 : 1. 생성자 주입 -> MainController
+//      2. final 필드 생성자 함수 생성 -> Member 클래스
 
 
 //@NonNull : null을 허용하지 않는 객체 Bean 자동생성

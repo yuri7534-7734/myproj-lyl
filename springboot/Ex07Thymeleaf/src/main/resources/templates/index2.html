@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index2.html</title>
+</head>
+<body>
+  <h2>타임리프의 널 체크(조건적인 렌더링)</h2>
+
+  <!--조건적 렌더링-->
+  #th:if<br />
+  <!-- th:block : 자체적인 로직을 위한 빈 블럭(스코프) -->
+  <th:block th:if="${address_null==null}"> <!--true일 때 출력한다.-->
+      <p>address_null은 null입니다.</p>
+  </th:block>
+</body>
+</html>
