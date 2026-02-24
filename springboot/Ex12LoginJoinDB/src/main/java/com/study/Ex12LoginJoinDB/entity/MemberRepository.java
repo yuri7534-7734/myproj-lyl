@@ -1,4 +1,4 @@
-package com.study.Ex10RealDB;
+package com.study.Ex12LoginJoinDB.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
