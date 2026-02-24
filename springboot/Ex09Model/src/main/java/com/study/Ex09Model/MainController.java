@@ -78,6 +78,8 @@ public class MainController {
         //form태그의 입력값을 받아오자.
         String paramName = request.getParameter("name");
         String paramAge = request.getParameter("age");
+        //getParameter는 옛날 방식
+        //실무에서는 @RequestParam 사용
         model.addAttribute("name",paramName);
         model.addAttribute("age",paramAge);
         return "index";
