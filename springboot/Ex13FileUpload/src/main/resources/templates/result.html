@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>result.html</title>
+</head>
+<body>
+
+<h1>upload file 목록</h1>
+<ul th:each="file: ${files}">
+    <!-- model.addAttribute("files", list); -->
+    <li>
+        <img th:src="|/upload/${file.uuid}_${file.fileName}|"/>
+        <!--  uuid = 파일명 중복 방지 / 보안  -->
+    </li>
+    <li>
+        <span th:text="${file.fileName}"></span>
+        <!-- 다운로드 링크 만들기 = 서버에서 파일 리소스 반환하는 법 -->
+        <a th:href="@{'/upload/' + ${file.uuid} + '_' + ${file.fileName}}">[download]</a>
+    </li>
+</ul>
+
+</body>
+</html>

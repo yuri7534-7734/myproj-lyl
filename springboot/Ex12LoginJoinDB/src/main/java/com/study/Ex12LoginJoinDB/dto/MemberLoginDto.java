@@ -1,5 +1,5 @@
 package com.study.Ex12LoginJoinDB.dto;
-
+//로그인 전용 데이터 상자
 
 //스프링에서 지원하는 Validation(유효성 체크) 어노테이션
 
@@ -25,7 +25,6 @@ package com.study.Ex12LoginJoinDB.dto;
 //@AssertTrue    true 인가?
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,9 +40,9 @@ public class MemberLoginDto {
 
     @NotBlank(message = "userPw에 null, 빈 문자열, 스페이스문자만 넣을 수 없음.")
     @Size(min = 4, max = 20)
-    @Pattern(
-            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
-            message = "비밀번호는 8자 이상이며, 영문 대소문자, 숫자, 특수문자를 모두 포함해야 합니다."
-    )
+//    @Pattern(
+//            regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
+//            message = "비밀번호는 8자 이상이며, 영문 대소문자, 숫자, 특수문자를 모두 포함해야 합니다."
+//    )
     private String userPw;
 }

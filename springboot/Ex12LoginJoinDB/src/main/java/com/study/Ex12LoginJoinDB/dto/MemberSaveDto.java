@@ -6,6 +6,7 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+//회원가입/수정 전용 데이터 상자
 
 //데이터 모델링 클래스(데이터를 담는 클래스)의 종류
 // 1. DTO 클래스 : Data Transfer Object 약자. 다른 계층간의 데이터 전송 시 사용.
@@ -45,7 +46,7 @@ public class MemberSaveDto {
         //2. builder()를 사용 -> 사용하면 좋은점
         //  1) 생성자함수는 매개변수의 갯수와 순서가 동일해야 한다.
         //     return new MemberEntity(id, userId, userPw, userName, userRole, joinDate)
-        //  -> 필드(매개변수)의 순서와 갯수를 자유롭게 하여 생성가능하다.
+        //  -> 필드(매개변수)의 순서를 자유롭게 하여 생성가능하다.
         return MemberEntity.builder()
                 .id(id)
                 .userId(userId)
