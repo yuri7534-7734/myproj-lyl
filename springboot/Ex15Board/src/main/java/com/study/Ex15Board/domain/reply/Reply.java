@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-
-@Entity
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//DB의 reply테이블 1행(row) = Reply객체 1개
+@Entity //JPA가 DB 테이블과 매핑되는 클래스로 인식
+@Getter //모든 필드 Getter 자동 생성
+@NoArgsConstructor(access = AccessLevel.PROTECTED) //JAP는 기본 생성자가 필요하다 근데 외부에서 new Reply() 못하게 보호
 public class Reply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reply_idx", nullable = false) //NOT NULL 제약조건
-    private Long replyId; //기본키 인덱스
+    private Long replyIdx; //기본키 인덱스
     @Column(name="reply_name", nullable = false)
     private String replyName; //댓글 작성자 이름
     @Column(name="reply_content", nullable = false)
@@ -33,7 +33,7 @@ public class Reply {
     this.replyContent = replyContent;
     this.replyBoardIdx = replyBoardIdx;
     }
-    public void update(String replyName,String replyContent,String replyDate) {
+    public void update(String replyName,String replyContent) {
         this.replyName = replyName;
         this.replyContent = replyContent;
         this.replyDate = LocalDateTime.now();

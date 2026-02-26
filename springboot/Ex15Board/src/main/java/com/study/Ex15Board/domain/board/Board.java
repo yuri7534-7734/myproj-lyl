@@ -28,12 +28,12 @@ public class Board {
     @Column(name="board_content",nullable = false)
     private String boardContent; //글내용
     @Column(name="board_hit",nullable = false)
-    private Long boardHit; //조회수
+    private Integer boardHit; //조회수
     @Column(name="board_date",nullable = false)
     private LocalDateTime boardDate=LocalDateTime.now(); //작성일시
 
     @Builder //선택적 매개변수가 있는 생성자를 빌더패턴으로 만들기
-    public Board(String boardName, String boardTitle, String boardContent, Long boardHit) {
+    public Board(String boardName, String boardTitle, String boardContent, Integer boardHit) {
         this.boardName = boardName;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
@@ -43,7 +43,7 @@ public class Board {
     //JPA의 엔티티 인스턴스의 필드(멤버변수)에 데이터를 SET하면,
     //자동으로 DB Table에 쓰여진다. SQL Update 문이 수행된다.
     //save함수를 호출할 필요가 없다.
-    public void update(String boardName, String boardTitle, String boardContent, Long boardHit) {
+    public void update(String boardName, String boardTitle, String boardContent, Integer boardHit) {
         this.boardName = boardName;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
@@ -51,7 +51,7 @@ public class Board {
         this.boardDate = LocalDateTime.now();
     }
     //조회수 업데이트
-    public void updateHit(Long boardHit) {
+    public void updateHit(Integer boardHit) {
         this.boardHit = boardHit;
     }
 }
