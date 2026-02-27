@@ -5,30 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3039a-ae30-44af-943c-1c6f709afec0" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../Ex11Counter/src/main/java/com/study/Ex11Counter/Counter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ex11Counter/src/main/java/com/study/Ex11Counter/HtmlController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ex11Counter/src/main/resources/banner.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Ex11Counter/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/Ex11CounterDB/CountEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/study/Ex11CounterDB/CountRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/main/java/com/study/Ex01_2Counter/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/main/java/com/study/Ex01_2Counter/Ex01_2CounterApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/main/java/com/study/Ex01_2Counter/HtmlController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/main/resources/banner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/main/resources/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Ex01_2Counter/src/test/java/com/study/Ex01_2Counter/Ex01_2CounterApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/mysite/sbb/HelloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/mysite/sbb/HelloLombok.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/resources/db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/Ex11CounterDB/HtmlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/Ex11CounterDB/HtmlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/main/java/com/study/Ex11Counter/Counter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/main/java/com/study/Ex11Counter/Ex11CounterApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/main/java/com/study/Ex11Counter/HtmlController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/main/resources/banner.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/src/test/java/com/study/Ex11Counter/Ex11CounterApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,33 +124,20 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Ex11CounterDB 빌드.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.Ex11CounterDBApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/KOSMO/Documents/GitHub/myproj-lyl/springboot/Ex11CounterDB",
-    "project.structure.last.edited": "모듈",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Ex11CounterDB 빌드.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Ex11CounterDBApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/KOSMO/Documents/GitHub/myproj-lyl/springboot/Ex11CounterDB&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Ex11CounterDB" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Ex11CounterDB" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-  </component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

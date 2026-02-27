@@ -1,10 +1,10 @@
-package com.study.Ex11Counter;
+package com.mysite.sbb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Ex11CounterApplicationTests {
+class SbbApplicationTests {
 
 	@Test
 	void contextLoads() {
