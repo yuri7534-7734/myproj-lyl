@@ -1,10 +1,12 @@
 package com.study.Ex11CounterDB;
 // 전체흐름
+
 // 브라우저 요청, HTML
 // Controller
 // Repository ( DB 접근 )
-// Entity ( DB 테이블 )
+// Entity ( DB 테이블 매핑 )
 // DB
+// => Spring Boot + JPA 기본 구조
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
