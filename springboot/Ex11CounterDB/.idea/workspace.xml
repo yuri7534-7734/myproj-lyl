@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3039a-ae30-44af-943c-1c6f709afec0" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/../Ex01CalcDB/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/HistoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/study/Ex11CounterDB/HtmlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/study/Ex11CounterDB/HtmlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex12CalcDB/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex12CalcDB/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/Ex02CalcApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/Ex12CalcDBApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/HistoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/HistoryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/HtmlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex12CalcDB/src/main/java/com/study/Ex12CalcDB/HtmlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex12CalcDB/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex12CalcDB/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex12CalcDB/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex12CalcDB/src/main/resources/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

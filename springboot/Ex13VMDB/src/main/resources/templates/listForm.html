@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자판기 프로그램</title>
+    <style>
+      body {
+        background-color: brown;
+      }
+      #wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px;
+        margin: 0 auto;
+        width: 700px;
+        height: auto;
+        box-sizing: content-box;
+      }
+      #wrap h2 {
+        color: white;
+        font-size: 25px;
+      }
+      .dbListName h4 {
+        width: 250px;
+        height: 40px;
+        background-color: white;
+        color: brown;
+        font-weight: bolder;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+      }
+      .dbListBottom h4 {
+        width: 300px;
+        height: 40px;
+        background-color: white;
+        color: brown;
+        font-weight: bolder;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        border-radius: 8px;
+      }
+      .dbTable {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        width: 650px;
+        height: auto;
+        padding-bottom: 20px;
+        border-radius: 8px;
+      }
+      .dbTable {
+        color: black;
+      }
+      table {
+        border: 1px solid rgb(192, 191, 191);
+        padding: 20px;
+        width: 600px;
+        height: auto;
+        text-align: center;
+      }
+      td {
+        font-weight: bolder;
+      }
+      .dbListName span {
+        color: black;
+      }
+      .dbListBottom span {
+        color: black;
+        font-weight: bolder;
+      }
+      .bottomButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        clear: both;
+      }
+      button {
+        width: 100px;
+        height: 50px;
+        background-color: rgb(255, 231, 231);
+        color: rgb(119, 21, 21);
+        border-radius: 10px;
+        font-weight: bolder;
+        font-size: 15px;
+        border: 1px solid rgb(119, 21, 21);
+        cursor: pointer;
+      }
+      #edit {
+        width: 80px;
+        height: 30px;
+        background-color: rgb(255, 199, 199);
+        color: rgb(119, 21, 21);
+        border-radius: 5px;
+        font-weight: bolder;
+        font-size: 15px;
+        border: 1px solid rgb(119, 21, 21);
+        cursor: pointer;
+      }
+      #delete {
+        width: 80px;
+        height: 30px;
+        background-color: rgb(117, 117, 117);
+        color: white;
+        border-radius: 5px;
+        font-weight: bolder;
+        font-size: 15px;
+        border: 1px solid rgb(39, 39, 39);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div>
+        <h2>자판기 프로그램</h2>
+      </div>
+      <div>
+        <div class="dbListName">
+          <h4>▼ <span>&nbsp;자판기 상품 목록&nbsp;</span> (❁´◡`❁) ▼</h4>
+        </div>
+        <div class="dbTable">
+          <h3>Product List</h3>
+          <table>
+            <thead>
+              <tr>
+                <td class="tdBold">번호</td>
+                <td class="tdBold">상품명</td>
+                <td class="tdBold">가격</td>
+                <td class="tdBold">유통기한</td>
+                <td class="tdBold">수정</td>
+                <td class="tdBold">삭제</td>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- dto는 반복변수를 담는 매개변수 -->
+              <tr class="gap">
+                <td colspan="4"></td>
+              </tr>
+              <tr th:each="dto, status : ${ list }">
+                <td th:text="${ status.count }">1</td>
+                <td th:text="${ dto.product_name}">이유리</td>
+                <td th:text="${ dto.product_price }">가격</td>
+                <td th:text="${ dto.product_limit_date }">날짜</td>
+                <td>
+                  <button id="edit">Edit</button>
+                  <a></a>
+                </td>
+                <td>
+                  <a><button id="delete">Delete</button></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dbListBottom">
+          <h4>
+            ▲ (oﾟvﾟ)ノ 총&nbsp;
+            <span th:text="${ #lists.size(list) }">1</span>&nbsp;개의 상품이
+            있습니다 ▲
+          </h4>
+        </div>
+        <div class="bottomButton">
+          <button>Add Item</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
