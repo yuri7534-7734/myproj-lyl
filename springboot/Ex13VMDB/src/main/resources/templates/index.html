@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>자판기 프로그램</title>
@@ -33,6 +33,9 @@
       .dbListName {
         display: flex;
       }
+      .dbList {
+        width: 650px;
+      }
       .dbListBottom h4 {
         width: 300px;
         height: 40px;
@@ -43,6 +46,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        float: right;
       }
 
       .dbTable {
@@ -79,15 +83,14 @@
         clear: both;
         width: 100px;
         height: 50px;
-        background-color: rgb(255, 231, 231);
+        background-color: rgb(255, 199, 199);
         color: rgb(119, 21, 21);
         border-radius: 8px;
         font-weight: bolder;
         font-size: 15px;
-        border: none;
+        border: 1px solid rgb(39, 39, 39);
         cursor: pointer;
       }
-
       #listButton {
         display: flex;
         justify-content: center;
@@ -100,7 +103,7 @@
         font-weight: bolder;
         font-size: 15px;
         cursor: pointer;
-        border: none;
+        border: 1px solid rgb(119, 21, 21);
         margin-bottom: 21px;
         margin-right: 15px;
       }
@@ -124,8 +127,12 @@
           </tr>
         </table>
       </div>
-      <div class="dbListBottom">
-        <h4>▲ (oﾟvﾟ)ノ 총 <span>&nbsp;1&nbsp;</span>개의 상품이 있습니다 ▲</h4>
+      <div class="dbList">
+        <div class="dbListBottom">
+          <h4>
+            ▲ (oﾟvﾟ)ノ 총 <span>&nbsp;1&nbsp;</span>개의 상품이 있습니다 ▲
+          </h4>
+        </div>
       </div>
       <div class="BottomAlign">
         <div class="dbListName">
@@ -134,7 +141,9 @@
               <span>상품 목록 보기</span>
             </button>
           </a>
-          <button class="bottomButton">Add Item</button>
+          <a th:href="@{ /addForm }">
+            <button class="bottomButton">Add Item</button>
+          </a>
         </div>
       </div>
     </div>

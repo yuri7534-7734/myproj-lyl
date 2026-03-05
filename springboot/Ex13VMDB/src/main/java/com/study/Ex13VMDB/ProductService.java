@@ -34,6 +34,21 @@ public class ProductService {
         return list.stream().map(ProductDto::new)
                 .collect(Collectors.toList());
     }
+    //상품 저장하기
+    @Transactional
+    public Integer save(final ProductRequestDto dto){
+        ProductEntity entity = productRepository.save(dto.toEntity());
+        return entity.getProduct_no();
+    }
 
-    //목록 저장하기
+    //상품 지우기
+    @Transactional
+    public void delete(final Integer product_no){
+        ProductEntity entity = productRepository.findById(product_no)
+                .orElseThrow(()-> new IllegalArgumentException("내용이 없습니다."));
+
+        productRepository.delete(entity);
+    }
+
+
 }

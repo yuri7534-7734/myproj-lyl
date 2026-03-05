@@ -78,6 +78,8 @@ public class BoardService {
         //COMMIT(ROLLBACK)이 자동 발생한다.
     }
 
+
+
     //게시글 업데이트하기
     @Transactional
     public boolean update(final Long boardIdx, final BoardSaveRequestDto dto){

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>자판기 프로그램</title>
@@ -97,7 +97,7 @@
         background-color: rgb(255, 199, 199);
         color: rgb(119, 21, 21);
         border-radius: 5px;
-        font-weight: bolder;
+
         font-size: 15px;
         border: 1px solid rgb(119, 21, 21);
         cursor: pointer;
@@ -108,10 +108,13 @@
         background-color: rgb(117, 117, 117);
         color: white;
         border-radius: 5px;
-        font-weight: bolder;
         font-size: 15px;
         border: 1px solid rgb(39, 39, 39);
         cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: rgb(119, 21, 21);
       }
     </style>
   </head>
@@ -149,11 +152,14 @@
                 <td th:text="${ dto.product_price }">가격</td>
                 <td th:text="${ dto.product_limit_date }">날짜</td>
                 <td>
-                  <button id="edit">Edit</button>
-                  <a></a>
+                  <a th:href="@{ /update }">
+                    <button id="edit">Edit</button>
+                  </a>
                 </td>
                 <td>
-                  <a><button id="delete">Delete</button></a>
+                  <a th:href="|/delete?product_no=${dto.product_no}|"
+                    ><button type="button" id="delete">Delete</button></a
+                  >
                 </td>
               </tr>
             </tbody>
@@ -167,7 +173,9 @@
           </h4>
         </div>
         <div class="bottomButton">
-          <button>Add Item</button>
+          <a th:href="@{ /addForm }">
+            <button class="bottomButton">Add Item</button></a
+          >
         </div>
       </div>
     </div>

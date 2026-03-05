@@ -29,4 +29,7 @@ public class ProductEntity {
         this.product_price = product_price;
 
     }
+
+    //DTO to Entity
+    public ProductEntity toEntity() {return null;}
 }
