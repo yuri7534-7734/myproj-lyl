@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login LeeYuri</title>
+  </head>
+  <style>
+    #wrap {
+      width: 500px;
+      height: auto;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-weight: bolder;
+      padding: 130px 0 20px 0;
+    }
+    input {
+      width: 300px;
+      height: 35px;
+      border: 1px solid rgb(168, 168, 168);
+      color: rgb(37, 37, 37);
+      outline: none;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      padding-left: 15px;
+    }
+    #login {
+      width: 322px;
+      height: 40px;
+      color: white;
+      border: none;
+      background-color: rgb(32, 110, 255);
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+    #check {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .findMember {
+      display: flex;
+      justify-content: center;
+    }
+    a {
+      color: rgb(131, 131, 131);
+      text-decoration: none;
+      font-size: 11px;
+    }
+    a::before {
+      content: "ㅣ";
+      margin: 0 10px 0 10px;
+      color: rgb(211, 211, 211);
+    }
+    #idFind::before {
+      content: none;
+    }
+  </style>
+  <body>
+    <div id="wrap">
+      <div id="topLogin">
+        <h1>Login</h1>
+      </div>
+      <div id="inputLogin">
+        <form action="/loginAction" method="post">
+          <div id="check">
+            <input
+              type="text"
+              name="member_username"
+              id="member_username"
+              placeholder="아이디"
+              required
+            />
+            <input
+              type="password"
+              name="member_password"
+              id="member_password"
+              placeholder="비밀번호"
+              required
+            />
+            <button type="submit" id="login">로그인</button>
+          </div>
+        </form>
+        <div class="findMember">
+          <a href="/" id="idFind">아이디 찾기</a>
+          <a href="/">비밀번호 찾기</a>
+          <a th:href="@{ /signUpJoin }">회원가입</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

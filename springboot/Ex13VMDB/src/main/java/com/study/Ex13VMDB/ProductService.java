@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.GenericDeclaration;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 //ProductService가 하는 일
@@ -50,5 +52,13 @@ public class ProductService {
         productRepository.delete(entity);
     }
 
+    //상품 업데이트하기
+    @Transactional //하나라도 실패하면 ROLLBACK -> 객체만 바뀌고 DB는 실행안되는 상황을 막기 위해
+    public void edit(final Integer product_no, final ProductRequestDto dto){
+        ProductEntity entity = productRepository.findById(product_no)
+                .orElseThrow(()-> new IllegalArgumentException("없는 글인덱스입니다."));
+
+        entity.edit(dto.getProduct_name(),dto.getProduct_price(),dto.getProduct_limit_date());
+    }
 
 }

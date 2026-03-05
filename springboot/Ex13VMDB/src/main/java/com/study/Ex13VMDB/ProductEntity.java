@@ -2,6 +2,7 @@ package com.study.Ex13VMDB;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.time.LocalDate;
 
@@ -28,6 +29,11 @@ public class ProductEntity {
         this.product_name = product_name;
         this.product_price = product_price;
 
+    }
+    public void edit(String product_name ,Integer product_price, LocalDate product_limit_date){
+        this.product_name = product_name;
+        this.product_price = product_price;
+        this.product_limit_date = product_limit_date;
     }
 
     //DTO to Entity

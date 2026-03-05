@@ -111,7 +111,7 @@
       </div>
       <div id="dbListwrap">
         <div class="dbListName">
-          <form action="/updateItem" method="get">
+          <form action="/editItem" method="post">
             <input
               type="hidden"
               name="product_no"
@@ -143,7 +143,7 @@
                 type="date"
                 id="product_limit_date"
                 name="product_limit_date"
-                th:value="${#temporals.format(dto.product_limit_date, 'yyyy-MM-dd')}"
+                th:value="${dto.product_limit_date}"
                 placeholder="유통기한을 입력해주세요."
               />
             </div>

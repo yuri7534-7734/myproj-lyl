@@ -11,14 +11,15 @@ import java.time.LocalDate;
 @Getter @Setter
 @NoArgsConstructor
 public class ProductRequestDto {
+    private Integer product_no;
     private String product_name;
     private Integer product_price;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate product_limit_date;
 
     @Builder
-    public ProductRequestDto(String product_name, Integer product_price, LocalDate product_limit_date) {
-
+    public ProductRequestDto(Integer product_no,String product_name, Integer product_price, LocalDate product_limit_date) {
+        this.product_no = product_no;
         this.product_name = product_name;
         this.product_price = product_price;
         this.product_limit_date = product_limit_date;

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login LeeYuri</title>
+  </head>
+  <style>
+    #wrap {
+      width: 500px;
+      height: auto;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-weight: bolder;
+      padding: 100px 0 20px 0;
+    }
+    #checkEmail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input {
+      width: 300px;
+      height: 35px;
+      border: 1px solid rgb(168, 168, 168);
+      color: rgb(37, 37, 37);
+      outline: none;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      padding-left: 15px;
+    }
+    #login {
+      width: 322px;
+      height: 40px;
+      color: rgb(32, 110, 255);
+      border: 1px solid rgb(32, 110, 255);
+      font-weight: bolder;
+      background-color: rgb(255, 255, 255);
+      border-radius: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .findMember {
+      display: flex;
+      justify-content: center;
+    }
+    a {
+      color: rgb(131, 131, 131);
+      text-decoration: none;
+      font-size: 11px;
+    }
+  </style>
+  <script>
+    function checkValue() {
+      if (!document.signUpForm.member_email.value) {
+        alert("이메일이 유효하지 않습니다.");
+        return false;
+      }
+      if (!document.signUpForm.member_id.value) {
+        alert("아이디가 유효하지 않습니다.");
+        return false;
+      }
+      if (!document.signUpForm.member_password.value) {
+        alert("비밀번호가 유효하지 않습니다.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+  <body>
+    <div id="wrap">
+      <div id="topLogin">
+        <h1>Sign Up</h1>
+      </div>
+      <div id="inputLogin">
+        <form
+          action="/signUpForm"
+          name="signUpForm"
+          method="post"
+          onsubmit="return checkValue();"
+        >
+          <div id="checkEmail">
+            <input
+              type="text"
+              name="member_email"
+              id="member_email"
+              maxlength="20"
+              placeholder="이메일을 입력해주세요"
+            />
+            <input
+              type="text"
+              name="member_username"
+              id="member_username"
+              maxlength="20"
+              placeholder="아이디는 10자 이내로 입력해주세요"
+            />
+            <input
+              type="checkPassword"
+              name="member_password"
+              id="member_password"
+              maxlength="20"
+              placeholder="비밀번호는 8자 이상 입력해주세요"
+            />
+            <input
+              type="checkPassword"
+              name="member_password"
+              id="member_password"
+              maxlength="20"
+              placeholder="비밀번호를 다시 입력해주세요"
+            />
+            <button type="submit" id="login">회원가입</button>
+          </div>
+        </form>
+      </div>
+      <div class="findMember">
+        <a th:href="@{ / }">회원가입 안할래요</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,7 +22,7 @@ public class HtmlController {
     public String main() {
         return "index";
     }
-    
+
     //화면 목록보기
     @GetMapping("/listForm")
     public String listForm(Model model) {
@@ -34,16 +32,11 @@ public class HtmlController {
     }
     //업데이트 화면
     @GetMapping("/update")
-    public String update(){
-        return "updateItem";
-    }
-
-    //업데이트 보내기
-    @GetMapping("/updateItem")
-    public String updateItem(@RequestParam Integer product_no, Model model){
+    public String update(@RequestParam Integer product_no, Model model){
         ProductEntity entity = productRepository.findById( product_no )
                 .orElseThrow( ()-> new IllegalArgumentException("상품이 없습니다."));
         ProductRequestDto dto = new ProductRequestDto(
+                entity.getProduct_no(),
                 entity.getProduct_name(),
                 entity.getProduct_price(),
                 entity.getProduct_limit_date()
@@ -51,21 +44,42 @@ public class HtmlController {
         model.addAttribute("dto", dto);
         return "updateItem";
     }
-    
-    //삭제하기
-    @GetMapping("/delete")
+
+    //수정하기
+    @PostMapping("/editItem")
     @ResponseBody
-    public String delete(@RequestParam Integer product_no) {
+    public String editItem(@ModelAttribute ProductRequestDto dto,
+                           @RequestParam Integer product_no){
+        System.out.println(dto.getProduct_name());
+        System.out.println(dto.getProduct_price());
+        System.out.println(dto.getProduct_limit_date());
+
+
 
         try {
-            productRepository.deleteById(product_no);
+            productService.edit(product_no,dto);
         } catch (Exception e) {
-            return "|<script>alert('상품 삭제 실패했습니다.') history.back();</script>|";
+            return "|<script>alert('상품 수정 실패했습니다.') history.back();</script>|";
 
         }
-        return "|<script>alert('상품 삭제 완료했습니다.'); location.href='/listForm'</script>|";
+        return "|<script>alert('상품 수정 완료했습니다.'); location.href='/listForm'</script>|";
+    }
+
+
+//삭제하기
+@GetMapping("/delete")
+@ResponseBody
+public String delete(@RequestParam Integer product_no) {
+    try {
+        productService.delete(product_no);
+    } catch (Exception e) {
+        return "|<script>alert('상품 삭제 실패했습니다.') history.back();</script>|";
 
     }
+    return "|<script>alert('상품 삭제 완료했습니다.'); location.href='/listForm'</script>|";
+}
+
+
     //추가하기 화면
     @GetMapping("/addForm")
     public String addForm() {
@@ -75,9 +89,9 @@ public class HtmlController {
     @GetMapping("/getAddItem")
     @ResponseBody
     public String addItem(@RequestParam String product_name,
-                          @RequestParam Integer product_price,
-                          @RequestParam("product_limit_date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate product_limit_date,
-                          Model model) {
+            @RequestParam Integer product_price,
+            @RequestParam("product_limit_date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate product_limit_date,
+            Model model) {
         System.out.println("product_Name = " + product_name);
         System.out.println("product_Price =" + product_price);
         System.out.println("product_Date =" + product_limit_date);
