@@ -7,6 +7,6 @@ import java.util.Optional;
 
 @Repository
 public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
-
+    boolean existsByMemberUsername(String memberUsername);
     Optional<MemberEntity> findByMemberUsername(String username);
 }

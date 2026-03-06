@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3039a-ae30-44af-943c-1c6f709afec0" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/controller/HtmlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/controller/HtmlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/dto/LoginMemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/dto/LoginMemberDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/dto/SaveMemberDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/dto/SaveMemberDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/entity/MemberEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/entity/MemberEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/java/com/study/Ex14LoginJoinDB/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/resources/templates/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Ex14LoginJoinDB/src/main/resources/templates/signUp.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

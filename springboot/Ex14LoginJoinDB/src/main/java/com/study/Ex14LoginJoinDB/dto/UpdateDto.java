@@ -1,7 +1,10 @@
 package com.study.Ex14LoginJoinDB.dto;
 
 import com.study.Ex14LoginJoinDB.entity.MemberEntity;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -10,25 +13,15 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class SaveMemberDto {
+public class UpdateDto {
     private Integer memberNo;
     private String memberUsername;
     private String memberEmail;
     private String memberPassword;
-    private String memberPasswordConfirm;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat (pattern = "yyyy-MM-dd")
     private LocalDate memberJoindate;
 
-    //Dto to Entity
-    public MemberEntity toSaveEntity() {
-        //객체를 생성할 때 방법 2가지
-        // 1. new 필드가 있는 생성자 함수
-        // 2. builder()를 사용 -> 사용하면 좋은점
-        //     1) 생성자함수는 매개변수의 순서가 동일해야한다.
-        //          return new MemberEntity(no, member_username, member_email..)
-        //         -> 필드의 순서를 자유롭게 하여 생성가능하다!
-
+    public MemberEntity toSaveDto() {
         return MemberEntity.builder()
                 .memberNo(memberNo)
                 .memberUsername(memberUsername)

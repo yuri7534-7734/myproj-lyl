@@ -39,6 +39,24 @@
       font-weight: bolder;
       cursor: pointer;
     }
+    .alertJoin {
+      width: 300px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(32, 110, 255);
+      padding-left: 15px;
+      border: 1px solid rgb(32, 110, 255);
+      background-color: rgb(240, 246, 255);
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: bolder;
+    }
+    .welcome {
+      font-size: 15px;
+    }
+
     #check {
       display: flex;
       flex-direction: column;
@@ -68,20 +86,26 @@
       <div id="topLogin">
         <h1>Login</h1>
       </div>
+      <div class="alertJoin" th:if="${ loginUser!=null }">
+        <p
+          th:text="${session.member_username}+'님 환영합니다 o((>ω< ))o'"
+          class="welcome"
+        ></p>
+      </div>
       <div id="inputLogin">
         <form action="/loginAction" method="post">
           <div id="check">
             <input
               type="text"
-              name="member_username"
-              id="member_username"
+              name="memberUsername"
+              id="memberUsername"
               placeholder="아이디"
               required
             />
             <input
               type="password"
-              name="member_password"
-              id="member_password"
+              name="memberPassword"
+              id="memberPassword"
               placeholder="비밀번호"
               required
             />

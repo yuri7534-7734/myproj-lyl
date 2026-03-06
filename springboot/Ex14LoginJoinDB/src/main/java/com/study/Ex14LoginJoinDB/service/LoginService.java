@@ -7,18 +7,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
-import java.lang.reflect.Member;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class LoginService {
-    MemberRepository memberRepository;
+    @Autowired
+    private final MemberRepository memberRepository;
 
-    public MemberEntity login(String member_username, String member_password) {
-        return memberRepository.findByMemberUsername(member_username)
-                .filter(m->m.getMember_password().equals(member_password))
+    public MemberEntity login(String memberUsername, String memberPassword) {
+        return memberRepository.findByMemberUsername(memberUsername)
+                .filter(m->m.getMemberPassword().equals(memberPassword))
                 .orElse(null);
     }
 

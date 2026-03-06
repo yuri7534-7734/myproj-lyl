@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login LeeYuri</title>
+  </head>
+  <style>
+    body {
+      background-color: rgb(32, 110, 255);
+    }
+    #wrap {
+      width: 500px;
+      height: auto;
+      padding: 0;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      font-weight: bolder;
+      padding: 130px 0 20px 0;
+      color: white;
+    }
+    input {
+      width: 300px;
+      height: 35px;
+      border: 1px solid rgb(168, 168, 168);
+      color: rgb(37, 37, 37);
+      outline: none;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      padding-left: 15px;
+    }
+    #tablewrap {
+      display: flex;
+      justify-content: center;
+      background-color: white;
+      align-items: center;
+      width: 750px;
+      height: auto;
+      border-radius: 20px;
+      margin-top: 30px;
+      padding: 10px 0 10px 0;
+    }
+    table {
+      width: 725px;
+      border: 1px solid rgb(212, 212, 212);
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .topList {
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      color: rgb(95, 95, 95);
+      font-weight: bolder;
+    }
+    td {
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      color: rgb(36, 36, 36);
+    }
+    #login {
+      width: 322px;
+      height: 40px;
+      color: white;
+      border: none;
+      background-color: rgb(32, 110, 255);
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+    .alertJoin {
+      width: 300px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(32, 110, 255);
+      padding-left: 15px;
+      border: 1px solid rgb(32, 110, 255);
+      background-color: rgb(240, 246, 255);
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-weight: bolder;
+    }
+    .welcome {
+      font-size: 15px;
+    }
+
+    #check {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .findMember {
+      display: flex;
+      justify-content: center;
+    }
+    a {
+      text-decoration: none;
+    }
+    .achor {
+      color: white;
+      font-size: 11px;
+    }
+    .achor::before {
+      content: "ㅣ";
+      margin: 0 10px 0 10px;
+      color: rgb(211, 211, 211);
+    }
+    #loginHome::before {
+      content: none;
+    }
+    #edit {
+      width: 60px;
+      height: 30px;
+      background-color: rgb(32, 110, 255);
+      border-radius: 20px;
+      color: white;
+      outline: none;
+      outline: none;
+      border: black;
+      cursor: pointer;
+    }
+    #delete {
+      width: 60px;
+      height: 30px;
+      color: white;
+      border-radius: 20px;
+      background-color: rgb(46, 46, 46);
+      outline: none;
+      border: black;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="wrap">
+      <div id="topLogin">
+        <h1>Admin Page</h1>
+      </div>
+      <div class="alertJoin" th:if="${ loginUser!=null }">
+        <p
+          th:text="${session.member_username}+'님 환영합니다 o((>ω< ))o'"
+          class="welcome"
+        ></p>
+      </div>
+      <div id="inputLogin">
+        <div class="findMember">
+          <a th:href="@{ / }" id="loginHome" class="achor">로그인 홈</a>
+          <a th:href="@{ /signUpJoin }" class="achor">회원가입</a>
+        </div>
+        <div id="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <td class="topList">번호</td>
+                <td class="topList">아이디</td>
+                <td class="topList">암호</td>
+                <td class="topList">이메일</td>
+                <td class="topList">가입일</td>
+                <td class="topList">수정</td>
+                <td class="topList">삭제</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="dto, status : ${list}">
+                <td th:text="${status.count}">번호</td>
+                <td th:text="${dto.memberUsername}">아이디</td>
+                <td th:text="${dto.memberPassword}">암호</td>
+                <td th:text="${dto.memberEmail}">이메일</td>
+                <td th:text="${dto.memberJoindate}">가입일</td>
+                <td>
+                  <a th:href="@{/memberEdit(memberNo=${dto.memberNo})}"
+                    ><button id="edit">수정</button></a
+                  >
+                </td>
+                <td>
+                  <a th:href="@{/delete(memberNo=${dto.memberNo})}"
+                    ><button id="delete">삭제</button></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
