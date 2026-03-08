@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="~{nav.html::navbar}"></div>
+
+    <form action="/add" method="post">
+      <input name="title">
+      <input name="price">
+      <button type="submit">전송</button>
+    </form>
+</body>
+</html>
