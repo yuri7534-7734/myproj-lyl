@@ -48,8 +48,8 @@ public class HtmlController {
     public String loginAction(@Valid @ModelAttribute LoginMemberDto dto,
                                BindingResult bindingResult, HttpSession session) { //BindingResult : 폼 검증하고 그 결과를 담는 객체
                                                                                    //HTTPSession : 사용자 로그인 상태 저장하는 공간
-        if(bindingResult.hasErrors()) { //바인딩 오류 찾아내기 : 입력값 검증에서 에러가 하나라도 있으면 true
-            //DTO에 설정한 message값을 가져온다.
+        if(bindingResult.hasErrors()) { //바인딩 오류 찾아내기 : 입력값 검증에서 에러가 하나라도 있으면 에러있음(true)
+            //DTO(LoginMemberDto)에 설정한 message값을 가져온다.
             String detail = bindingResult.getFieldError().getDefaultMessage();
             System.out.println("detail : " + detail);
             //bindingResult : 폼 검증 결과를 저장하는 객체, 사용자가 빈값 입력 시  @NotBlank 괄호 안에 있는 메시지 저장됨.
@@ -102,20 +102,23 @@ public class HtmlController {
     //중복버튼 눌렀을 때
     @PostMapping("/check-username")
     @ResponseBody
-    public Map<String, Object> checkUsername(@ModelAttribute LoginMemberDto dto) {
+    public Map<String, Object> checkUsername(@RequestBody LoginMemberDto dto) {
         
         Map<String, Object> result = new HashMap<>(); //key-value 객체 넣기 위해 new HashMap 생성
         boolean exists = memberRepository.existsByMemberUsername(dto.getMemberUsername()); //DTO 안에 있는 username 값을 가져오기.
         //               Spring Data JPA가 자동으로 만들어주는 메서드( 0이면 FALSE / 1이상이면 TRUE 반환 )
+        System.out.println(dto.getMemberUsername());
+        System.out.println(dto.getMemberNo());
         result.put("isDuplicate",exists); //HashMap 덕분에 put으로 데이터 넣기 성공
         return result;
 
     }
+
     //업데이트 시 본인 제외한 중복확인 시
     @PostMapping("/update-username")
     @ResponseBody
     //Key - Value 형태의 데이터를 반환한다는 뜻 { "isDuplicate"(문자열) : true(Object) }
-    public Map<String, Object> updateUsername(@ModelAttribute LoginMemberDto dto) {//프론트에서 보낸 JSON데이터를 DTO에 담아라.
+    public Map<String, Object> updateUsername(@RequestBody LoginMemberDto dto) {//프론트에서 보낸 JSON데이터를 DTO에 담아라.
         Map<String, Object> result = new HashMap<>(); //응답으로 보낼 빈 상자 만들기, isDuplicate 값 담을 상자
         boolean isDuplicate = false; //기본 설정 = "중복 아니다"
                                      //중복 발견했을 때만 true로 바꾸기 위함.
@@ -124,6 +127,8 @@ public class HtmlController {
         //dto.getMemberUsername() = "yuri" 그리고 결과를 Optional<MemberEntity>로 돌려준다.
         Optional<MemberEntity> optional =
                 memberRepository.findByMemberUsername(dto.getMemberUsername());
+        System.out.println(dto.getMemberUsername());
+        System.out.println(dto.getMemberNo());
 
         //조회 결과 같은 아이디를 가진 회원이 DB에 있을 때만 안으로 들어간다.
         if(optional.isPresent()){
@@ -155,6 +160,8 @@ public class HtmlController {
         System.out.println(dto.getMemberEmail());
         System.out.println(dto.getMemberUsername());
         System.out.println(dto.getMemberPassword());
+
+
 
         dto.setMemberJoindate(LocalDate.now());
 

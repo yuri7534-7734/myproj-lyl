@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>메모 보드 (Vanilla)</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+    :root {
+      --font:
+        "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --toolbar-h: 56px;
+      --bg: #f0f0f0;
+      --border: #e8e8e8;
+      --text: #222;
+      --muted: #aaa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    button,
+    textarea {
+      font-family: var(--font);
+    }
+
+    .toolbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--toolbar-h);
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 12px;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 4px;
+    }
+
+    .logoText {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .divider {
+      width: 1px;
+      height: 24px;
+      background: var(--border);
+      margin: 0 4px;
+    }
+
+    .addBtn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: #222;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 600;
+      font-size: 13px;
+      transition:
+        background 0.15s,
+        transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .addBtn:hover {
+      background: #444;
+    }
+    .addBtn:active {
+      transform: scale(0.97);
+    }
+
+    .colorLabel {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .colorPalette {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .colorSwatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition:
+        transform 0.15s,
+        border-color 0.15s;
+      outline: none;
+      padding: 0;
+      background: transparent;
+    }
+
+    .colorSwatch:hover {
+      transform: scale(1.2);
+    }
+
+    .colorSwatchActive {
+      border-color: #222;
+      transform: scale(1.2);
+    }
+
+    .stats {
+      margin-left: auto;
+      font-size: 12px;
+      color: #bbb;
+      white-space: nowrap;
+    }
+
+    .statsCount {
+      color: #555;
+      font-weight: 700;
+    }
+
+    .clearBtn {
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid #e0e0e0;
+      border-radius: 7px;
+      cursor: pointer;
+      color: #aaa;
+      font-size: 12px;
+      transition:
+        background 0.15s,
+        color 0.15s,
+        border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .clearBtn:hover {
+      background: #fff0f0;
+      border-color: #ffcdd2;
+      color: #e53935;
+    }
+
+    .board {
+      position: fixed;
+      inset: 0;
+      top: var(--toolbar-h);
+      overflow: hidden;
+      background-color: var(--bg);
+    }
+
+    .notesContainer {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .emptyState {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .emptyIcon {
+      font-size: 48px;
+      display: block;
+      margin-bottom: 12px;
+      opacity: 0.4;
+    }
+
+    .emptyTitle {
+      font-size: 16px;
+      font-weight: 600;
+      color: #aaa;
+      margin: 0 0 6px;
+    }
+
+    .emptyDesc {
+      font-size: 13px;
+      color: #bbb;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .overlay[hidden] {
+      display: none !important;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .dialog {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 28px 24px;
+      max-width: 320px;
+      width: min(90%, 320px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .dialogTitle {
+      font-size: 15px;
+      font-weight: 700;
+      color: #222;
+      margin: 0 0 8px;
+    }
+
+    .dialogDesc {
+      font-size: 13px;
+      color: #888;
+      margin: 0 0 20px;
+      line-height: 1.6;
+    }
+
+    .dialogActions {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .dialogCancel {
+      flex: 1;
+      padding: 10px 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background: #fff;
+      color: #666;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+
+    .dialogCancel:hover {
+      background: #f5f5f5;
+    }
+
+    .dialogConfirm {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: #ff5252;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background 0.15s;
+    }
+
+    .dialogConfirm:hover {
+      background: #e53935;
+    }
+
+    .note {
+      position: absolute;
+      width: 210px;
+      min-height: 180px;
+      border-radius: 4px;
+      padding: 32px 14px 14px 14px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      cursor: grab;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.15s;
+    }
+
+    .note:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+    }
+
+    .note.dragging {
+      cursor: grabbing;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+      z-index: 999 !important;
+      transform: scale(1.03) rotate(0deg) !important;
+    }
+
+    .note__topBar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 8px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .note__deleteBtn {
+      width: 18px;
+      height: 18px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      opacity: 0;
+      transition:
+        opacity 0.15s,
+        background 0.15s;
+      padding: 0;
+      color: rgba(0, 0, 0, 0.35);
+    }
+
+    .note:hover .note__deleteBtn {
+      opacity: 1;
+    }
+
+    .note__deleteBtn:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #e53935;
+    }
+
+    .note__textarea {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      resize: none;
+      font-size: 13px;
+      color: #333;
+      line-height: 1.7;
+      cursor: text;
+      width: 100%;
+      min-height: 120px;
+      padding: 0;
+    }
+
+    .note__textarea::placeholder {
+      color: rgba(0, 0, 0, 0.25);
+    }
+
+    .note__dateLabel {
+      font-size: 10px;
+      color: rgba(0, 0, 0, 0.3);
+      text-align: right;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="toolbar">
+  <div class="logo">
+    <span class="logoText">메모 보드</span>
+  </div>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <button id="addBtn" class="addBtn" type="button">
+    <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            aria-hidden="true"
+    >
+      <path
+              d="M6 1V11M1 6H11"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+      />
+    </svg>
+    새 메모
+  </button>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <span class="colorLabel">색상</span>
+  <div
+          id="colorPalette"
+          class="colorPalette"
+          aria-label="색상 팔레트"
+  ></div>
+
+  <div class="stats" aria-label="메모 개수">
+    <span id="noteCount" class="statsCount">0</span>개
+  </div>
+
+  <button id="clearAllBtn" class="clearBtn" type="button" hidden>
+    전체 삭제
+  </button>
+</div>
+
+<div id="board" class="board">
+  <div id="notesContainer" class="notesContainer"></div>
+</div>
+
+<div id="overlay" class="overlay" hidden>
+  <div
+          id="dialog"
+          class="dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="dialogTitle"
+  >
+    <p id="dialogTitle" class="dialogTitle">전체 삭제할까요?</p>
+    <p id="dialogDesc" class="dialogDesc"></p>
+    <div class="dialogActions">
+      <button id="dialogCancel" class="dialogCancel" type="button">
+        취소
+      </button>
+      <button id="dialogConfirm" class="dialogConfirm" type="button">
+        삭제
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // 📖 이 스크립트 읽는 순서 (초보자용)
+  // ============================================================
+  // 1. 아래 "상수" : 메모 색상, API 주소 등 바꾸지 않는 값
+  // 2. "DOM 요소" : HTML의 id로 가져온 버튼, 보드, 다이얼로그 등
+  // 3. "전역 상태" : 지금 메모 목록(notes), 선택 색상, z-index 카운터
+  // 4. "유틸 함수" : 날짜 포맷, 랜덤 각도 등 자주 쓰는 작은 함수
+  // 5. "서버/저장" : DB에서 목록 불러오기, localStorage 저장/불러오기
+  // 6. "메모 CRUD" : 추가·수정·삭제·맨 앞으로 가져오기
+  // 7. "화면 그리기" : 색상 팔레트, 메모 카드, 빈 화면 문구
+  // 8. "init()" : 페이지 로드 시 한 번 실행 → 위 함수들 조합
+  // ============================================================
+
+  // ---------- 상수 (프로그램 전체에서 쓰는 고정 값) ----------
+  const NOTE_COLORS = [
+    { id: "yellow", value: "#FFF176", label: "노랑" },
+    { id: "pink", value: "#F8BBD9", label: "핑크" },
+    { id: "mint", value: "#B2DFDB", label: "민트" },
+    { id: "blue", value: "#BBDEFB", label: "파랑" },
+    { id: "purple", value: "#E1BEE7", label: "보라" },
+    { id: "orange", value: "#FFE0B2", label: "주황" },
+    { id: "green", value: "#C8E6C9", label: "초록" },
+    { id: "white", value: "#F5F5F5", label: "흰색" },
+  ];
+
+  const STORAGE_KEY = "postit_vanilla_v1"; // 브라우저 저장소 키
+  const API_BASE = "/api/list"; // 메모 목록을 가져올 서버 API 주소 (GET)
+  const API_ADD = "/api/add"; // 새 메모 생성 (POST)
+  const API_DELETE = "/api/delete"; // 메모 삭제 (DELETE)
+
+  // ---------- 유틸 함수 (날짜·각도 등 자주 쓰는 계산) ----------
+  /** 새 메모에 줄 랜덤 기울기 (대략 -4도 ~ +4도) */
+  const getRandomRotation = () => (Math.random() - 0.5) * 8;
+
+  /** NOTE_COLORS 중 하나를 랜덤으로 선택 */
+  function getRandomColor() {
+    const idx = Math.floor(Math.random() * NOTE_COLORS.length);
+    return NOTE_COLORS[idx]?.value ?? NOTE_COLORS[0].value;
+  }
+
+  /** 오늘 날짜를 "2026.03.09" 형태 문자열로 반환 */
+  const getFormattedDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}.${month}.${day}`;
+  };
+
+  /** 서버의 LocalDateTime/문자열 날짜를 UI 라벨(yyyy.MM.dd)로 변환 */
+  function formatDateLabel(value) {
+    if (!value) return getFormattedDate();
+
+    // 예: [2026,3,9,12,34,56] 같은 형태로 올 수도 있어서 처리
+    if (Array.isArray(value) && value.length >= 3) {
+      const [y, m, d] = value;
+      if (
+        typeof y === "number" &&
+        typeof m === "number" &&
+        typeof d === "number"
+      ) {
+        return `${y}.${String(m).padStart(2, "0")}.${String(d).padStart(2, "0")}`;
+      }
+    }
+
+    if (typeof value === "string") {
+      // 이미 "2026.03.09" 포맷이면 그대로
+      if (/^\d{4}\.\d{2}\.\d{2}$/.test(value)) return value;
+      // ISO("2026-03-09T...")면 앞 날짜만 사용
+      const iso = value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      if (iso) return `${iso[1]}.${iso[2]}.${iso[3]}`;
+    }
+
+    return getFormattedDate();
+  }
+
+  // ---------- DOM 요소 (HTML에서 id로 가져온 요소들) ----------
+  const el = {
+    board: document.getElementById("board"), // 메모가 붙는 보드 영역
+    notesContainer: document.getElementById("notesContainer"), // 메모들이 들어가는 컨테이너
+    palette: document.getElementById("colorPalette"), // 색상 선택 버튼들이 들어갈 곳
+    addBtn: document.getElementById("addBtn"), // "새 메모" 버튼
+    noteCount: document.getElementById("noteCount"), // "N개" 표시
+    clearAllBtn: document.getElementById("clearAllBtn"), // "전체 삭제" 버튼
+    overlay: document.getElementById("overlay"), // 전체 삭제 확인 시 어두운 배경
+    dialog: document.getElementById("dialog"), // 확인 팝업 박스
+    dialogDesc: document.getElementById("dialogDesc"), // 팝업 안 설명 글
+    dialogCancel: document.getElementById("dialogCancel"), // "취소" 버튼
+    dialogConfirm: document.getElementById("dialogConfirm"), // "삭제" 버튼
+  };
+
+  // ---------- 전역 상태 (프로그램이 기억하는 값, 사용자 행동에 따라 바뀜) ----------
+  let notes = []; // 현재 보드에 있는 메모 전체 (id, text, color, x, y, rotation, zIndex, createdAt)
+  let selectedColor = NOTE_COLORS[0].value; // 지금 선택된 메모 색상 (새 메모에 적용)
+  let zCounter = 10; // 메모를 클릭할 때마다 올려서 "맨 앞에 보이게" 할 때 사용
+
+  // ---------- 서버 / 저장소 (DB 목록 불러오기, localStorage 저장·불러오기) ----------
+
+  /**
+   * 서버(DB)에서 온 메모 한 개를 우리가 쓰는 형식으로 바꿉니다.
+   * DB는 z_index, created_at 처럼 snake_case 쓸 수 있어서 둘 다 받아들입니다.
+   */
+  function normalizeNote(raw, index) {
+    const fallbackColor = NOTE_COLORS[0].value;
+
+    const id =
+      raw.id !== undefined && raw.id !== null
+        ? String(raw.id)
+        : String(index + 1);
+    const rotationRaw =
+      typeof raw.rotation === "number"
+        ? raw.rotation
+        : typeof raw.rotation_deg === "number"
+          ? raw.rotation_deg
+          : 0;
+    const zRaw =
+      typeof raw.zIndex === "number"
+        ? raw.zIndex
+        : typeof raw.z_index === "number"
+          ? raw.z_index
+          : index + 1;
+    const createdRaw =
+      raw.createdAt !== undefined && raw.createdAt !== null
+        ? raw.createdAt
+        : raw.created_at !== undefined && raw.created_at !== null
+          ? raw.created_at
+          : getFormattedDate();
+
+    return {
+      id,
+      text: typeof raw.text === "string" ? raw.text : "",
+      color:
+        typeof raw.color === "string" && raw.color
+          ? raw.color
+          : fallbackColor,
+      x:
+        typeof raw.x === "number"
+          ? raw.x
+          : typeof raw.X === "number"
+            ? raw.X
+            : 120,
+      y:
+        typeof raw.y === "number"
+          ? raw.y
+          : typeof raw.Y === "number"
+            ? raw.Y
+            : 80,
+      rotation: rotationRaw,
+      zIndex: zRaw,
+      createdAt: formatDateLabel(createdRaw),
+    };
+  }
+
+  /** 서버 API에서 메모 목록을 가져옵니다. 실패하면 빈 배열 반환하지 않고 에러를 던집니다. */
+  async function loadFromServer() {
+    const res = await fetch(API_BASE, { method: "GET" });
+    if (!res.ok) {
+      throw new Error(`Failed to load notes: ${res.status}`);
+    }
+    const data = await res.json();
+    if (!Array.isArray(data)) return [];
+    return data;
+  }
+
+  /** 서버에 빈 메모 생성 요청을 보내고, 생성된 메모(JSON)를 반환합니다. */
+  async function createOnServer(payload) {
+    const res = await fetch(API_ADD, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to add note: ${res.status}`);
+    }
+    return await res.json();
+  }
+
+  /** 서버에서 메모를 삭제합니다. (DELETE /api/delete?id=...) */
+  async function deleteOnServer(id) {
+    const url = `${API_DELETE}?id=${encodeURIComponent(String(id))}`;
+    const res = await fetch(url, { method: "DELETE" });
+    if (!res.ok) {
+      throw new Error(`Failed to delete note: ${res.status}`);
+    }
+  }
+
+  /** 서버에 텍스트 변경을 저장합니다. */
+  async function saveTextOnServer(id, text) {
+    const res = await fetch(`/api/notes/${encodeURIComponent(id)}/text`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to save text: ${res.status}`);
+    }
+    return await res.json();
+  }
+
+  /** 서버에 위치(x,y) 변경을 저장합니다. */
+  async function savePositionOnServer(id, x, y) {
+    const res = await fetch(`/api/notes/${encodeURIComponent(id)}/position`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ X: Math.round(x), y: Math.round(y) }),
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to save position: ${res.status}`);
+    }
+    return await res.json();
+  }
+
+  /** 지금 메모 목록·선택 색상·zCounter를 브라우저 localStorage에 저장합니다. */
+  function saveState() {
+    const payload = { notes, selectedColor, zCounter };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  }
+
+  /** localStorage에서 저장된 값을 불러와 notes, selectedColor, zCounter에 넣습니다. 성공하면 true. */
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      const parsed = JSON.parse(raw);
+      if (!parsed || !Array.isArray(parsed.notes)) return false;
+      notes = parsed.notes;
+      selectedColor =
+        typeof parsed.selectedColor === "string"
+          ? parsed.selectedColor
+          : selectedColor;
+      zCounter =
+        typeof parsed.zCounter === "number" ? parsed.zCounter : zCounter;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // ---------- 메모 CRUD (추가·수정·삭제·맨 앞으로) ----------
+
+  /** 툴바에서 색상을 클릭했을 때 호출. 선택 색상을 바꾸고 팔레트·저장을 갱신합니다. */
+  function setSelectedColor(color) {
+    selectedColor = color;
+    renderPalette();
+    saveState();
+  }
+
+  /** 메모를 클릭했을 때 그 메모를 맨 앞(z-index 최대)으로 가져옵니다. */
+  function bringToFront(id) {
+    zCounter += 1;
+    const note = notes.find((n) => n.id === id);
+    if (!note) return;
+    note.zIndex = zCounter;
+
+    const noteEl = el.notesContainer.querySelector(
+      `.note[data-id="${CSS.escape(id)}"]`,
+    );
+    if (noteEl) noteEl.style.zIndex = String(note.zIndex);
+
+    saveState();
+  }
+
+  /** (x, y) 위치에 새 메모를 하나 추가합니다. "새 메모" 버튼·보드 더블클릭 시 사용. */
+  function addNoteAt(x, y) {
+    const newNote = {
+      id: String(Date.now()),
+      text: "",
+      color: selectedColor,
+      x: Math.max(0, x),
+      y: Math.max(0, y),
+      rotation: getRandomRotation(),
+      zIndex: (zCounter += 1),
+      createdAt: getFormattedDate(),
+    };
+    notes = [...notes, newNote];
+    saveState();
+    render();
+  }
+
+  /** "새 메모" 버튼 클릭 시, 보드 안에서 랜덤한 위치에 메모를 추가합니다. */
+  function addNoteRandom() {
+    const rect = el.board.getBoundingClientRect();
+    const boardWidth = rect.width ?? window.innerWidth;
+    const boardHeight = rect.height ?? window.innerHeight - 64;
+
+    const maxX = Math.max(boardWidth - 240, 100);
+    const maxY = Math.max(boardHeight - 260, 80);
+    const x = 80 + Math.random() * Math.min(maxX - 80, 600);
+    const y = 40 + Math.random() * Math.min(maxY - 40, 300);
+
+    addNoteViaServerAt(x, y);
+  }
+
+  /** (x, y) 위치로 서버에 메모 생성 후, 응답을 notes에 반영해 렌더링합니다. */
+  async function addNoteViaServerAt(x, y) {
+    try {
+      const nextZ = zCounter + 1;
+      const payload = {
+        text: "",
+        color: getRandomColor(),
+        X: Math.round(Math.max(0, x)),
+        y: Math.round(Math.max(0, y)),
+        z_index: nextZ,
+        rotation: getRandomRotation(),
+      };
+
+      const created = await createOnServer(payload);
+      const normalized = normalizeNote(created, notes.length);
+
+      notes = [...notes, normalized];
+      zCounter = Math.max(zCounter, Number(normalized.zIndex) || 0);
+      saveState();
+      render();
+    } catch (error) {
+      console.warn("메모 생성에 실패했습니다.", error);
+    }
+  }
+
+  /** id에 해당하는 메모의 일부 필드(text, x, y 등)를 갱신합니다. skipSave true면 localStorage에 안 씁니다(드래그 중). */
+  function updateNote(id, updates, { skipSave = false } = {}) {
+    const note = notes.find((n) => n.id === id);
+    if (!note) return;
+    Object.assign(note, updates);
+    if (!skipSave) saveState();
+  }
+
+  /** id에 해당하는 메모를 목록에서 제거하고 화면을 다시 그립니다. */
+  async function deleteNote(id) {
+    try {
+      await deleteOnServer(id);
+      notes = notes.filter((n) => n.id !== id);
+      saveState();
+      render();
+    } catch (error) {
+      console.warn("메모 삭제에 실패했습니다.", error);
+    }
+  }
+
+  /** "전체 삭제" 확인 팝업을 보이거나 숨깁니다. show true면 보임. */
+  function showClearDialog(show) {
+    if (show) {
+      el.dialogDesc.innerHTML = `메모 <strong>${notes.length}</strong>개가 모두 삭제됩니다.<br />이 작업은 되돌릴 수 없습니다.`;
+      el.overlay.hidden = false;
+    } else {
+      el.overlay.hidden = true;
+    }
+  }
+
+  /** 전체 삭제 확인 후 실제로 메모를 모두 지우고 팝업을 닫습니다. */
+  function clearAll() {
+    notes = [];
+    saveState();
+    showClearDialog(false);
+    render();
+  }
+
+  // ---------- 화면 그리기 (DOM을 만들어서 화면에 반영) ----------
+
+  /** 툴바의 색상 팔레트를 다시 그립니다. 선택된 색에 테두리가 보입니다. */
+  function renderPalette() {
+    el.palette.innerHTML = "";
+
+    for (const color of NOTE_COLORS) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className =
+        "colorSwatch" +
+        (selectedColor === color.value ? " colorSwatchActive" : "");
+      btn.style.backgroundColor = color.value;
+      btn.title = color.label;
+      btn.setAttribute("aria-label", color.label);
+      btn.addEventListener("click", () => setSelectedColor(color.value));
+      el.palette.appendChild(btn);
+    }
+  }
+
+  /** 메모가 0개일 때만 "메모가 없어요" 안내 문구를 보여줍니다. */
+  function renderEmptyStateIfNeeded() {
+    const existing = el.notesContainer.querySelector(".emptyState");
+    if (notes.length > 0) {
+      if (existing) existing.remove();
+      return;
+    }
+
+    if (existing) return;
+
+    const box = document.createElement("div");
+    box.className = "emptyState";
+    box.innerHTML = `
+      <span class="emptyIcon">📋</span>
+      <p class="emptyTitle">메모가 없어요</p>
+      <p class="emptyDesc">
+        상단의 "새 메모" 버튼을 클릭하거나<br />
+        보드를 더블클릭해서 메모를 추가해보세요!
+      </p>
+    `;
+    el.notesContainer.appendChild(box);
+  }
+
+  /** notes 배열을 기준으로 메모 카드들을 만들어 보드에 붙입니다. 드래그·삭제·텍스트 편집 이벤트도 여기서 연결합니다. */
+  function renderNotes() {
+    el.notesContainer.querySelectorAll(".note").forEach((n) => n.remove());
+
+    for (const note of notes) {
+      const noteEl = document.createElement("div");
+      noteEl.className = "note";
+      noteEl.dataset.id = note.id;
+      noteEl.style.left = `${note.x}px`;
+      noteEl.style.top = `${note.y}px`;
+      noteEl.style.backgroundColor = note.color;
+      noteEl.style.transform = `rotate(${note.rotation}deg)`;
+      noteEl.style.zIndex = String(note.zIndex);
+
+      const topBar = document.createElement("div");
+      topBar.className = "note__topBar";
+
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "note__deleteBtn";
+      del.title = "삭제";
+      del.innerHTML = `
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M1 1L9 9M9 1L1 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      `;
+      del.addEventListener("click", (e) => {
+        e.stopPropagation();
+        void deleteNote(note.id);
+      });
+
+      topBar.appendChild(del);
+
+      const textarea = document.createElement("textarea");
+      textarea.className = "note__textarea";
+      textarea.placeholder = "내용을 입력하세요...";
+      textarea.spellcheck = false;
+      textarea.value = note.text ?? "";
+      let saveTimer = null;
+      let lastSavedText = textarea.value ?? "";
+
+      async function flushSaveNow() {
+        clearTimeout(saveTimer);
+        const current = textarea.value ?? "";
+        if (current === lastSavedText) return;
+        try {
+          const updated = await saveTextOnServer(note.id, current);
+          if (updated && updated.id !== undefined && updated.id !== null) {
+            lastSavedText = current;
+            updateNote(note.id, { text: current }, { skipSave: true });
+            saveState();
+          }
+        } catch (error) {
+          console.warn("텍스트 저장에 실패했습니다.", error);
+        }
+      }
+
+      textarea.addEventListener("input", () => {
+        updateNote(note.id, { text: textarea.value });
+
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(async () => {
+          await flushSaveNow();
+        }, 1000); // 타이핑 멈추고 1초 후 DB 저장
+      });
+
+      // out focus(blur) 순간에 즉시 DB 저장
+      textarea.addEventListener("blur", () => {
+        void flushSaveNow();
+      });
+      textarea.addEventListener("mousedown", () => bringToFront(note.id));
+      textarea.addEventListener("focus", () => bringToFront(note.id));
+
+      const date = document.createElement("div");
+      date.className = "note__dateLabel";
+      date.textContent = note.createdAt ?? "";
+
+      noteEl.appendChild(topBar);
+      noteEl.appendChild(textarea);
+      noteEl.appendChild(date);
+
+      // 메모 배경(여백)을 눌렀을 때만 드래그 시작. 텍스트·삭제 버튼을 누르면 드래그 안 함.
+      noteEl.addEventListener("mousedown", (e) => {
+        const target = e.target;
+        if (
+          target &&
+          (target.tagName === "TEXTAREA" || target.closest("button"))
+        )
+          return;
+
+        e.preventDefault();
+        bringToFront(note.id);
+        noteEl.classList.add("dragging");
+
+        const offsetX = e.clientX - note.x;
+        const offsetY = e.clientY - note.y;
+
+        const onMove = (ev) => {
+          const x = ev.clientX - offsetX;
+          const y = ev.clientY - offsetY;
+          updateNote(note.id, { x, y }, { skipSave: true });
+          noteEl.style.left = `${x}px`;
+          noteEl.style.top = `${y}px`;
+        };
+
+        const onUp = () => {
+          noteEl.classList.remove("dragging");
+          document.removeEventListener("mousemove", onMove);
+          document.removeEventListener("mouseup", onUp);
+          saveState();
+          // 드롭 시점에 DB에도 좌표 저장
+          void (async () => {
+            try {
+              await savePositionOnServer(note.id, note.x, note.y);
+            } catch (error) {
+              console.warn("위치 저장에 실패했습니다.", error);
+            }
+          })();
+        };
+
+        document.addEventListener("mousemove", onMove);
+        document.addEventListener("mouseup", onUp);
+      });
+
+      el.notesContainer.appendChild(noteEl);
+    }
+  }
+
+  /** 툴바에 "N개" 표시를 갱신하고, 메모가 있을 때만 "전체 삭제" 버튼을 보이게 합니다. */
+  function renderStats() {
+    el.noteCount.textContent = String(notes.length);
+    el.clearAllBtn.hidden = notes.length === 0;
+  }
+
+  /** 화면 전체를 한 번에 갱신합니다. (팔레트 + 개수 + 메모 목록 + 빈 화면 문구) */
+  function render() {
+    renderPalette();
+    renderStats();
+    renderNotes();
+    renderEmptyStateIfNeeded();
+  }
+
+  // ---------- 초기화 (페이지 로드 시 한 번 실행) ----------
+
+  /**
+   * 1) 서버(DB)에서 메모 목록을 불러와서 보여줍니다.
+   * 2) 실패하면 localStorage에서 불러옵니다.
+   * 3) 그것도 없으면 빈 보드로 시작합니다.
+   * 4) 버튼·보드에 클릭/더블클릭 이벤트를 걸고, 화면을 한 번 그립니다.
+   */
+  async function init() {
+    try {
+      const serverNotes = await loadFromServer();
+      notes = (Array.isArray(serverNotes) ? serverNotes : []).map((n, i) =>
+        normalizeNote(n, i),
+      );
+      zCounter = Math.max(10, ...notes.map((n) => Number(n.zIndex) || 0));
+      selectedColor = NOTE_COLORS[0].value;
+      saveState();
+    } catch (error) {
+      console.warn("서버에서 메모를 불러오지 못했습니다.", error);
+      loadState(); // 서버가 안 되면 마지막으로 봤던 상태라도 보여주기
+    }
+
+    el.addBtn.addEventListener("click", addNoteRandom);
+    el.clearAllBtn.addEventListener("click", () => showClearDialog(true));
+
+    el.overlay.addEventListener("click", () => showClearDialog(false));
+    el.dialog.addEventListener("click", (e) => e.stopPropagation());
+    el.dialogCancel.addEventListener("click", () => showClearDialog(false));
+    el.dialogConfirm.addEventListener("click", clearAll);
+
+    el.board.addEventListener("dblclick", (e) => {
+      if (e.target !== el.board && e.target !== el.notesContainer) return;
+      const rect = el.board.getBoundingClientRect();
+      const x = e.clientX - rect.left - 100;
+      const y = e.clientY - rect.top - 100;
+      addNoteAt(x, y);
+    });
+
+    render();
+  }
+
+  init();
+</script>
+</body>
+</html>

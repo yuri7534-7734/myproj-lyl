@@ -1,4 +1,4 @@
-package com.study.Ex14LoginJoinDB.controller;
+package com.study.Ex14LoginJoinDB.dto;
 
 
 import com.study.Ex14LoginJoinDB.entity.MemberEntity;
