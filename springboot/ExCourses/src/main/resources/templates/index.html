@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수강신청</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <span class="logo">수강신청</span>
+  <span class="subtitle">2025학년도 1학기</span>
+  <span class="credits-badge" id="credits-badge">신청학점: 0학점</span>
+</header>
+
+<main>
+  <!-- 탭 -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('list')">
+      📋 수강신청 목록 <span class="badge" id="badge-list">8</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('registered')">
+      ✅ 신청한 과목 <span class="badge" id="badge-reg">0</span>
+    </button>
+  </div>
+
+  <!-- 개설 과목 목록 -->
+  <div class="panel active" id="panel-list">
+    <div class="section-title">📋 개설 과목 목록</div>
+    <div class="course-list" id="course-list"></div>
+  </div>
+
+  <!-- 신청한 과목 -->
+  <div class="panel" id="panel-registered">
+    <div class="section-title">✅ 신청한 과목</div>
+    <div class="registered-list" id="registered-list"></div>
+  </div>
+</main>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<script>
+  const COURSES = [
+    { id: 'c1', name: '자료구조',      professor: '김철수', time: '월/수 09:00-10:30', credits: 3, enrolled: 28, capacity: 30 },
+    { id: 'c2', name: '운영체제',      professor: '이영희', time: '화/목 10:30-12:00', credits: 3, enrolled: 30, capacity: 30 },
+    { id: 'c3', name: '데이터베이스',  professor: '박민준', time: '월/수 13:00-14:30', credits: 3, enrolled: 20, capacity: 35 },
+    { id: 'c4', name: '컴퓨터네트워크',professor: '최지원', time: '화/목 13:00-14:30', credits: 3, enrolled: 15, capacity: 25 },
+    { id: 'c5', name: '알고리즘',      professor: '정수현', time: '월/수/금 11:00-12:00',credits: 3, enrolled: 32, capacity: 32 },
+    { id: 'c6', name: '소프트웨어공학',professor: '한도윤', time: '화/목 15:00-16:30', credits: 3, enrolled: 10, capacity: 40 },
+    { id: 'c7', name: '인공지능',      professor: '오지은', time: '월/수 15:00-16:30', credits: 3, enrolled: 29, capacity: 30 },
+    { id: 'c8', name: '컴퓨터구조',    professor: '배성호', time: '화/목 09:00-10:30', credits: 3, enrolled: 18, capacity: 30 },
+  ];
+
+  let registered = [];
+
+  function getCredits() {
+    return registered.reduce((sum, id) => {
+      const c = COURSES.find(c => c.id === r.courseId);
+      return sum + (c ? c.credits : 0);
+    }, 0);
+  }
+
+  function renderCourseList() {
+    const el = document.getElementById('course-list');
+    el.innerHTML = COURSES.map(course => {
+      const isReg  = registered.some(r => r.courseId === course.id);
+      const isFull = course.enrolled >= course.capacity;
+      return `
+        <div class="course-card">
+          <div class="course-info">
+            <div class="course-name">${course.name}</div>
+            <div class="course-details">
+              <span>교수: ${course.professor}</span>
+              <span>시간: ${course.time}</span>
+              <span>학점: ${course.credits}</span>
+              <span class="${isFull ? 'full-text' : ''}">정원: ${course.enrolled}/${course.capacity}${isFull ? ' (마감)' : ''}</span>
+            </div>
+          </div>
+          <button class="register-btn${isReg ? ' done' : ''}"
+                  onclick="register('${course.id}')"
+                  ${isReg || isFull ? 'disabled' : ''}>
+            ${isReg ? '신청완료' : isFull ? '마감' : '신청'}
+          </button>
+        </div>`;
+    }).join('');
+  }
+
+  function renderRegistered() {
+    const el = document.getElementById('registered-list');
+    if (registered.length === 0) {
+      el.innerHTML = `<div class="empty-state">신청한 과목이 없습니다.</div>`;
+      return;
+    }
+    el.innerHTML = registered.map(r => {
+      const c = COURSES.find(c => c.id === r.courseId);
+      return `
+        <div class="registered-card">
+          <div class="course-info">
+            <div class="course-name">${c.name}</div>
+            <div class="course-details">
+              <span>교수: ${c.professor}</span>
+              <span>시간: ${c.time}</span>
+              <span>학점: ${c.credits}</span>
+            </div>
+          </div>
+          <button class="remove-btn" onclick="remove('${c.id}')">취소</button>
+        </div>`;
+    }).join('');
+  }
+
+  function updateUI() {
+    renderCourseList();
+    renderRegistered();
+    document.getElementById('badge-reg').textContent    = registered.length;
+    document.getElementById('credits-badge').textContent = `신청학점: ${getCredits()}학점`;
+  }
+
+  async function register(courseId) {
+    <!-- 이미 신청했는지 확인 코드 -->
+                      //매개변수(입력값), 오른쪽 return할 값
+    if (registered.find(r => r.courseId === courseId)) return;
+
+    const res = await fetch('/api/register',{
+      method: 'POST',
+      headers: { 'Content-Type' : 'application/json'},
+      body: JSON.stringify({ course_id : courseId })
+    });
+    <!-- 응답이 성공일 때만 UI 업데이트 -->
+    if (res.ok) {
+        const data = await res.json();
+        // data = { registration_id: 5, course_id: 'C1', registration_at: '...' }
+        // registration_id를 같이 저장해둬야 나중에 취소할 때 DELETE에 쓸 수 있다.
+        registered.push({ courseId: courseId, registrationId: data.registration_id });
+        updateUI();
+        showToast(`✅ "${COURSES.find(c=>c.id===courseId).name}" 신청되었습니다!`, 'success');
+    }
+  }
+
+  async function remove(courseId) {
+    const target = registered.find(r => r.courseId === courseId);
+
+    const res = await fetch('/api/register/${target.registerationId}',{
+      method: 'DELETE'
+    });
+
+    if (res.ok) {
+    registered = registered.filter(r=>r.courseId!==courseId);
+    updateUI();
+    showToast(`🗑 "${COURSES.find(c=>c.id===courseId).name}" 취소되었습니다.`, 'error');
+    }
+  }
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', (i === 0 && tab === 'list') || (i === 1 && tab === 'registered'));
+    });
+    document.getElementById('panel-list').classList.toggle('active', tab === 'list');
+    document.getElementById('panel-registered').classList.toggle('active', tab === 'registered');
+  }
+
+  function showToast(msg, type = 'success') {
+    const wrap = document.getElementById('toast-wrap');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    wrap.appendChild(t);
+    setTimeout(() => t.remove(), 2600);
+  }
+
+  updateUI();
+</script>
+</body>
+</html>
