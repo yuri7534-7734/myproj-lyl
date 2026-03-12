@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>수강 과목 관리</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <span class="logo">수강 과목 관리</span>
+      <a
+        href="/"
+        style="margin-left: auto; text-decoration: none; font-weight: bold"
+        >메인으로</a
+      >
+    </header>
+
+    <main>
+      <div class="section-title">과목 추가 / 수정</div>
+
+      <div class="course-card" style="display: block">
+        <input type="hidden" id="course-id" />
+
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <input
+            id="name"
+            type="text"
+            placeholder="과목명"
+            style="padding: 10px"
+          />
+          <input
+            id="professor"
+            type="text"
+            placeholder="교수명"
+            style="padding: 10px"
+          />
+          <input
+            id="time"
+            type="text"
+            placeholder="시간"
+            style="padding: 10px"
+          />
+          <input
+            id="credits"
+            type="number"
+            placeholder="학점"
+            style="padding: 10px"
+          />
+
+          <div style="display: flex; gap: 10px">
+            <button class="register-btn" onclick="saveCourse()">저장</button>
+            <button class="remove-btn" onclick="resetForm()">초기화</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-top: 30px">과목 목록</div>
+      <div id="admin-course-list" class="course-list"></div>
+    </main>
+
+    <script>
+      const defaultCourses = [
+        {
+          id: 1,
+          name: "자료구조",
+          professor: "김철수",
+          time: "월/수 09:00",
+          credits: 3,
+        },
+        {
+          id: 2,
+          name: "운영체제",
+          professor: "이영희",
+          time: "화/목 10:30",
+          credits: 3,
+        },
+        {
+          id: 3,
+          name: "데이터베이스",
+          professor: "박민준",
+          time: "월/수 13:00",
+          credits: 3,
+        },
+      ];
+
+      function getCourses() {
+        const saved = localStorage.getItem("courses");
+        if (!saved) {
+          localStorage.setItem("courses", JSON.stringify(defaultCourses));
+          return defaultCourses;
+        }
+        return JSON.parse(saved);
+      }
+
+      function saveCourses(courses) {
+        localStorage.setItem("courses", JSON.stringify(courses));
+      }
+
+      function renderAdmin() {
+        const courses = getCourses();
+        const list = document.getElementById("admin-course-list");
+        list.innerHTML = "";
+
+        courses.forEach((course) => {
+          const div = document.createElement("div");
+          div.className = "course-card";
+          div.innerHTML = `
+        <div class="course-info">
+          <div class="course-name">${course.name}</div>
+          <div class="course-details">
+            <span>교수: ${course.professor}</span>
+            <span>시간: ${course.time}</span>
+            <span>학점: ${course.credits}</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="register-btn" onclick="editCourse(${course.id})">수정</button>
+          <button class="remove-btn" onclick="deleteCourse(${course.id})">삭제</button>
+        </div>
+      `;
+          list.appendChild(div);
+        });
+      }
+
+      function saveCourse() {
+        const id = document.getElementById("course-id").value;
+        const name = document.getElementById("name").value;
+        const professor = document.getElementById("professor").value;
+        const time = document.getElementById("time").value;
+        const credits = document.getElementById("credits").value;
+
+        if (!name || !professor || !time || !credits) {
+          alert("모든 값을 입력하세요.");
+          return;
+        }
+
+        const courses = getCourses();
+
+        if (id) {
+          const course = courses.find((c) => c.id == id);
+          course.name = name;
+          course.professor = professor;
+          course.time = time;
+          course.credits = Number(credits);
+        } else {
+          const newId = courses.length
+            ? Math.max(...courses.map((c) => c.id)) + 1
+            : 1;
+          courses.push({
+            id: newId,
+            name,
+            professor,
+            time,
+            credits: Number(credits),
+          });
+        }
+
+        saveCourses(courses);
+        resetForm();
+        renderAdmin();
+      }
+
+      function editCourse(id) {
+        const courses = getCourses();
+        const course = courses.find((c) => c.id === id);
+
+        document.getElementById("course-id").value = course.id;
+        document.getElementById("name").value = course.name;
+        document.getElementById("professor").value = course.professor;
+        document.getElementById("time").value = course.time;
+        document.getElementById("credits").value = course.credits;
+      }
+
+      function deleteCourse(id) {
+        let courses = getCourses();
+        courses = courses.filter((c) => c.id !== id);
+        saveCourses(courses);
+
+        let registered = JSON.parse(localStorage.getItem("registered") || "[]");
+        registered = registered.filter((courseId) => courseId !== id);
+        localStorage.setItem("registered", JSON.stringify(registered));
+
+        renderAdmin();
+      }
+
+      function resetForm() {
+        document.getElementById("course-id").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("professor").value = "";
+        document.getElementById("time").value = "";
+        document.getElementById("credits").value = "";
+      }
+
+      renderAdmin();
+    </script>
+  </body>
+</html>

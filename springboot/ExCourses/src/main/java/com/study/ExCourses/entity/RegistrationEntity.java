@@ -1,4 +1,4 @@
-package com.study.ExCourses;
+package com.study.ExCourses.entity;
 
 import com.study.ExCourses.dto.ResponseDto;
 import jakarta.persistence.*;
@@ -17,25 +17,25 @@ public class RegistrationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="registration_id")
-    private Long registration_id;
+    private Long registrationId;
 
     @Column(name="course_id", nullable = false)
-    private String course_id;
+    private Long courseId;
 
     @Column(name ="registered_at", updatable = false)
-    private LocalDateTime registered_at;
+    private LocalDateTime registeredAt;
 
     //저장 직전에 자동으로 현재 시간을 넣어준다.
     @PrePersist
     public void prePersis() {
-        this.registered_at = LocalDateTime.now();
+        this.registeredAt = LocalDateTime.now();
     }
 
     public ResponseDto toDto(){
         return ResponseDto.builder()
-                .registration_id(this.registration_id)
-                .course_id(this.course_id)
-                .registered_at(this.registered_at)
+                .registrationId(this.registrationId)
+                .courseId(this.courseId)
+                .registeredAt(this.registeredAt)
                 .build();
     }
 

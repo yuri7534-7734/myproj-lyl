@@ -1,4 +1,4 @@
-package com.study.Ex16Security02;
+package com.study.Ex16Security03.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -80,7 +80,7 @@ public class SecurityConfig {
             );
         return http.build(); //완성된 보안 체인을 반환한다.
     }
-    //여러 곳에서 같은 암ㅎ화 방식을 공유하기 위해
+    //여러 곳에서 같은 암호화 방식을 공유하기 위해
     //시큐리티 기본암호화 객체
     //BCrypt 암호화 엔코더
     @Bean

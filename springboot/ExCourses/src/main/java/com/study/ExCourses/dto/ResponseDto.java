@@ -1,6 +1,6 @@
 package com.study.ExCourses.dto;
 
-import com.study.ExCourses.RegistrationEntity;
+import com.study.ExCourses.entity.RegistrationEntity;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseDto {
-    private Long registration_id;
-    private String course_id;
-    private LocalDateTime registered_at;
+    private Long registrationId;
+    private Long courseId;
+    private LocalDateTime registeredAt;
 
     public ResponseDto(RegistrationEntity e){
-        this.registration_id = e.getRegistration_id();
-        this.course_id = e.getCourse_id();
-        this.registered_at = e.getRegistered_at();
+        this.registrationId = e.getRegistrationId();
+        this.courseId = e.getCourseId();
+        this.registeredAt = e.getRegisteredAt();
     }
 
 
